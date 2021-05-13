@@ -7,11 +7,17 @@
     - "{{ traefik_data_directory }}"
     - "{{ traefik_data_directory }}/letsencrypt"
 
-- name: Template Traefik config.toml
+- name: Template Traefik traefik.toml
   template:
     src: traefik.toml
     dest: "{{ traefik_data_directory }}/traefik.toml"
   register: template_config
+
+- name: Template Traefik config.yml
+  template:
+    src: config.yml
+    dest: "{{ traefik_data_directory }}/config.yml"
+  register: template-provider_config
 
 - name: Traefik Docker Container
   docker_container:
@@ -21,6 +27,7 @@
     network_mode: host
     volumes:
       - "{{ traefik_data_directory }}/traefik.toml:/etc/traefik/traefik.toml:ro"
+      - "{{ traefik_data_directory }}/config.yml:/etc/traefik/config.yml:ro"
       - "{{ traefik_data_directory }}/letsencrypt:/letsencrypt:rw"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     env: "{{ traefik_environment_variables }}"

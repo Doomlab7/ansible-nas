@@ -1,0 +1,110 @@
+http:
+ #region routers 
+  routers:
+    # proxmox:
+    #   entryPoints:
+    #     - "https"
+    #   rule: "Host(`proxmox.paynepride.com`)"
+    #   middlewares:
+    #     - default-headers
+    #   tls: 
+    #     certResolver: letsencrypt
+    #   service: proxmox
+    pihole:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`pihole.paynepride.com`)"
+      middlewares:
+        # - default-headers
+        - addprefix-pihole
+      tls: 
+        certResolver: letsencrypt
+      service: pihole
+    # truenas:
+    #   entryPoints:
+    #     - "http"
+    #   rule: "Host(`truenas.paynepride.com`)"
+    #   middlewares:
+    #     - default-headers
+    #   # tls: {}
+    #   service: truenas
+    jellyfin:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`jellyfin.paynepride.com`)"
+      # middlewares:
+      #   - default-headers
+      tls: 
+        certResolver: letsencrypt
+      service: jellyfin
+    piwigo:  # piwigo
+      entryPoints:
+        - "websecure"
+      rule: "Host(`www.paynepride.com`)"
+      tls:
+        certResolver: letsencrypt
+      service: piwigo
+
+#endregion
+#region services
+  services:
+    # proxmox:
+    #   loadBalancer:
+    #     servers:
+    #       - url: "http://192.168.1.100:8006"
+    #     passHostHeader: true
+    pihole:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.234:80"
+        passHostHeader: true
+    # truenas:
+    #   loadBalancer:
+    #     servers:
+    #       - url: "http://192.168.1.24"
+    #     passHostHeader: true
+    jellyfin:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.235:8096"
+        passHostHeader: true
+    piwigo:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.124"
+        passHostHeader: true
+#endregion
+  middlewares:
+    addprefix-pihole:
+      addPrefix:
+        prefix: "/admin"
+    https-redirect:
+      redirectScheme:
+        scheme: https
+
+    default-headers:
+      headers:
+        frameDeny: true
+        sslRedirect: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        # customRequestHeaders:
+        #   X-Forwarded-Proto: https
+
+    default-whitelist:
+      ipWhiteList:
+        sourceRange:
+        - "10.0.0.0/8"
+        - "192.168.1.0/16"
+        - "172.16.0.0/12"
+
+    secured:
+      chain:
+        middlewares:
+        - default-whitelist
+        - default-headers
