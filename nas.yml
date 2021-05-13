@@ -310,8 +310,8 @@
 
     - role: transmission-with-openvpn
       tags:
-        - transmission_with_openvpn
-      when: (transmission_with_openvpn_enabled | default(False))
+        - transmission_openvpn
+      when: (transmission_openvpn_enabled | default(False))
 
     - role: utorrent
       tags:
