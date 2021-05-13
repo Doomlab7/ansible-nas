@@ -17,7 +17,7 @@
   template:
     src: config.yml
     dest: "{{ traefik_data_directory }}/config.yml"
-  register: template-provider_config
+  register: template_provider_config
 
 - name: Traefik Docker Container
   docker_container:
