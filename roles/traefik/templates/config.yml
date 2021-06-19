@@ -28,15 +28,6 @@ http:
     #     - default-headers
     #   # tls: {}
     #   service: truenas
-    jellyfin:
-      entryPoints:
-        - "websecure"
-      rule: "Host(`jellyfin.paynepride.com`)"
-      # middlewares:
-      #   - default-headers
-      tls: 
-        certResolver: letsencrypt
-      service: jellyfin
     piwigo:  # piwigo
       entryPoints:
         - "websecure"
@@ -63,11 +54,6 @@ http:
     #     servers:
     #       - url: "http://192.168.1.24"
     #     passHostHeader: true
-    jellyfin:
-      loadBalancer:
-        servers:
-          - url: "http://192.168.1.235:8096"
-        passHostHeader: true
     piwigo:
       loadBalancer:
         servers:
