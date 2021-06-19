@@ -5,20 +5,39 @@
     state: directory
   with_items:
     - "{{ jackett_data_directory }}"
+    - "{{ jackett_vpn_directory }}"
+
+- name: Add OpenVPN config  
+  template:
+    src: "{{ jackett_vpn_config }}"
+    dest: "{{ jackett_data_directory }}/{{ jackett_vpn_config }}"
+  register: openvpn_config_provider
 
 - name: jackett
   docker_container:
+    privileged: "false"
     name: jackett
-    image: linuxserver/jackett
+    image: dyonr/jackettvpn
+    # image: linuxserver/jackett
     volumes:
       - "{{ jackett_data_directory }}:/config:rw"
       - "/etc/localtime:/etc/localtime:ro"
-      - "{{ jackett_torrents_root }}:/downloads"
+      - "{{ jackett_torrents_root }}:/blackhole"
     ports:
       - "{{ jackett_port }}:9117"
     env:
       TZ: "{{ ansible_nas_timezone }}"
+      VPN_ENABLED: "{{ jackett_vpn_enabled }}"
+      VPN_TYPE: "{{ jackett_vpn_type }}"
+      LAN_NETWORK: "{{ jackett_lan_network }}"
+      VPN_USERNAME: "{{ jackett_vpn_username }}"
+      VPN_PASSWORD: "{{ jackett_vpn_password }}"
+      WEB_UI_PASSWORD: "{{ jackett_web_ui_password }}"
+      PGID: "{{ jackett_group_id }}"
+      PUID: "{{ jackett_user_id }}"
     restart_policy: unless-stopped
+    devices:
+      - /dev/net/tun
     memory: "{{ jackett_memory }}"
     labels:
       traefik.enable: "{{ jackett_available_externally }}"
