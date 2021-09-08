@@ -3,8 +3,8 @@ site
 .vagrant
 *.retry
 *.log
-inventories
 .cache
+key
 
 # Vim
 [._]sw[a-p]
