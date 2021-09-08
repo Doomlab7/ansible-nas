@@ -3,11 +3,11 @@ site
 .vagrant
 *.retry
 *.log
-inventories
 .cache
 roles/bertvv.samba
 roles/geerlingguy.docker
 roles/geerlingguy.nfs
+key
 
 # Vim
 [._]sw[a-p]
