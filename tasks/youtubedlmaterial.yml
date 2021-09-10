@@ -27,8 +27,6 @@
     env:
       ALLOW_CONFIG_MUTATIONS: "true"
       TZ: "{{ ansible_nas_timezone }}"
-      UID: "{{ youtubedlmaterial_user_id }}"
-      GID: "{{ youtubedlmaterial_group_id }}"
     restart_policy: always
     memory: 1g
     labels:
