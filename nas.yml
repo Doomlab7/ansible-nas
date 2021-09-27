@@ -141,6 +141,11 @@
         - miniflux
       when: (miniflux_enabled | default(False))
 
+    - role: monicadb
+      tags:
+        - monicadb
+      when: (monicadb_enabled | default(False))
+
     - role: mylar
       tags:
         - mylar
