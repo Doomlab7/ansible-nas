@@ -1,0 +1,23 @@
+---
+monicadb_enabled: false
+monicadb_available_externally: "false"
+
+# directories
+monicadb_data_directory: "{{ docker_home }}/monicadb"
+
+# network
+monicadb_port: "8089"
+monicadb_hostname: "monicadb"
+
+# username / passwords
+monicadb_sql_user: "homestead"
+monicadb_sql_password: "monicadb-pass"
+monicadb_app_key: "a-32characterstring-openssl-rand"
+
+# specs
+monicadb_memory: 1g
+monicadb_mysql_memory: 1g
+
+# id
+monicadb_user_id: 1000
+monicadb_group_id: 1000
