@@ -31,7 +31,7 @@
       - nextcloud-mysql:mysql
     volumes:
       - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
-      - "{{ samba_shares_root }}:/nas:rw"
+      - "{{ nextcloud_shares_root }}:/nas:rw"
     ports:
       - "{{ nextcloud_port }}:80"
     env:
