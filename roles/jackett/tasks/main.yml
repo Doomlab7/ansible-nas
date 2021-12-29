@@ -33,6 +33,7 @@
       VPN_USERNAME: "{{ jackett_vpn_username }}"
       VPN_PASSWORD: "{{ jackett_vpn_password }}"
       WEB_UI_PASSWORD: "{{ jackett_web_ui_password }}"
+      NAME_SERVERS: "{{ jackett_name_servers }}"
       PGID: "{{ jackett_group_id }}"
       PUID: "{{ jackett_user_id }}"
     restart_policy: unless-stopped
@@ -46,3 +47,4 @@
       traefik.http.routers.jackett.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.jackett.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.jackett.loadbalancer.server.port: "9117"
+      traefik.http.routers.jackett.middlewares: "default-whitelist@file"
