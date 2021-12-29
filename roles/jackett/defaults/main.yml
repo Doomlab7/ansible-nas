@@ -17,6 +17,7 @@ jackett_lan_network: "192.168.1.0/24"
 jackett_vpn_username: "frodo"
 jackett_vpn_password: "theOneRing"
 jackett_web_ui_password: "jackett"
+jackett_name_servers: "1.1.1.1,1.0.0.1"
 jackett_vpn_config: "openvpn/us-ny-06.protonvpn.com.udp.ovpn"
 
 jackett_user_id: "0"
