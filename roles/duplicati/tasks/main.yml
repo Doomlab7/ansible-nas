@@ -31,3 +31,4 @@
       traefik.http.routers.duplicati.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.duplicati.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.duplicati.loadbalancer.server.port: "8200"
+      traefik.http.routers.duplicati.middlewares: "default-whitelist@file"
