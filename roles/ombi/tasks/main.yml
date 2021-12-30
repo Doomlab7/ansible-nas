@@ -26,4 +26,4 @@
       traefik.http.routers.ombi.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.ombi.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.ombi.loadbalancer.server.port: "3579"
-      traefik.http.routers.ombi.middlewares: "default-whitelist@file"
+      traefik.http.routers.ombi.middlewares: "extended-whitelist@file"
