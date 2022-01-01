@@ -10,6 +10,17 @@ http:
     #   tls: 
     #     certResolver: letsencrypt
     #   service: proxmox
+    jellyfin_local:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`jellyfin_local.paynepride.com`)"
+      middlewares:
+        - https-redirect
+        - default-headers
+        - default-whitelist
+      tls: 
+        certResolver: letsencrypt
+      service: jellyfin_local
     pihole:
       entryPoints:
         - "websecure"
@@ -45,6 +56,11 @@ http:
     #     servers:
     #       - url: "http://192.168.1.100:8006"
     #     passHostHeader: true
+    jellyfin_local:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.4:8096"
+        passHostHeader: true
     pihole:
       loadBalancer:
         servers:
