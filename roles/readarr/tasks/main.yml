@@ -9,7 +9,7 @@
 - name: Radarr
   docker_container:
     name: readarr
-    image: linuxserver/readarr
+    image: ghcr.io/linuxserver/readarr:amd64-nightly-alpine-version-0.1.0.1154
     pull: true
     volumes:
       - "{{ readarr_books_directory }}:/books:rw"
