@@ -251,6 +251,11 @@
         - pytivo
       when: (pytivo_enabled | default(False))
 
+    - role: readarr
+      tags:
+        - readarr
+      when: (readarr_enabled | default(False))
+
     - role: radarr
       tags:
         - radarr
