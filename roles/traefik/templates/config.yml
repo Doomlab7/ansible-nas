@@ -86,14 +86,14 @@ http:
         sourceRange:
         - "10.6.0.0/24"  # wg
         - "192.168.1.0/24"  # lan
-        - "172.17.0.0/12"  # docker
+        - "172.17.0.0/16"  # docker
 
     extended-whitelist:
       ipWhiteList:
         sourceRange:
         - "10.6.0.0/24"  # wg
         - "192.168.1.0/24"  # lan
-        - "172.17.0.0/12"  # docker
+        - "172.17.0.0/16"  # docker
         - "71.66.253.233/32"  # block WAN
 
     secured:
