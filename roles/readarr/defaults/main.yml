@@ -12,7 +12,7 @@ readarr_user_id: "0"
 readarr_group_id: "0"
 
 # network
-readarr_port: "7878"
+readarr_port: "8787"
 readarr_hostname: "readarr"
 
 # specs
