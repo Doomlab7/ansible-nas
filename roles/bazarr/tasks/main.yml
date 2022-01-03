@@ -30,3 +30,4 @@
       traefik.http.routers.bazarr.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.bazarr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.bazarr.loadbalancer.server.port: "6767"
+      traefik.http.routers.bazarr.middlewares: "default-whitelist@file"
