@@ -32,6 +32,7 @@
       TRANSMISSION_WATCH_DIR: "/watch"
       TRANSMISSION_RATIO_LIMIT: "{{ transmission_openvpn_ratio_limit }}"
       TRANSMISSION_RATIO_LIMIT_ENABLED: "{{ transmission_openvpn_ratio_limit_enabled }}"
+      TRANSMISSION_WEB_UI: "flood-for-transmission"
       OPENVPN_PROVIDER: "{{ openvpn_provider }}"
       OPENVPN_USERNAME: "{{ openvpn_username }}"
       OPENVPN_PASSWORD: "{{ openvpn_password }}"
