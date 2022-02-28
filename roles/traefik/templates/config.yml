@@ -40,6 +40,13 @@ http:
     #     - default-headers
     #   # tls: {}
     #   service: truenas
+    smallgroup:  # tidler notes 
+      entryPoints:
+        - "websecure"
+      rule: "Host(`smallgroup.paynepride.com`)"
+      tls:
+        certResolver: letsencrypt
+      service: smallgroup
     piwigo:  # piwigo
       entryPoints:
         - "websecure"
@@ -71,6 +78,11 @@ http:
     #     servers:
     #       - url: "http://192.168.1.24"
     #     passHostHeader: true
+    smallgroup:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.149:8000"
+        passHostHeader: true
     piwigo:
       loadBalancer:
         servers:
