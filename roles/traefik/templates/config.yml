@@ -40,6 +40,13 @@ http:
     #     - default-headers
     #   # tls: {}
     #   service: truenas
+    blog:  # website 
+      entryPoints:
+        - "websecure"
+      rule: "Host(`blog.paynepride.com`)"
+      tls:
+        certResolver: letsencrypt
+      service: blog
     smallgroup:  # tidler notes 
       entryPoints:
         - "websecure"
@@ -78,6 +85,11 @@ http:
     #     servers:
     #       - url: "http://192.168.1.24"
     #     passHostHeader: true
+    blog:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.149:8090"
+        passHostHeader: true
     smallgroup:
       loadBalancer:
         servers:
