@@ -88,12 +88,12 @@ http:
     blog:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.149:8090"
+          - url: "http://192.168.1.7:8091"
         passHostHeader: true
     smallgroup:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.149:8000"
+          - url: "http://192.168.1.7:8092"
         passHostHeader: true
     piwigo:
       loadBalancer:
