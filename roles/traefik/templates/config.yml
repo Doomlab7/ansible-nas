@@ -46,7 +46,7 @@ http:
       rule: "Host(`littleink.paynepride.com`)"
       tls:
         certResolver: letsencrypt
-      service: littleink
+      service: littlelink
     blog:  # website 
       entryPoints:
         - "websecure"
