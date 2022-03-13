@@ -40,10 +40,10 @@ http:
     #     - default-headers
     #   # tls: {}
     #   service: truenas
-    littleink:  # website 
+    littlelink:  # website 
       entryPoints:
         - "websecure"
-      rule: "Host(`littleink.paynepride.com`)"
+      rule: "Host(`littlelink.paynepride.com`)"
       tls:
         certResolver: letsencrypt
       service: littlelink
