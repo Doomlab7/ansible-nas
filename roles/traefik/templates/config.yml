@@ -48,13 +48,13 @@ http:
       tls:
         certResolver: letsencrypt
       service: littlelink
-    blog:  # website 
-      entryPoints:
-        - "websecure"
-      rule: "Host(`blog.paynepride.com`)"
-      tls:
-        certResolver: letsencrypt
-      service: blog
+    # blog:  # website 
+    #   entryPoints:
+    #     - "websecure"
+    #   rule: "Host(`blog.paynepride.com`)"
+    #   tls:
+    #     certResolver: letsencrypt
+    #   service: blog
     smallgroup:  # tidler notes 
       entryPoints:
         - "websecure"
@@ -99,11 +99,11 @@ http:
         servers:
           - url: "http://192.168.1.7:8889"
         passHostHeader: true
-    blog:
-      loadBalancer:
-        servers:
-          - url: "http://192.168.1.7:8091"
-        passHostHeader: true
+    # blog:
+    #   loadBalancer:
+    #     servers:
+    #       - url: "http://192.168.1.7:8091"
+    #     passHostHeader: true
     smallgroup:
       loadBalancer:
         servers:
