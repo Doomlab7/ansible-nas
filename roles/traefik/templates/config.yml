@@ -18,7 +18,7 @@ http:
       middlewares:
         - https-redirect
         - default-headers
-        - extended-whitelist
+        # - extended-whitelist
       tls: 
         certResolver: letsencrypt
       service: jellyfin2
