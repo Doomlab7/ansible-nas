@@ -15,6 +15,13 @@ http:
       entryPoints:
         - "websecure"
       rule: "Host(`jellyfin2.paynepride.com`)"
+      middlewares:
+        - https-redirect
+        - default-headers
+        # - extended-whitelist
+      tls: 
+        certResolver: letsencrypt
+      service: jellyfin
     jellyfin:
       entryPoints:
         - "websecure"
