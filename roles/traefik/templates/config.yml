@@ -15,13 +15,17 @@ http:
       entryPoints:
         - "websecure"
       rule: "Host(`jellyfin2.paynepride.com`)"
+    jellyfin:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`jellyfin.paynepride.com`)"
       middlewares:
         - https-redirect
         - default-headers
         # - extended-whitelist
       tls: 
         certResolver: letsencrypt
-      service: jellyfin2
+      service: jellyfin
     pihole:
       entryPoints:
         - "websecure"
@@ -80,6 +84,7 @@ http:
     #     passHostHeader: true
     jellyfin_local:
     jellyfin2:
+    jellyfin:
       loadBalancer:
         servers:
           - url: "http://192.168.1.4:8096"
