@@ -66,6 +66,13 @@ http:
     #   tls:
     #     certResolver: letsencrypt
     #   service: blog
+    rick:  # rick roll 
+      entryPoints:
+        - "websecure"
+      rule: "Host(`rr.paynepride.com`)"
+      tls:
+        certResolver: letsencrypt
+      service: rr
     smallgroup:  # tidler notes 
       entryPoints:
         - "websecure"
@@ -116,6 +123,11 @@ http:
     #     servers:
     #       - url: "http://192.168.1.7:8091"
     #     passHostHeader: true
+    rr:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.7:8093"
+        passHostHeader: true
     smallgroup:
       loadBalancer:
         servers:
