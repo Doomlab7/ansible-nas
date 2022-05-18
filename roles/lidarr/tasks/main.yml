@@ -12,8 +12,8 @@
     image: linuxserver/lidarr
     pull: true
     volumes:
-      - "{{ lidarr_music_directory }}:/music:rw"
-      - "{{ lidarr_downloads_directory }}:/downloads:rw"
+      - "{{ lidarr_music_directory }}:/data/music:rw"
+      - "{{ lidarr_downloads_directory }}:/data/downloads:rw"
       - "{{ lidarr_data_directory }}:/config:rw"
     ports:
       - "{{ lidarr_port }}:8686"

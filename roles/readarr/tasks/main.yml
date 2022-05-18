@@ -12,8 +12,8 @@
     image: ghcr.io/linuxserver/readarr:amd64-nightly-alpine-version-0.1.0.1154
     pull: true
     volumes:
-      - "{{ readarr_books_directory }}:/books:rw"
-      - "{{ readarr_download_directory }}:/downloads:rw"
+      - "{{ readarr_books_directory }}:/data/books:rw"
+      - "{{ readarr_download_directory }}:/data/downloads:rw"
       - "{{ readarr_data_directory }}:/config:rw"
     ports:
       - "{{ readarr_port }}:8787"
