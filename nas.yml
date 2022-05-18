@@ -1,6 +1,9 @@
 ---
 - hosts: da
 
+  pre_tasks:
+    - import_tasks: tasks/users.yml
+      tags: users
 
   roles:
 
