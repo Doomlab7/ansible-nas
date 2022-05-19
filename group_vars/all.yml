@@ -153,13 +153,13 @@ samba_shares:
     browseable: yes
     path: "{{ samba_shares_root }}/dump"
 
-  - name: games
-    comment: 'Games'
-    guest_ok: yes
-    public: yes
-    writable: yes
-    browseable: yes
-    path: "{{ samba_shares_root }}/games"
+  # - name: games
+  #   comment: 'Games'
+  #   guest_ok: yes
+  #   public: yes
+  #   writable: yes
+  #   browseable: yes
+  #   path: "{{ samba_shares_root }}/games"
 
   - name: photos
     comment: 'Pictures'
