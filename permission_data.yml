@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: da
   tasks:
   - name: Warning!
     debug:
