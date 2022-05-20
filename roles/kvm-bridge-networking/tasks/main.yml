@@ -42,8 +42,8 @@
 
 - name: Setup Bridge
   template:
-    src: 01-installer-config.yaml 
-    dest: /etc/netplan/01-installer-config.yaml
+    src: 02-installer-config.yaml 
+    dest: /etc/netplan/02-installer-config.yaml
   register: setup_bridge
 
 - name: Netplan Apply
