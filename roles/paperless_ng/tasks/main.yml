@@ -46,7 +46,8 @@
 - name: paperless_ng UI Docker Container
   docker_container:
     name: "{{ paperless_ng_container_name_uiserver }}"
-    image: jonaswinkler/paperless-ng:latest
+    # image: jonaswinkler/paperless-ng:latest
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
     pull: true
     volumes:
       - "{{ paperless_ng_data_directory }}:/usr/src/paperless/data"
