@@ -145,13 +145,13 @@ samba_shares:
     browseable: yes
     path: "{{ podcasts_root }}"
 
-  - name: dump
-    comment: 'File dump'
-    guest_ok: yes
-    public: yes
-    writable: yes
-    browseable: yes
-    path: "{{ samba_shares_root }}/dump"
+  # - name: dump
+  #   comment: 'File dump'
+  #   guest_ok: yes
+  #   public: yes
+  #   writable: yes
+  #   browseable: yes
+  #   path: "{{ samba_shares_root }}/dump"
 
   # - name: games
   #   comment: 'Games'
