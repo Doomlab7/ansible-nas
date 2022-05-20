@@ -1,0 +1,19 @@
+network:
+  ethernets:
+    "{{ kvm_bridge_network_interface }}":
+      dhcp4: false
+      dhcp6: false
+  bridges:
+    br0:
+      interfaces: [ "{{ kvm_bridge_network_interface }}" ]
+      addresses: [ "{{ kvm_bridge_network_ip }}" ]
+      gateway4: "{{ kvm_bridge_network_gateway }}"
+      mtu: 1500
+      nameservers:
+        addresses: ["{{ kvm_bridge_network_dns }}"]
+      parameters:
+        stp: true
+        forward-delay: 4
+      dhcp4: no
+      dhcp6: no
+  version: 2
