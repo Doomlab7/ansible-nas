@@ -1,16 +1,6 @@
 http:
  #region routers 
   routers:
-    # proxmox:
-    #   entryPoints:
-    #     - "https"
-    #   rule: "Host(`proxmox.paynepride.com`)"
-    #   middlewares:
-    #     - default-headers
-    #   tls: 
-    #     certResolver: letsencrypt
-    #   service: proxmox
-    jellyfin_local:
     jellyfin2:
       entryPoints:
         - "websecure"
@@ -21,18 +11,7 @@ http:
         # - extended-whitelist
       tls: 
         certResolver: letsencrypt
-      service: jellyfin
-    jellyfin:
-      entryPoints:
-        - "websecure"
-      rule: "Host(`jellyfin.paynepride.com`)"
-      middlewares:
-        - https-redirect
-        - default-headers
-        # - extended-whitelist
-      tls: 
-        certResolver: letsencrypt
-      service: jellyfin
+      service: jellyfin2
     pihole:
       entryPoints:
         - "websecure"
@@ -44,14 +23,6 @@ http:
       tls: 
         certResolver: letsencrypt
       service: pihole
-    # truenas:
-    #   entryPoints:
-    #     - "http"
-    #   rule: "Host(`truenas.paynepride.com`)"
-    #   middlewares:
-    #     - default-headers
-    #   # tls: {}
-    #   service: truenas
     littlelink:  # website 
       entryPoints:
         - "websecure"
@@ -59,13 +30,6 @@ http:
       tls:
         certResolver: letsencrypt
       service: littlelink
-    # blog:  # website 
-    #   entryPoints:
-    #     - "websecure"
-    #   rule: "Host(`blog.paynepride.com`)"
-    #   tls:
-    #     certResolver: letsencrypt
-    #   service: blog
     rick:  # rick roll 
       entryPoints:
         - "websecure"
@@ -91,14 +55,7 @@ http:
 #endregion
 #region services
   services:
-    # proxmox:
-    #   loadBalancer:
-    #     servers:
-    #       - url: "http://192.168.1.100:8006"
-    #     passHostHeader: true
-    jellyfin_local:
     jellyfin2:
-    jellyfin:
       loadBalancer:
         servers:
           - url: "http://192.168.1.4:8096"
@@ -108,30 +65,20 @@ http:
         servers:
           - url: "http://192.168.1.3:80"
         passHostHeader: true
-    # truenas:
-    #   loadBalancer:
-    #     servers:
-    #       - url: "http://192.168.1.24"
-    #     passHostHeader: true
     littlelink:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.7:8889"
+          - url: "http://192.168.1.8:8889"
         passHostHeader: true
-    # blog:
-    #   loadBalancer:
-    #     servers:
-    #       - url: "http://192.168.1.7:8091"
-    #     passHostHeader: true
     rr:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.7:8093"
+          - url: "http://192.168.1.8:8093"
         passHostHeader: true
     smallgroup:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.7:8092"
+          - url: "http://192.168.1.8:8092"
         passHostHeader: true
     piwigo:
       loadBalancer:
@@ -143,6 +90,11 @@ http:
     addprefix-pihole:
       addPrefix:
         prefix: "/admin"
+
+    addprefix-transmission:
+      addPrefix:
+        prefix: "/transmission/web/"
+
     https-redirect:
       redirectScheme:
         scheme: https
