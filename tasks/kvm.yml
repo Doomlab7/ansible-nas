@@ -20,3 +20,15 @@
       - virt-manager
   tags:
     - kvm
+
+- name: Ensure vhost_net module is loaded
+  ansible.builtin.shell: modprobe vhost_net
+  become: yes
+  tags:
+    - kvm
+
+- name: Add vhost_net to etc/modules
+  become: yes
+  ansible.builtin.shell: echo vhost_net | tee -a /etc/modules
+  tags:
+    - kvm
