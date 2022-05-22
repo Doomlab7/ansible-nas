@@ -7,7 +7,9 @@ network:
     br0:
       interfaces: [ "{{ kvm_bridge_network_interface }}" ]
       addresses: [ "{{ kvm_bridge_network_ip }}" ]
-      gateway4: "{{ kvm_bridge_network_gateway }}"
+      routes:
+        - to: default
+          via: {{ kvm_bridge_network_gateway }}
       mtu: 1500
       nameservers:
         addresses: ["{{ kvm_bridge_network_dns }}"]
