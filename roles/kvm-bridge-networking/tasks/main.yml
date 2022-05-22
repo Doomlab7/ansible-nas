@@ -36,6 +36,9 @@
     dest: /etc/udev/rules.d/99-bridge.rules
   register: bridge_rules
 
+- name: Reboot for bridge rules to take effect 
+  reboot:
+    reboot_timeout: 3600
 #### NEED TO REBOOT HERE FOR BRIDGE RULES TO TAKE EFFECT
 
 - name: Remove default KVM network
