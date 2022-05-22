@@ -1,0 +1,22 @@
+---
+- name: Install KVM
+  apt:
+    pkg:
+      - qemu-kvm
+      - libvirt-daemon
+      - bridge-utils
+      - virtinst
+      - libvirt-daemon-system
+  tags:
+    - kvm
+
+- name: Install usefull VM tools
+  apt:
+    pkg:
+      - virt-top
+      - libguestfs-tools
+      - libosinfo-bin
+      - qemu-system
+      - virt-manager
+  tags:
+    - kvm
