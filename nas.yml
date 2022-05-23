@@ -308,6 +308,11 @@
         - syncthing
       when: (syncthing_enabled | default(False))
 
+    - role: tdarr
+      tags:
+        - tdarr
+      when: (tdarr_enabled | default(False))
+
     - role: tautulli
       tags:
         - tautulli
