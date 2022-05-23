@@ -6,20 +6,20 @@
     pull: true
     # network_mode: bridge
     ports:
-      - " {{ tdarr_webui_port }}":8265 
-      - " {{ tdarr_server_port }}":8266
-      - " {{ tdarr_internal_node_port }}":8267
-      - " {{ tdarr_extra_node_port }}":8268 # Example extra node port
-    environment:
+      - "{{ tdarr_webui_port }}: 8265"
+      - "{{ tdarr_server_port }}: 8266"
+      - "{{ tdarr_internal_node_port }}: 8267"
+      - "{{ tdarr_extra_node_port }}: 8268" # Example extra node port
+    env:
         TZ: "{{ ansible_nas_timezone }}"
         PUID: "{{ tdarr_user_id }}"
         PGID: "{{ tdarr_group_id }}"
-        UMASK_SET: 002
-        serverIP: "{{ tdarr_server_ip }}" 
+        UMASK_SET: "002"
+        serverIP: "{{ tdarr_server_ip }}"
         serverPort: "{{ tdarr_server_port }}"
         webUIPort: "{{ tdarr_webui_port }}"
-        internalNode: true
-        nodeID: InternalTdarrNode
+        internalNode: "true"
+        nodeID: "InternalTdarrNode"
         nodeIP: "{{ tdarr_server_ip }}"
         nodePort: "{{ tdarr_internal_node_port }}"
     restart_policy: unless-stopped
@@ -30,7 +30,7 @@
       - "{{ tdarr_movies_directory }}:/media/movies:rw"
       - "{{ tdarr_tv_directory }}:/media/tv:rw"
       - "{{ tdarr_youtube_directory }}:/media/youtube:rw"
-      - "/home/{{ ansible_nas_user }}/transcode_cache":/temp  # dont' want this on ZFS since it'll blow up snapshots
+      - "/home/{{ ansible_nas_user }}/transcode_cache:/temp"  # dont' want this on ZFS since it'll blow up snapshots
     labels:
       traefik.enable: "{{ tdarr_available_externally }}"
       traefik.http.routers.tdarr.rule: "Host(`{{ tdarr_hostname }}.{{ ansible_nas_domain }}`)"
