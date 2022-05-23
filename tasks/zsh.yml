@@ -1,3 +1,4 @@
+---
 - name: check is zsh installed
   ansible.builtin.shell: command -v zsh
   register: zsh_exists
@@ -21,9 +22,10 @@
 
 - name: Check if oh-my-zsh is installed
   stat:
-    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+    path: ".oh-my-zsh"
   register: ohmyzsh_path
   become_user: "{{ ansible_nas_user }}"
+  become: yes
   tags: 
     - zsh
 
@@ -39,7 +41,7 @@
 
 - name: Check if zsh-autosuggestions is installed
   stat:
-    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+    path: ".oh-my-zsh/plugins/zsh-autosuggestions"
   register: zshautosuggestions_path
   tags: 
     - zsh
@@ -50,13 +52,13 @@
     - zsh
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
-    dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+    dest: ".oh-my-zsh/plugins/zsh-autosuggestions"
 
 - name: Check if zsh-history-substring-search is installed 
   tags: 
     - zsh
   stat:
-    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/plugins/zsh-history-substring-search"
+    path: ".oh-my-zsh/plugins/zsh-history-substring-search"
   register: zsh_history_substring_search_path
 
 - name: Install zsh-history-substring-search
@@ -65,4 +67,4 @@
   when: zsh_history_substring_search_path.stat.islnk is not defined
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-history-substring-search.git'
-    dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/plugins/zsh-history-substring-search"
+    dest: ".oh-my-zsh/plugins/zsh-history-substring-search"
