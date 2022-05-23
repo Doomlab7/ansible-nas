@@ -27,10 +27,9 @@
       - "{{ tdarr_data_directory }}/config:/app/config:rw"
       - "{{ tdarr_data_directory }}/server:/app/server:rw"
       - "{{ tdarr_data_directory }}/logs:/app/logs:rw"
-      - "{{ radarr_movies_directory }}:/media/movies:rw"
-      - "{{ sonarr_tv_directory }}:/media/tv:rw"
-      - "{{ youtubedlmaterial_dl_video_directory }}:/media/youtube/video:rw"
-      - "{{ youtubedlmaterial_dl_subscriptions_directory }}:/media/youtube/subscriptions:rw"
+      - "{{ tdarr_movies_directory }}:/media/movies:rw"
+      - "{{ tdarr_tv_directory }}:/media/tv:rw"
+      - "{{ tdarr_youtube_directory }}:/media/youtube:rw"
       - "/home/{{ ansible_nas_user }}/transcode_cache":/temp  # dont' want this on ZFS since it'll blow up snapshots
     labels:
       traefik.enable: "{{ tdarr_available_externally }}"

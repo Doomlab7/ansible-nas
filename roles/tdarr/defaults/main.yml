@@ -4,8 +4,10 @@ tdarr_available_externally: "false"
 
 # directories
 tdarr_movies_directory: "{{ movies_root }}"
-tdarr_download_directory: "{{ downloads_root }}"
+tdarr_tv_directory: "{{ tv_root }}"
 tdarr_data_directory: "{{ docker_home }}/tdarr"
+tdarr_movies_directory: "{{ _root }}"
+tdarr_youtube_directory: "{{ youtubedlmaterial_downloads_directory }}"
 
 # uid / gid
 tdarr_user_id: "0"
