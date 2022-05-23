@@ -1,0 +1,39 @@
+---
+paperless_ngx_enabled: false
+
+# directories
+paperless_ngx_config_directory: "{{ docker_home }}/paperless_ngx"
+paperless_ngx_files_directory: "{{ documents_root }}/paperless"
+
+paperless_ngx_postgres_directory: "{{ paperless_ngx_config_directory }}/postgres"
+paperless_ngx_data_directory: "{{ paperless_ngx_config_directory }}/data"
+paperless_ngx_export_directory: "{{ paperless_ngx_config_directory }}/export"
+paperless_ngx_media_directory: "{{ paperless_ngx_files_directory }}/media"
+paperless_ngx_consume_directory: "{{ paperless_ngx_files_directory }}/consume"
+
+# network
+paperless_ngx_port: "16922"
+paperless_ngx_hostname: "paperless_ngx"
+
+# postgres
+paperless_ngx_postgres_db: "paperless"
+paperless_ngx_postgres_user: "paperless"
+paperless_ngx_postgres_password: "paperless"
+
+# container names
+paperless_ngx_container_network_name: "paperless_ngx_network"
+paperless_ngx_container_name_redis: "paperless_ngx_redis"
+paperless_ngx_container_name_postgres: "paperless_ngx_postgres"
+paperless_ngx_container_name_uiserver: "paperless_ngx_uiserver"
+
+# uid/guid
+paperless_ngx_user_id: "1000"
+paperless_ngx_group_id: "1000"
+
+# settings
+paperless_ngx_languages: "deu eng"
+
+# specs
+paperless_ngx_ui_memory: 1g
+paperless_ngx_postgres_memory: 1g
+paperless_ngx_redis_memory: 1g
