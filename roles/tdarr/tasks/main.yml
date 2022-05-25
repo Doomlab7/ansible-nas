@@ -30,7 +30,7 @@
       - "{{ tdarr_movies_directory }}:/media/movies:rw"
       - "{{ tdarr_tv_directory }}:/media/tv:rw"
       - "{{ tdarr_youtube_directory }}:/media/youtube:rw"
-      - "/home/{{ ansible_nas_user }}/transcode_cache:/temp"  # dont' want this on ZFS since it'll blow up snapshots
+      - "{{ tdarr_transcode_cache_directory }}:/temp"  # dont' want this on ZFS since it'll blow up snapshots
     labels:
       traefik.enable: "{{ tdarr_available_externally }}"
       traefik.http.routers.tdarr.rule: "Host(`{{ tdarr_hostname }}.{{ ansible_nas_domain }}`)"
