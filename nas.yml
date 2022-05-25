@@ -228,10 +228,10 @@
         - organizr
       when: (organizr_enabled | default(False))
 
-    - role: paperless_ngx
+    - role: paperless_ng
       tags:
-        - paperless_ngx
-      when: (paperless_ngx_enabled | default(False))
+        - paperless_ng
+      when: (paperless_ng_enabled | default(False))
 
     - role: piwigo
       tags:
@@ -393,6 +393,10 @@
     - import_tasks: tasks/kvm.yml
       when: (kvm_enabled | default(False))
       tags: kvm
+
+    - import_tasks: tasks/paperless_ngx_directories.yml
+      when: (paperless_ngx_enables | default(False))
+      tags: paperless_ngx
 
     - import_tasks: tasks/ubooquity.yml
       when: (ubooquity_enabled | default(False))
