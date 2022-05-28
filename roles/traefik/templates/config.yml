@@ -114,14 +114,14 @@ http:
     default-whitelist:
       ipWhiteList:
         sourceRange:
-        - "10.6.0.0/24"  # wg
+        - "10.220.108.0/24"  # wg
         - "192.168.1.0/24"  # lan
         - "172.17.0.0/16"  # docker
 
     extended-whitelist:
       ipWhiteList:
         sourceRange:
-        - "10.6.0.0/24"  # wg
+        - "10.220.108.0/24"  # wg
         - "192.168.1.0/24"  # lan
         - "172.17.0.0/16"  # docker
         - "71.66.253.233/32"  # block WAN
