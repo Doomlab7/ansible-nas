@@ -1,6 +1,17 @@
 http:
  #region routers 
   routers:
+    jellyfin:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`jellyfin.paynepride.com`)"
+      middlewares:
+        - https-redirect
+        - default-headers
+        # - extended-whitelist
+      tls: 
+        certResolver: letsencrypt
+      service: jellyfin
     jellyfin2:
       entryPoints:
         - "websecure"
@@ -55,6 +66,11 @@ http:
 #endregion
 #region services
   services:
+    jellyfin:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.8:8096"
+        passHostHeader: true
     jellyfin2:
       loadBalancer:
         servers:
