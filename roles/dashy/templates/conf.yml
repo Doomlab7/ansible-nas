@@ -37,104 +37,6 @@ sections:
             - solana
             - polkadot
         id: 2_513_cryptowatchlist
-  - name: Productivity
-    icon: far fa-briefcase
-    items:
-      - title: ProtonMail
-        icon: favicon
-        url: https://mail.protonmail.com/
-        description: Primary email account
-        tags:
-          - hosted
-          - personal
-          - email
-          - mail
-        hotkey: 1
-        id: 0_1302_protonmail
-      - title: AnonAddy
-        icon: favicon
-        url: https://app.anonaddy.com/
-        description: Mail alias forwarder
-        tags:
-          - hosted
-          - personal
-          - forwarder
-          - aliases
-          - email
-        hotkey: 3
-        statusCheckAcceptCodes: '401'
-        id: 1_1302_anonaddy
-      - title: LessPass
-        icon: favicon
-        url: https://lesspass.com/
-        description: Deterministic password generator
-        tags:
-          - hosted
-          - personal
-          - password
-          - generate
-          - deterministic
-        hotkey: 4
-        id: 2_1302_lesspass
-      - title: EteSync
-        icon: favicon
-        url: https://pim.etesync.com/
-        description: Calendar + Contacts, CalDAV sync
-        tags:
-          - hosted
-          - personal
-          - caldav
-          - calendar
-          - contacts
-          - tasks
-          - planning
-        hotkey: 5
-        id: 3_1302_etesync
-      - title: Tasks
-        icon: https://i.ibb.co/v4jznK0/todo-list.png
-        url: https://pim.etesync.com/pim/tasks
-        description: Todo list and tasks from CalDAV
-        tags:
-          - hosted
-          - personal
-          - caldav
-          - tasks
-          - planning
-        hotkey: 6
-        id: 4_1302_tasks
-      - title: Tresorit
-        icon: favicon
-        url: https://web.tresorit.com/
-        description: Off-site encrypted file sync + backup
-        tags:
-          - hosted
-          - personal
-          - files
-          - backup
-          - sync
-          - storage
-        hotkey: 7
-        id: 5_1302_tresorit
-      - title: StandardNotes
-        icon: favicon
-        url: https://app.standardnotes.com/
-        description: Notes, and my second brain
-        tags:
-          - hosted
-          - personal
-          - notes
-        hotkey: 8
-        id: 6_1302_standardnotes
-      - title: 1Password
-        icon: favicon
-        url: https://my.1password.com/
-        description: Password Manager
-        tags:
-          - hosted
-          - personal
-          - passwords
-        hotkey: 9
-        id: 7_1302_password
   - name: Dev & Cloud
     icon: far fa-code
     items:
@@ -369,3 +271,68 @@ sections:
           https://github.com/jonaswinkler/paperless-ng/blob/master/src/paperless/static/paperless/img/logo-light.png?raw=true
         url: http://192.168.1.8:8010/
         id: 2_480_paperless
+  - name: Productivity
+    icon: far fa-briefcase
+    items:
+      - title: ProtonMail
+        icon: favicon
+        url: https://mail.protonmail.com/
+        description: Primary email account
+        tags:
+          - hosted
+          - personal
+          - email
+          - mail
+        hotkey: 1
+        id: 0_1302_protonmail
+      - title: AnonAddy
+        icon: favicon
+        url: https://app.anonaddy.com/
+        description: Mail alias forwarder
+        tags:
+          - hosted
+          - personal
+          - forwarder
+          - aliases
+          - email
+        hotkey: 3
+        statusCheckAcceptCodes: '401'
+        id: 1_1302_anonaddy
+      - title: LessPass
+        icon: favicon
+        url: https://lesspass.com/
+        description: Deterministic password generator
+        tags:
+          - hosted
+          - personal
+          - password
+          - generate
+          - deterministic
+        hotkey: 4
+        id: 2_1302_lesspass
+      - title: EteSync
+        icon: favicon
+        url: https://pim.etesync.com/
+        description: Calendar + Contacts, CalDAV sync
+        tags:
+          - hosted
+          - personal
+          - caldav
+          - calendar
+          - contacts
+          - tasks
+          - planning
+        hotkey: 5
+        id: 3_1302_etesync
+      - title: Tasks
+        icon: https://i.ibb.co/v4jznK0/todo-list.png
+        url: https://pim.etesync.com/pim/tasks
+        description: Todo list and tasks from CalDAV
+        tags:
+          - hosted
+          - personal
+          - caldav
+          - tasks
+          - planning
+        hotkey: 6
+        id: 4_1302_tasks
