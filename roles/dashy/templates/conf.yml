@@ -140,7 +140,7 @@ sections:
     items:
       - title: GitHub
         icon: favicon
-        url: https://github.com/
+        url: https://github.com/nicpayne713
         id: 0_892_github
       - title: StackOverflow
         icon: favicon
@@ -151,22 +151,6 @@ sections:
         url: https://dash.cloudflare.com/
         statusCheckAcceptCodes: '403'
         id: 2_892_cloudflare
-      - title: DigitalOcean
-        icon: favicon
-        url: https://cloud.digitalocean.com/
-        id: 3_892_digitalocean
-      - title: Netlify
-        icon: favicon
-        url: https://app.netlify.com/
-        id: 4_892_netlify
-      - title: CodeSandbox
-        icon: favicon
-        url: https://codesandbox.io/dashboard
-        id: 5_892_codesandbox
-      - title: Hack the Box
-        icon: favicon
-        url: https://www.hackthebox.com/home
-        id: 6_892_hackthebox
       - title: Documentation
         subItems:
           - title: JavaScript
@@ -193,7 +177,13 @@ sections:
             url: https://docs.docker.com/
             icon: si-docker
             color: '#2496ED'
-        id: 7_892_documentation
+        id: 3_892_documentation
+      - title: Pype.dev
+        description: Blog
+        icon: >-
+          https://github.com/nicpayne713/pype.dev/blob/main/static/bitmoji.png?raw=true
+        url: https://pype.dev
+        id: 4_892_pypedev
   - name: Social & News
     icon: far fa-thumbs-up
     items:
@@ -329,10 +319,31 @@ sections:
         statusCheck: true
         id: 5_489_pihole
       - title: Cloud Commander
-        icon: https://external-content.duckduckgo.com/ip3/cloudcmd.io.ico
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi2.wp.com%2Fcolaboratorio.net%2Fwp-content%2Fuploads%2F2018%2F12%2FCloudCommander-logo-filtroOK.png%3Ffit%3D1200%252C800%26ssl%3D1&f=1&nofb=1
         url: http://paynepride.com:7373
         statusCheck: true
         id: 6_489_cloudcommander
+      - title: Guacamole
+        description: KVM
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F7e639a_14287d75f60443fc9cf7704ad9bf87d1~mv2.png%2Fv1%2Ffit%2Fw_1000%252Ch_1000%252Cal_c%2Ffile.png&f=1&nofb=1
+        url: https://guacamole.paynepride.com/
+        statusCheck: true
+        id: 7_489_guacamole
+      - title: Portainer
+        description: Docker Management
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fautoize.com%2Fwp-content%2Fuploads%2F2017%2F02%2FPortainer-logo.png&f=1&nofb=1https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fautoize.com%2Fwp-content%2Fuploads%2F2017%2F02%2FPortainer-logo.png&f=1&nofb=1
+        url: https://portainer.paynepride.com
+        statusCheck: true
+        id: 8_489_portainer
+      - title: R610
+        description: iDRAC
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.j2JRe7dG5XWy2daeQ3hqKAHaHa%26pid%3DApi&f=1
+        url: https://192.168.1.210/login.html
+        id: 9_489_r
   - name: Media
     displayData:
       sortBy: default
@@ -352,3 +363,9 @@ sections:
         url: https://youtubedlmaterial.paynepride.com
         statusCheck: true
         id: 1_480_youtubedlmaterial
+      - title: Paperless
+        description: Document
+        icon: >-
+          https://github.com/jonaswinkler/paperless-ng/blob/master/src/paperless/static/paperless/img/logo-light.png?raw=true
+        url: http://192.168.1.8:8010/
+        id: 2_480_paperless
