@@ -26,6 +26,7 @@ sections:
           apiKey: efdbade728b37086877a5e83442004db
           city: London
         id: 1_513_weather
+      - type: public-ip
       - type: crypto-watch-list
         options:
           currency: GBP
@@ -120,10 +121,6 @@ sections:
       https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
     displayData:
       sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
     items:
       - title: Sonarr
         description: TV
