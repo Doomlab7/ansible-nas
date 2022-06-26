@@ -1,4 +1,17 @@
 ---
+- name: Create Dashy Config Directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ dashy_data_directory }}"
+
+- name: Template Dashy config
+  template:
+    src: conf.yml
+    dest: "{{ dashy_data_directory }}/conf.yml"
+  register: template_config
+
 - name: Dashy Docker Container
   docker_container:
     name: dashy
