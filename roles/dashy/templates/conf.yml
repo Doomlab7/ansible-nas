@@ -1,0 +1,354 @@
+ appConfig:
+  statusCheck: false
+  theme: adventure
+  fontAwesomeKey: f44bea53a7
+  customCss: '.clock p.time { font-size: 3rem !important; }'
+  layout: auto
+  iconSize: large
+  language: en
+pageInfo:
+  title: Hello, Pype
+  description: General browser startpage
+  navLinks: []
+  footerText: ''
+  logo: https://i.ibb.co/71WyyzM/little-bot-3.png
+sections:
+  - name: Today
+    icon: far fa-smile-beam
+    displayData:
+      collapsed: false
+      hideForGuests: false
+    widgets:
+      - type: clock
+        id: 0_513_clock
+      - type: weather
+        options:
+          apiKey: efdbade728b37086877a5e83442004db
+          city: London
+        id: 1_513_weather
+      - type: crypto-watch-list
+        options:
+          currency: GBP
+          sortBy: marketCap
+          assets:
+            - bitcoin
+            - ethereum
+            - monero
+            - solana
+            - polkadot
+        id: 2_513_cryptowatchlist
+  - name: Productivity
+    icon: far fa-briefcase
+    items:
+      - title: ProtonMail
+        icon: favicon
+        url: https://mail.protonmail.com/
+        description: Primary email account
+        tags:
+          - hosted
+          - personal
+          - email
+          - mail
+        hotkey: 1
+        id: 0_1302_protonmail
+      - title: AnonAddy
+        icon: favicon
+        url: https://app.anonaddy.com/
+        description: Mail alias forwarder
+        tags:
+          - hosted
+          - personal
+          - forwarder
+          - aliases
+          - email
+        hotkey: 3
+        statusCheckAcceptCodes: '401'
+        id: 1_1302_anonaddy
+      - title: LessPass
+        icon: favicon
+        url: https://lesspass.com/
+        description: Deterministic password generator
+        tags:
+          - hosted
+          - personal
+          - password
+          - generate
+          - deterministic
+        hotkey: 4
+        id: 2_1302_lesspass
+      - title: EteSync
+        icon: favicon
+        url: https://pim.etesync.com/
+        description: Calendar + Contacts, CalDAV sync
+        tags:
+          - hosted
+          - personal
+          - caldav
+          - calendar
+          - contacts
+          - tasks
+          - planning
+        hotkey: 5
+        id: 3_1302_etesync
+      - title: Tasks
+        icon: https://i.ibb.co/v4jznK0/todo-list.png
+        url: https://pim.etesync.com/pim/tasks
+        description: Todo list and tasks from CalDAV
+        tags:
+          - hosted
+          - personal
+          - caldav
+          - tasks
+          - planning
+        hotkey: 6
+        id: 4_1302_tasks
+      - title: Tresorit
+        icon: favicon
+        url: https://web.tresorit.com/
+        description: Off-site encrypted file sync + backup
+        tags:
+          - hosted
+          - personal
+          - files
+          - backup
+          - sync
+          - storage
+        hotkey: 7
+        id: 5_1302_tresorit
+      - title: StandardNotes
+        icon: favicon
+        url: https://app.standardnotes.com/
+        description: Notes, and my second brain
+        tags:
+          - hosted
+          - personal
+          - notes
+        hotkey: 8
+        id: 6_1302_standardnotes
+      - title: 1Password
+        icon: favicon
+        url: https://my.1password.com/
+        description: Password Manager
+        tags:
+          - hosted
+          - personal
+          - passwords
+        hotkey: 9
+        id: 7_1302_password
+  - name: Dev & Cloud
+    icon: far fa-code
+    items:
+      - title: GitHub
+        icon: favicon
+        url: https://github.com/
+        id: 0_892_github
+      - title: StackOverflow
+        icon: favicon
+        url: http://stackoverflow.com/
+        id: 1_892_stackoverflow
+      - title: CloudFlare
+        icon: favicon
+        url: https://dash.cloudflare.com/
+        statusCheckAcceptCodes: '403'
+        id: 2_892_cloudflare
+      - title: DigitalOcean
+        icon: favicon
+        url: https://cloud.digitalocean.com/
+        id: 3_892_digitalocean
+      - title: Netlify
+        icon: favicon
+        url: https://app.netlify.com/
+        id: 4_892_netlify
+      - title: CodeSandbox
+        icon: favicon
+        url: https://codesandbox.io/dashboard
+        id: 5_892_codesandbox
+      - title: Hack the Box
+        icon: favicon
+        url: https://www.hackthebox.com/home
+        id: 6_892_hackthebox
+      - title: Documentation
+        subItems:
+          - title: JavaScript
+            url: https://developer.mozilla.org
+            icon: si-javascript
+            color: '#F7DF1E'
+          - title: TypeScript
+            url: https://www.typescriptlang.org/docs
+            icon: si-typescript
+            color: '#3178C6'
+          - title: Svelt
+            url: https://svelte.dev/docs
+            icon: si-svelte
+            color: '#FF3E00'
+          - title: Go
+            url: https://go.dev/doc
+            icon: si-go
+            color: '#00ADD8'
+          - title: Rust
+            url: https://doc.rust-lang.org/reference
+            icon: si-rust
+            color: '#000000'
+          - title: Docker
+            url: https://docs.docker.com/
+            icon: si-docker
+            color: '#2496ED'
+        id: 7_892_documentation
+  - name: Social & News
+    icon: far fa-thumbs-up
+    items:
+      - title: Discord
+        icon: si-discord
+        url: https://discord.com/channels/
+        id: 0_1118_discord
+      - title: HackerNews
+        icon: si-ycombinator
+        url: https://news.ycombinator.com/
+        id: 1_1118_hackernews
+      - title: Twitter
+        icon: si-twitter
+        url: https://twitter.com/
+        id: 2_1118_twitter
+      - title: YouTube
+        icon: si-youtube
+        url: https://youtube.com/
+        id: 3_1118_youtube
+      - title: News
+        icon: si-bbc
+        url: https://bbc.co.uk/news
+        id: 4_1118_news
+      - title: Crypto Prices
+        icon: fab fa-bitcoin
+        url: https://www.livecoinwatch.com/
+        description: Real-time crypto prices and read-only portfolio
+        provider: Live Coin Watch
+        id: 5_1118_cryptoprices
+  - name: Servarr
+    icon: >-
+      https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Sonarr
+        description: TV
+        icon: https://wiki.servarr.com/assets/sonarr/logos/128.png
+        url: https://sonarr.paynepride.com
+        statusCheck: true
+        id: 0_741_sonarr
+      - title: Radarr
+        description: Movies
+        icon: https://wiki.servarr.com/assets/radarr/logos/128.png
+        url: https://radarr.paynepride.com
+        statusCheck: true
+        id: 1_741_radarr
+      - title: Prowlarr
+        description: Index
+        icon: https://wiki.servarr.com/assets/prowlarr/logos/128.png
+        url: https://prowlarr.paynepride.com
+        statusCheck: true
+        id: 2_741_prowlarr
+      - title: Lidarr
+        description: Music
+        icon: https://wiki.servarr.com/assets/lidarr/logos/128.png
+        url: https://lidarr.paynepride.com
+        statusCheck: true
+        id: 3_741_lidarr
+      - title: Tdarr
+        description: Transcoding
+        icon: https://tdarr.paynepride.com/images/updates/logo3-small.png
+        url: https://tdarr.paynepride.com
+        statusCheck: true
+        id: 4_741_tdarr
+      - title: Transmission
+        description: Torrent Downloader
+        icon: https://external-content.duckduckgo.com/ip3/transmissionbt.com.ico
+        url: https://transmission_openvpn.paynepride.com/transmission/web/
+        statusCheck: true
+        id: 5_741_transmission
+      - title: Readarr
+        description: Books
+        icon: https://wiki.servarr.com/assets/readarr/logos/128.png
+        url: https://readarr.paynepride.com/
+        statusCheck: true
+        id: 6_741_readarr
+      - title: Ombi
+        description: Catalog
+        icon: https://external-content.duckduckgo.com/ip3/docs.ombi.app.ico
+        url: https://ombi.paynepride.com/discover
+        statusCheck: true
+        id: 7_741_ombi
+  - name: Admin
+    icon: fa-monitor-waveform
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Traefik
+        description: Reverse Proxy
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
+        url: 192.168.1.8:8083/dashboard/
+        statusCheck: true
+        id: 0_489_traefik
+      - title: Hogwarts - Glances
+        description: System Monitoring
+        icon: https://nicolargo.github.io/glances/public/images/glances.png
+        url: https://glances.paynepride.com
+        statusCheck: true
+        id: 1_489_hogwartsglances
+      - title: Ryzen - Glances
+        description: System Monitoring
+        icon: https://nicolargo.github.io/glances/public/images/glances.png
+        url: http://ryzen-3600x:61208/
+        statusCheck: true
+        id: 2_489_ryzenglances
+      - title: Hogwarts - Netdata
+        description: Netdata
+        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
+        url: >-
+          https://netdata.paynepride.com/#after=-720;before=0;=undefined;theme=slate;utc=America%2FChicago
+        statusCheck: true
+        id: 3_489_hogwartsnetdata
+      - title: Ryzen - Netdata
+        description: Netdata
+        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
+        url: http://ryzen-3600x:19999
+        statusCheck: true
+        id: 4_489_ryzennetdata
+      - title: Pi-Hole
+        description: ''
+        icon: https://pihole.paynepride.com/img/logo.svg
+        url: https://pihole.paynepride.com/admin
+        statusCheck: true
+        id: 5_489_pihole
+      - title: Cloud Commander
+        icon: https://external-content.duckduckgo.com/ip3/cloudcmd.io.ico
+        url: http://paynepride.com:7373
+        statusCheck: true
+        id: 6_489_cloudcommander
+  - name: Media
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Jellyfin
+        icon: https://external-content.duckduckgo.com/ip3/jellyfin.org.ico
+        url: https://jellyfin.paynepride.com
+        statusCheck: true
+        id: 0_480_jellyfin
+      - title: YouTubeDL-Material
+        icon: >-
+          https://github.com/Tzahi12345/YoutubeDL-Material/blob/master/src/assets/images/logo_128px.png?raw=true
+        url: https://youtubedlmaterial.paynepride.com
+        statusCheck: true
+        id: 1_480_youtubedlmaterial
