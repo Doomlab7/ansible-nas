@@ -1,11 +1,45 @@
- appConfig:
+appConfig:
   statusCheck: false
   theme: adventure
   fontAwesomeKey: f44bea53a7
   customCss: '.clock p.time { font-size: 3rem !important; }'
   layout: auto
-  iconSize: large
+  iconSize: medium
   language: en
+  startingView: default
+  defaultOpeningMethod: newtab
+  statusCheckInterval: 0
+  faviconApi: allesedv
+  routingMode: history
+  enableMultiTasking: false
+  widgetsAlwaysUseProxy: false
+  webSearch:
+    disableWebSearch: false
+    searchEngine: duckduckgo
+    openingMethod: newtab
+    searchBangs: {}
+  enableFontAwesome: true
+  enableMaterialDesignIcons: true
+  hideComponents:
+    hideHeading: false
+    hideNav: false
+    hideSearch: false
+    hideSettings: false
+    hideFooter: false
+  auth:
+    enableGuestAccess: false
+    users: []
+    enableKeycloak: false
+  showSplashScreen: false
+  preventWriteToDisk: false
+  preventLocalSave: false
+  disableConfiguration: false
+  allowConfigEdit: true
+  enableServiceWorker: false
+  disableContextMenu: false
+  disableUpdateChecks: false
+  disableSmartSort: false
+  enableErrorReporting: false
 pageInfo:
   title: Hello, Pype
   description: General browser startpage
@@ -27,6 +61,7 @@ sections:
           city: London
         id: 1_513_weather
       - type: public-ip
+        id: 2_513_publicip
       - type: crypto-watch-list
         options:
           currency: GBP
@@ -34,10 +69,17 @@ sections:
           assets:
             - bitcoin
             - ethereum
-            - monero
-            - solana
-            - polkadot
-        id: 2_513_cryptowatchlist
+            - dogecoin
+        id: 3_513_cryptowatchlist
+      - type: cve-vulnerabilities
+      - type: github-trending-repos
+        id: 5_513_githubtrendingrepos
+        options:
+          limit: 4 
+          since: weekly
+      - type: nd-cpu-history
+        options:
+        host: http://paynepride.com:19999
   - name: Dev & Cloud
     icon: far fa-code
     items:
@@ -87,6 +129,11 @@ sections:
           https://github.com/nicpayne713/pype.dev/blob/main/static/bitmoji.png?raw=true
         url: https://pype.dev
         id: 4_892_pypedev
+      - title: Nextcloud
+        icon: https://duckduckgo.com/i/4597dac5.png
+        url: https://nextcloud.paynepride.com
+        statusCheck: true
+        id: 5_892_nextcloud
   - name: Social & News
     icon: far fa-thumbs-up
     items:
@@ -171,7 +218,7 @@ sections:
         statusCheck: true
         id: 7_741_ombi
   - name: Admin
-    icon: fa-monitor-waveform
+    icon: far fa-monitor-waveform
     displayData:
       sortBy: default
       rows: 1
@@ -183,66 +230,41 @@ sections:
         description: Reverse Proxy
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
-        url: 192.168.1.8:8083/dashboard/
+        url: ' http://paynepride.com:8083/dashboard/'
         statusCheck: true
         id: 0_489_traefik
-      - title: Hogwarts - Glances
-        description: System Monitoring
-        icon: https://nicolargo.github.io/glances/public/images/glances.png
-        url: https://glances.paynepride.com
-        statusCheck: true
-        id: 1_489_hogwartsglances
-      - title: Ryzen - Glances
-        description: System Monitoring
-        icon: https://nicolargo.github.io/glances/public/images/glances.png
-        url: http://ryzen-3600x:61208/
-        statusCheck: true
-        id: 2_489_ryzenglances
-      - title: Hogwarts - Netdata
-        description: Netdata
-        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
-        url: >-
-          https://netdata.paynepride.com/#after=-720;before=0;=undefined;theme=slate;utc=America%2FChicago
-        statusCheck: true
-        id: 3_489_hogwartsnetdata
-      - title: Ryzen - Netdata
-        description: Netdata
-        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
-        url: http://ryzen-3600x:19999
-        statusCheck: true
-        id: 4_489_ryzennetdata
       - title: Pi-Hole
         description: ''
         icon: https://pihole.paynepride.com/img/logo.svg
         url: https://pihole.paynepride.com/admin
         statusCheck: true
-        id: 5_489_pihole
+        id: 1_489_pihole
       - title: Cloud Commander
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi2.wp.com%2Fcolaboratorio.net%2Fwp-content%2Fuploads%2F2018%2F12%2FCloudCommander-logo-filtroOK.png%3Ffit%3D1200%252C800%26ssl%3D1&f=1&nofb=1
         url: http://paynepride.com:7373
         statusCheck: true
-        id: 6_489_cloudcommander
+        id: 2_489_cloudcommander
       - title: Guacamole
         description: KVM
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F7e639a_14287d75f60443fc9cf7704ad9bf87d1~mv2.png%2Fv1%2Ffit%2Fw_1000%252Ch_1000%252Cal_c%2Ffile.png&f=1&nofb=1
         url: https://guacamole.paynepride.com/
         statusCheck: true
-        id: 7_489_guacamole
+        id: 3_489_guacamole
       - title: Portainer
         description: Docker Management
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fautoize.com%2Fwp-content%2Fuploads%2F2017%2F02%2FPortainer-logo.png&f=1&nofb=1https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fautoize.com%2Fwp-content%2Fuploads%2F2017%2F02%2FPortainer-logo.png&f=1&nofb=1
         url: https://portainer.paynepride.com
         statusCheck: true
-        id: 8_489_portainer
+        id: 4_489_portainer
       - title: R610
         description: iDRAC
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.j2JRe7dG5XWy2daeQ3hqKAHaHa%26pid%3DApi&f=1
         url: https://192.168.1.210/login.html
-        id: 9_489_r
+        id: 5_489_r
   - name: Media
     displayData:
       sortBy: default
@@ -265,9 +287,14 @@ sections:
       - title: Paperless
         description: Document
         icon: >-
-          https://github.com/jonaswinkler/paperless-ng/blob/master/src/paperless/static/paperless/img/logo-light.png?raw=true
-        url: http://192.168.1.8:8010/
+          https://raw.githubusercontent.com/bauerj/paperless_app/570ec4859be33e3ce80f8890884e87bc58a5ffaf/assets/logo.svg
+        url: http://paynepride.com:8010/
         id: 2_480_paperless
+      - title: Airsonic
+        icon: https://airsonic.github.io/img/logo.png
+        url: http://paynepride.com:4040
+        statusCheck: true
+        id: 3_480_airsonic
   - name: Productivity
     icon: far fa-briefcase
     items:
@@ -333,3 +360,47 @@ sections:
           - planning
         hotkey: 6
         id: 4_1302_tasks
+      - title: Bitwarden
+        icon: https://duckduckgo.com/i/ea6441be.png
+        url: https://bitwarden.paynepride.com
+        statusCheck: true
+        id: 5_1302_bitwarden
+  - name: Monitoring
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Ryzen - Netdata
+        description: Netdata
+        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
+        url: http://ryzen-3600x:19999
+        statusCheck: true
+        id: 0_1062_ryzennetdata
+      - title: Hogwarts - Glances
+        description: System Monitoring
+        icon: https://nicolargo.github.io/glances/public/images/glances.png
+        url: https://glances.paynepride.com
+        statusCheck: true
+        id: 1_1062_hogwartsglances
+      - title: Hogwarts - Netdata
+        description: Netdata
+        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
+        url: >-
+          https://netdata.paynepride.com/#after=-720;before=0;=undefined;theme=slate;utc=America%2FChicago
+        statusCheck: true
+        id: 2_1062_hogwartsnetdata
+      - title: Ryzen - Glances
+        description: System Monitoring
+        icon: https://nicolargo.github.io/glances/public/images/glances.png
+        url: http://ryzen-3600x:61208/
+        statusCheck: true
+        id: 3_1062_ryzenglances
+      - title: Gotify
+        description: Notifications
+        icon: https://external-content.duckduckgo.com/ip3/gotify.net.ico
+        url: http://paynepride.com:2346/#/login
+        statusCheck: true
+        id: 4_1062_gotify
