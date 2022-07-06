@@ -77,9 +77,6 @@ sections:
         options:
           limit: 4 
           since: weekly
-      - type: nd-cpu-history
-        options:
-        host: http://paynepride.com:19999
   - name: Dev & Cloud
     icon: far fa-code
     items:
