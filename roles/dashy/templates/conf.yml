@@ -47,6 +47,61 @@ pageInfo:
   footerText: ''
   logo: https://i.ibb.co/71WyyzM/little-bot-3.png
 sections:
+
+  - name: Servarr
+    icon: >-
+      https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
+    displayData:
+      sortBy: default
+    items:
+      - title: Sonarr
+        description: TV
+        icon: https://wiki.servarr.com/assets/sonarr/logos/128.png
+        url: https://sonarr.paynepride.com
+        statusCheck: true
+        
+      - title: Radarr
+        description: Movies
+        icon: https://wiki.servarr.com/assets/radarr/logos/128.png
+        url: https://radarr.paynepride.com
+        statusCheck: true
+        
+      - title: Prowlarr
+        description: Index
+        icon: https://wiki.servarr.com/assets/prowlarr/logos/128.png
+        url: https://prowlarr.paynepride.com
+        statusCheck: true
+        
+      - title: Lidarr
+        description: Music
+        icon: https://wiki.servarr.com/assets/lidarr/logos/128.png
+        url: https://lidarr.paynepride.com
+        statusCheck: true
+        
+      - title: Tdarr
+        description: Transcoding
+        icon: https://tdarr.paynepride.com/images/updates/logo3-small.png
+        url: https://tdarr.paynepride.com
+        statusCheck: true
+        
+      - title: Transmission
+        description: Torrent Downloader
+        icon: https://external-content.duckduckgo.com/ip3/transmissionbt.com.ico
+        url: https://transmission_openvpn.paynepride.com/transmission/web/
+        statusCheck: true
+        
+      - title: Readarr
+        description: Books
+        icon: https://wiki.servarr.com/assets/readarr/logos/128.png
+        url: https://readarr.paynepride.com/
+        statusCheck: true
+        
+      - title: Ombi
+        description: Catalog
+        icon: https://external-content.duckduckgo.com/ip3/docs.ombi.app.ico
+        url: https://ombi.paynepride.com/discover
+        statusCheck: true
+        
   - name: Today
     icon: far fa-smile-beam
     displayData:
@@ -132,60 +187,6 @@ sections:
         url: https://www.livecoinwatch.com/
         description: Real-time crypto prices and read-only portfolio
         provider: Live Coin Watch
-        
-  - name: Servarr
-    icon: >-
-      https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
-    displayData:
-      sortBy: default
-    items:
-      - title: Sonarr
-        description: TV
-        icon: https://wiki.servarr.com/assets/sonarr/logos/128.png
-        url: https://sonarr.paynepride.com
-        statusCheck: true
-        
-      - title: Radarr
-        description: Movies
-        icon: https://wiki.servarr.com/assets/radarr/logos/128.png
-        url: https://radarr.paynepride.com
-        statusCheck: true
-        
-      - title: Prowlarr
-        description: Index
-        icon: https://wiki.servarr.com/assets/prowlarr/logos/128.png
-        url: https://prowlarr.paynepride.com
-        statusCheck: true
-        
-      - title: Lidarr
-        description: Music
-        icon: https://wiki.servarr.com/assets/lidarr/logos/128.png
-        url: https://lidarr.paynepride.com
-        statusCheck: true
-        
-      - title: Tdarr
-        description: Transcoding
-        icon: https://tdarr.paynepride.com/images/updates/logo3-small.png
-        url: https://tdarr.paynepride.com
-        statusCheck: true
-        
-      - title: Transmission
-        description: Torrent Downloader
-        icon: https://external-content.duckduckgo.com/ip3/transmissionbt.com.ico
-        url: https://transmission_openvpn.paynepride.com/transmission/web/
-        statusCheck: true
-        
-      - title: Readarr
-        description: Books
-        icon: https://wiki.servarr.com/assets/readarr/logos/128.png
-        url: https://readarr.paynepride.com/
-        statusCheck: true
-        
-      - title: Ombi
-        description: Catalog
-        icon: https://external-content.duckduckgo.com/ip3/docs.ombi.app.ico
-        url: https://ombi.paynepride.com/discover
-        statusCheck: true
         
   - name: Admin
     icon: far fa-monitor-waveform
