@@ -41,13 +41,13 @@ http:
       tls:
         certResolver: letsencrypt
       service: littlelink
-    rick:  # rick roll 
+    rickroll:  # rick roll 
       entryPoints:
         - "websecure"
       rule: "Host(`rr.paynepride.com`)"
       tls:
         certResolver: letsencrypt
-      service: rr
+      service: rickroll
     smallgroup:  # tidler notes 
       entryPoints:
         - "websecure"
@@ -84,12 +84,13 @@ http:
     littlelink:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.8:8889"
+          # - url: "http://192.168.1.8:8889"
+          - url: "https://nicpayne713.github.io/littlelink/"
         passHostHeader: true
-    rr:
+    rickroll:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.8:8093"
+          - url: "https://nicpayne713.github.io/rick/"
         passHostHeader: true
     smallgroup:
       loadBalancer:
