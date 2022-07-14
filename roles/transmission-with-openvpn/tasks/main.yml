@@ -43,6 +43,7 @@
       PGID: "{{ transmission_openvpn_group_id }}"
       LOCAL_NETWORK: "{{ transmission_openvpn_local_network }}"
       ENABLE_UFW: "false"
+      UMASK: 2
     devices:
       - /dev/net/tun
     capabilities:
