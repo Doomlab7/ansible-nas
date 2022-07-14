@@ -9,27 +9,12 @@
   #   pause:
   #     seconds: 20
 
-  # - name: "Permission share data"
-  #   file:
-  #     path: "{{ item.path }}"
-  #     owner: ansible-nas
-  #     group: ansible-nas
-  #     mode: "u=rwX,g=rwX,o=rX"
-  #     recurse: true
-  #   loop: "{{ samba_shares }}"
-
-  - name: "Docker ZFS DataSet"
+  - name: "Permission share data"
     file:
-      path: /tank/docker
+      path: "{{ item.path }}"
       owner: ansible-nas
       group: ansible-nas
       mode: "u=rwX,g=rwX,o=rX"
       recurse: true
+    loop: "{{ samba_shares }}"
 
-  - name: "YouTube share data"
-    file:
-      path: /tank/nas/media/YouTube
-      owner: ansible-nas
-      group: ansible-nas
-      mode: "u=rwX,g=rwX,o=rX"
-      recurse: true
