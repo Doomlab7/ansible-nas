@@ -134,6 +134,9 @@ http:
         - "10.220.108.0/24"  # wg
         - "192.168.1.0/24"  # lan
         - "172.17.0.0/16"  # docker
+        - "172.19.0.0/16"  # docker
+        - "172.20.0.0/16"  # docker
+        - "172.22.0.0/16"  # docker
 
     extended-whitelist:
       ipWhiteList:
