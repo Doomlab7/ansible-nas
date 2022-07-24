@@ -125,13 +125,6 @@ sections:
             - ethereum
             - dogecoin
         id: 3_513_cryptowatchlist
-      # - type: cve-vulnerabilities
-      #   id: 4_513_cvevulnerabilities
-      # - type: github-trending-repos
-      #   options:
-      #     limit: 4
-      #     since: weekly
-      #   id: 5_513_githubtrendingrepos
   - name: Dev & Cloud
     icon: far fa-code
     items:
@@ -277,6 +270,13 @@ sections:
         url: http://paynepride.com:4040
         statusCheck: true
         id: 3_480_airsonic
+      - title: Ubooquity
+        description: Books
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.alternativeten.com%2Fwp-content%2Fuploads%2F2021%2F03%2F1595980692_Ubooquity-767x753.png&f=1&nofb=1
+        url: http://paynepride.com:2202/ubooquity
+        statusCheck: true
+        id: 4_480_ubooquity
   - name: Productivity
     icon: far fa-briefcase
     items:
