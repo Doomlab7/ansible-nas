@@ -152,6 +152,11 @@ sections:
         url: https://nextcloud.paynepride.com
         statusCheck: true
         id: 4_892_nextcloud
+      - title: Small Group Notes
+        icon: >-
+          https://cdn3.iconfinder.com/data/icons/literature-1/512/hole-book-bible-scripture-512.png
+        url: https://pypeaday.github.io/small-group-notes/
+        id: 5_892_smallgroupnotes
   - name: Social & News
     icon: far fa-thumbs-up
     items:
@@ -186,6 +191,12 @@ sections:
         description: The Dispo
         url: https://l.lsloyalty.io/JOPnVNrp
         id: 6_1118_deltaawards
+      - title: MonicaDB
+        description: Relationship Management
+        icon: >-
+          https://user-images.githubusercontent.com/61099/37693034-5783b3d6-2c93-11e8-80ea-bd78438dcd51.png
+        url: http://192.168.1.8:8089/dashboard
+        id: 7_1118_monicadb
   - name: Admin
     icon: far fa-monitor-waveform
     displayData:
