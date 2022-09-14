@@ -358,6 +358,11 @@ sections:
         url: https://bitwarden.paynepride.com
         statusCheck: true
         id: 5_1302_bitwarden
+      - title: Simplelogin
+        description: Privacy e-mail relay
+        icon: https://avatars.githubusercontent.com/u/51910064?s=280&v=4
+        url: https://app.simplelogin.io/dashboard/
+        id: 6_1302_simplelogin
   - name: Monitoring
     displayData:
       sortBy: default
