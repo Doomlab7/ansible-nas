@@ -10,6 +10,15 @@ http:
       tls: 
         certResolver: letsencrypt
       service: stable_diffusion
+    stable-diffusion2:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`stable-diffusion2.paynepride.com`)"
+      middlewares:
+        - simple-auth
+      tls: 
+        certResolver: letsencrypt
+      service: stable_diffusion2
     jellyfin:
       entryPoints:
         - "websecure"
@@ -68,6 +77,11 @@ http:
       loadBalancer:
         servers:
           - url: "http://ryzen-3600x:9090"
+        passHostHeader: true
+    stable_diffusion2:
+      loadBalancer:
+        servers:
+          - url: "http://ryzen-3600x:7860"
         passHostHeader: true
     jellyfin:
       loadBalancer:
