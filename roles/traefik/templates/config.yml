@@ -8,6 +8,7 @@ http:
       middlewares:
         - https-redirect
         - default-headers
+        - simple-auth
         # - extended-whitelist
       tls: 
         certResolver: letsencrypt
@@ -104,6 +105,10 @@ http:
         passHostHeader: true
 #endregion
   middlewares:
+    simple-auth:
+      basicAuth:
+        usersFile: "/etc/traefik/usersFile"
+
     addprefix-pihole:
       addPrefix:
         prefix: "/admin"
