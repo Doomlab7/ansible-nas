@@ -11,7 +11,7 @@ http:
         # - extended-whitelist
       tls: 
         certResolver: letsencrypt
-      service: stable-diffusion
+      service: stable_diffusion
     jellyfin:
       entryPoints:
         - "websecure"
