@@ -6,10 +6,7 @@ http:
         - "websecure"
       rule: "Host(`stable-diffusion.paynepride.com`)"
       middlewares:
-        - https-redirect
-        - default-headers
         - simple-auth
-        # - extended-whitelist
       tls: 
         certResolver: letsencrypt
       service: stable_diffusion
