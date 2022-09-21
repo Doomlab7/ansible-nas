@@ -1,6 +1,17 @@
 http:
  #region routers 
   routers:
+    stable-diffusion:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`stable-diffusion.paynepride.com`)"
+      middlewares:
+        - https-redirect
+        - default-headers
+        # - extended-whitelist
+      tls: 
+        certResolver: letsencrypt
+      service: stable-diffusion
     jellyfin:
       entryPoints:
         - "websecure"
@@ -12,17 +23,6 @@ http:
       tls: 
         certResolver: letsencrypt
       service: jellyfin
-    jellyfin2:
-      entryPoints:
-        - "websecure"
-      rule: "Host(`jellyfin2.paynepride.com`)"
-      middlewares:
-        - https-redirect
-        - default-headers
-        # - extended-whitelist
-      tls: 
-        certResolver: letsencrypt
-      service: jellyfin2
     pihole:
       entryPoints:
         - "websecure"
@@ -66,15 +66,15 @@ http:
 #endregion
 #region services
   services:
+    stable_diffusion:
+      loadBalancer:
+        servers:
+          - url: "http://ryzen-3600x:9090"
+        passHostHeader: true
     jellyfin:
       loadBalancer:
         servers:
           - url: "http://192.168.1.8:8096"
-        passHostHeader: true
-    jellyfin2:
-      loadBalancer:
-        servers:
-          - url: "http://192.168.1.4:8096"
         passHostHeader: true
     pihole:
       loadBalancer:
