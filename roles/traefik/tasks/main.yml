@@ -19,6 +19,12 @@
     dest: "{{ traefik_data_directory }}/config.yml"
   register: template_provider_config
 
+- name: Template Traefik usersFile
+  template:
+    src: usersFile
+    dest: "{{ traefik_data_directory }}/usersFile"
+  register: template_users_file
+
 - name: Traefik Docker Container
   docker_container:
     name: traefik
@@ -28,6 +34,7 @@
     volumes:
       - "{{ traefik_data_directory }}/traefik.toml:/etc/traefik/traefik.toml:ro"
       - "{{ traefik_data_directory }}/config.yml:/etc/traefik/config.yml:ro"
+      - "{{ traefik_data_directory }}/usersFile:/etc/traefik/usersFile:ro"
       - "{{ traefik_data_directory }}/letsencrypt:/letsencrypt:rw"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     env: "{{ traefik_environment_variables }}"
