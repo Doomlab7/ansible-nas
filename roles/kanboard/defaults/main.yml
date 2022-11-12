@@ -1,0 +1,27 @@
+---
+kanboard_enabled: false
+kanboard_available_externally: false
+
+# directories
+#
+kanboard_data_directory: "{{ docker_home }}/kanboard/data"
+kanboard_plugins_directory: "{{ docker_home }}/kanboard/plugins"
+kanboard_ssl_directory: "{{ docker_home }}/kanboard/ssl"
+
+# uid / gid
+kanboard_user_id: "0"
+kanboard_group_id: "0"
+
+# error logging
+kanboard_log_level: "error"
+
+# network
+kanboard_port: "8112"
+kanboard_hostname: "kanboard"
+
+kanboard_timezone: "{{ ansible_nas_timezone }}"
+
+# specs
+kanboard_memory: 1g
+
+kanboard_container_name: kanboard

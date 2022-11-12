@@ -1,0 +1,46 @@
+---
+- name: Start Kanboard
+  block:
+    - name: Create Kanboard Directories
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ kanboard_data_directory }}"
+        - "{{ kanboard_plugins_directory }}"
+        - "{{ kanboard_ssl_directory }}"
+
+    - name: Kanboard Docker Container
+      docker_container:
+        name: kanboard
+        image: kanboard/kanboard:latest
+        pull: true
+        volumes:
+          - "{{ kanboard_data_directory }}:/var/www/app/data:rw"
+          - "{{ kanboard_plugins_directory }}:/var/www/app/plugins:rw"
+          - "{{ kanboard_ssl_directory }}:/etc/nginx/ssl:rw"
+        ports:
+          - "{{ kanboard_port_http }}:80"  # default to 8009?
+          - "{{ kanboard_port_https }}:443"  # default to 4439?  Need to look at what makes sense
+        env:
+          TZ: "{{ kanboard_timezone }}"
+          PUID: "{{ kanboard_user_id }}"
+          PGID: "{{ kanboard_group_id }}"
+        restart_policy: unless-stopped
+        memory: "{{ kanboard_memory }}"
+        labels:
+          traefik.enable: "{{ kanboard_available_externally | string }}"
+          traefik.http.routers.kanboard.rule: "Host(`{{ kanboard_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.kanboard.tls.certresolver: "letsencrypt"
+          traefik.http.routers.kanboard.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.kanboard.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.kanboard.loadbalancer.server.port: "80"
+  when: kanboard_enabled is true
+
+- name: Stop Kanboard
+  block:
+    - name: Stop Kanboard
+      docker_container:
+        name: "{{ kanboard_container_name }}"
+        state: absent
+  when: kanboard_enabled is false
