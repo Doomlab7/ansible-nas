@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: hogwarts
   tasks:
   - name: Warning!
     debug:
