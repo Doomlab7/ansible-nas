@@ -1,6 +1,0 @@
----
-- hosts: da
-
-  tasks:
-    - import_tasks: tasks/zsh.yml
-      tags: zsh

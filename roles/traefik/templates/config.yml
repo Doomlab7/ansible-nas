@@ -76,12 +76,12 @@ http:
     stable_diffusion:
       loadBalancer:
         servers:
-          - url: "http://ryzen-3600x:9090"
+          - url: "http://babyblue:9090"
         passHostHeader: true
     stable_diffusion2:
       loadBalancer:
         servers:
-          - url: "http://ryzen-3600x:7860"
+          - url: "http://babyblue:7860"
         passHostHeader: true
     jellyfin:
       loadBalancer:
