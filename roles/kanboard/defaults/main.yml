@@ -16,7 +16,9 @@ kanboard_group_id: "0"
 kanboard_log_level: "error"
 
 # network
-kanboard_port: "8112"
+kanboard_port_http: "8009"
+kanboard_port_https: "4439"
+
 kanboard_hostname: "kanboard"
 
 kanboard_timezone: "{{ ansible_nas_timezone }}"
