@@ -459,3 +459,12 @@
       tags:
         - znc
       when: (znc_enabled | default(False))
+
+  tasks:
+    - import_tasks: tasks/kvm.yml
+      when: (kvm_enabled | default(False))
+      tags: kvm
+
+    - import_tasks: tasks/paperless_ngx_directories.yml
+      when: (paperless_ngx_enables | default(False))
+      tags: paperless_ngx
