@@ -186,6 +186,11 @@
         - joomla
       when: (joomla_enabled | default(False))
 
+    - role: kanboard
+      tags:
+        - kanboard
+      when: (kanboard_enabled | default(False))
+
     - role: komga
       tags:
         - komga
