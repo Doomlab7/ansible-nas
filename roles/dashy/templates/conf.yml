@@ -1,0 +1,432 @@
+appConfig:
+  statusCheck: false
+  theme: adventure
+  fontAwesomeKey: f44bea53a7
+  customCss: '.clock p.time { font-size: 3rem !important; }'
+  layout: auto
+  iconSize: medium
+  language: en
+  startingView: default
+  defaultOpeningMethod: newtab
+  statusCheckInterval: 0
+  faviconApi: allesedv
+  routingMode: history
+  enableMultiTasking: false
+  widgetsAlwaysUseProxy: false
+  webSearch:
+    disableWebSearch: false
+    searchEngine: duckduckgo
+    openingMethod: newtab
+    searchBangs: {}
+  enableFontAwesome: true
+  enableMaterialDesignIcons: true
+  hideComponents:
+    hideHeading: false
+    hideNav: false
+    hideSearch: false
+    hideSettings: false
+    hideFooter: false
+  auth:
+    enableGuestAccess: false
+    users: []
+    enableKeycloak: false
+  showSplashScreen: false
+  preventWriteToDisk: false
+  preventLocalSave: false
+  disableConfiguration: false
+  allowConfigEdit: true
+  enableServiceWorker: false
+  disableContextMenu: false
+  disableUpdateChecks: false
+  disableSmartSort: false
+  enableErrorReporting: false
+pageInfo:
+  title: Hello, Nic!
+  description: Paynepride Homepage
+  navLinks: []
+  footerText: ''
+  logo: https://i.ibb.co/71WyyzM/little-bot-3.png
+sections:
+  - name: Servarr
+    icon: >-
+      https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
+    displayData:
+      sortBy: default
+    items:
+      - title: Sonarr
+        description: TV
+        icon: https://wiki.servarr.com/assets/sonarr/logos/128.png
+        url: https://sonarr.paynepride.com
+        statusCheck: true
+        id: 0_741_sonarr
+      - title: Radarr
+        description: Movies
+        icon: https://wiki.servarr.com/assets/radarr/logos/128.png
+        url: https://radarr.paynepride.com
+        statusCheck: true
+        id: 1_741_radarr
+      - title: Prowlarr
+        description: Index
+        icon: https://wiki.servarr.com/assets/prowlarr/logos/128.png
+        url: https://prowlarr.paynepride.com
+        statusCheck: true
+        id: 2_741_prowlarr
+      - title: Lidarr
+        description: Music
+        icon: https://wiki.servarr.com/assets/lidarr/logos/128.png
+        url: https://lidarr.paynepride.com
+        statusCheck: true
+        id: 3_741_lidarr
+      - title: Tdarr
+        description: Transcoding
+        icon: https://tdarr.paynepride.com/images/updates/logo3-small.png
+        url: https://tdarr.paynepride.com
+        statusCheck: true
+        id: 4_741_tdarr
+      - title: Transmission
+        description: Torrent Downloader
+        icon: https://external-content.duckduckgo.com/ip3/transmissionbt.com.ico
+        url: https://transmission_openvpn.paynepride.com/transmission/web/
+        statusCheck: true
+        id: 5_741_transmission
+      - title: Readarr
+        description: Books
+        icon: https://wiki.servarr.com/assets/readarr/logos/128.png
+        url: https://readarr.paynepride.com/
+        statusCheck: true
+        id: 6_741_readarr
+      - title: Ombi
+        description: Catalog
+        icon: https://external-content.duckduckgo.com/ip3/docs.ombi.app.ico
+        url: https://ombi.paynepride.com/discover
+        statusCheck: true
+        id: 7_741_ombi
+  - name: Today
+    icon: far fa-smile-beam
+    displayData:
+      collapsed: false
+      hideForGuests: false
+    widgets:
+      - type: clock
+        id: 0_513_clock
+      - type: weather
+        options:
+          apiKey: efdbade728b37086877a5e83442004db
+          city: London
+        id: 1_513_weather
+      - type: public-ip
+        id: 2_513_publicip
+      - type: crypto-watch-list
+        options:
+          currency: GBP
+          sortBy: marketCap
+          assets:
+            - bitcoin
+            - ethereum
+            - dogecoin
+        id: 3_513_cryptowatchlist
+  - name: Dev & Cloud
+    icon: far fa-code
+    items:
+      - title: GitHub
+        icon: favicon
+        url: https://github.com/nicpayne713
+        id: 0_892_github
+      - title: StackOverflow
+        icon: favicon
+        url: http://stackoverflow.com/
+        id: 1_892_stackoverflow
+      - title: CloudFlare
+        icon: favicon
+        url: https://dash.cloudflare.com/
+        statusCheckAcceptCodes: '403'
+        id: 2_892_cloudflare
+      - title: Pype.dev
+        description: Blog
+        icon: >-
+          https://github.com/nicpayne713/pype.dev/blob/main/static/bitmoji.png?raw=true
+        url: https://pype.dev
+        id: 3_892_pypedev
+      - title: Nextcloud
+        icon: https://duckduckgo.com/i/4597dac5.png
+        url: https://nextcloud.paynepride.com
+        statusCheck: true
+        id: 4_892_nextcloud
+      - title: Small Group Notes
+        icon: >-
+          https://cdn3.iconfinder.com/data/icons/literature-1/512/hole-book-bible-scripture-512.png
+        url: https://pypeaday.github.io/small-group-notes/
+        id: 5_892_smallgroupnotes
+      - title: SadServers
+        description: Fix some sad servers :'(
+        url: https://sadservers.com/scenarios
+        id: 6_892_sadservers
+  - name: Social & News
+    icon: far fa-thumbs-up
+    items:
+      - title: Discord
+        icon: si-discord
+        url: https://discord.com/channels/
+        id: 0_1118_discord
+      - title: HackerNews
+        icon: si-ycombinator
+        url: https://news.ycombinator.com/
+        id: 1_1118_hackernews
+      - title: Twitter
+        icon: si-twitter
+        url: https://twitter.com/
+        id: 2_1118_twitter
+      - title: YouTube
+        icon: si-youtube
+        url: https://youtube.com/
+        id: 3_1118_youtube
+      - title: News
+        icon: si-bbc
+        url: https://bbc.co.uk/news
+        id: 4_1118_news
+      - title: Crypto Prices
+        icon: fab fa-bitcoin
+        url: https://www.livecoinwatch.com/
+        description: Real-time crypto prices and read-only portfolio
+        provider: Live Coin Watch
+        id: 5_1118_cryptoprices
+      - title: Delta 8 Awards
+        icon: fab fa-cannabis
+        description: The Dispo
+        url: https://l.lsloyalty.io/JOPnVNrp
+        id: 6_1118_deltaawards
+      - title: MonicaDB
+        description: Relationship Management
+        icon: >-
+          https://user-images.githubusercontent.com/61099/37693034-5783b3d6-2c93-11e8-80ea-bd78438dcd51.png
+        url: http://192.168.1.8:8089/dashboard
+        id: 7_1118_monicadb
+  - name: Admin
+    icon: far fa-monitor-waveform
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Traefik
+        description: Reverse Proxy
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
+        url: ' http://paynepride.com:8083/dashboard/'
+        statusCheck: true
+        id: 0_489_traefik
+      - title: Pi-Hole
+        description: ''
+        icon: https://pihole.paynepride.com/img/logo.svg
+        url: https://pihole.paynepride.com/admin
+        statusCheck: true
+        id: 1_489_pihole
+      - title: Cloud Commander
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi2.wp.com%2Fcolaboratorio.net%2Fwp-content%2Fuploads%2F2018%2F12%2FCloudCommander-logo-filtroOK.png%3Ffit%3D1200%252C800%26ssl%3D1&f=1&nofb=1
+        url: http://paynepride.com:7373
+        statusCheck: true
+        id: 2_489_cloudcommander
+      - title: Guacamole
+        description: KVM
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F7e639a_14287d75f60443fc9cf7704ad9bf87d1~mv2.png%2Fv1%2Ffit%2Fw_1000%252Ch_1000%252Cal_c%2Ffile.png&f=1&nofb=1
+        url: https://guacamole.paynepride.com/
+        statusCheck: true
+        id: 3_489_guacamole
+      - title: Portainer
+        description: Docker Management
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fautoize.com%2Fwp-content%2Fuploads%2F2017%2F02%2FPortainer-logo.png&f=1&nofb=1https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fautoize.com%2Fwp-content%2Fuploads%2F2017%2F02%2FPortainer-logo.png&f=1&nofb=1
+        url: https://portainer.paynepride.com
+        statusCheck: true
+        id: 4_489_portainer
+      - title: R610
+        description: iDRAC
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.j2JRe7dG5XWy2daeQ3hqKAHaHa%26pid%3DApi&f=1
+        url: https://192.168.1.210/login.html
+        id: 5_489_r
+      - title: TrueNAS
+        description: On-prem backup
+        icon: '          https://external-content.duckduckgo.com/ip3/www.truenas.com.ico'
+        url: http://192.168.1.25
+        statusCheck: true
+        id: 6_489_truenas
+  - name: Media
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Jellyfin
+        icon: https://external-content.duckduckgo.com/ip3/jellyfin.org.ico
+        url: https://jellyfin.paynepride.com
+        statusCheck: true
+        id: 0_480_jellyfin
+      - title: YouTubeDL-Material
+        icon: >-
+          https://github.com/Tzahi12345/YoutubeDL-Material/blob/master/src/assets/images/logo_128px.png?raw=true
+        url: https://youtubedlmaterial.paynepride.com
+        statusCheck: true
+        id: 1_480_youtubedlmaterial
+      - title: Paperless
+        description: Document
+        icon: >-
+          https://raw.githubusercontent.com/bauerj/paperless_app/570ec4859be33e3ce80f8890884e87bc58a5ffaf/assets/logo.svg
+        url: http://paynepride.com:8010/
+        id: 2_480_paperless
+      - title: Airsonic
+        icon: https://airsonic.github.io/img/logo.png
+        url: http://paynepride.com:4040
+        statusCheck: true
+        id: 3_480_airsonic
+      - title: Ubooquity
+        description: Books
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.alternativeten.com%2Fwp-content%2Fuploads%2F2021%2F03%2F1595980692_Ubooquity-767x753.png&f=1&nofb=1
+        url: http://paynepride.com:2202/ubooquity
+        statusCheck: true
+        id: 4_480_ubooquity
+  - name: Productivity
+    icon: far fa-briefcase
+    items:
+      - title: ProtonMail
+        icon: favicon
+        url: https://mail.protonmail.com/
+        description: Primary email account
+        tags:
+          - hosted
+          - personal
+          - email
+          - mail
+        hotkey: 1
+        id: 0_1302_protonmail
+      - title: AnonAddy
+        icon: favicon
+        url: https://app.anonaddy.com/
+        description: Mail alias forwarder
+        tags:
+          - hosted
+          - personal
+          - forwarder
+          - aliases
+          - email
+        hotkey: 3
+        statusCheckAcceptCodes: '401'
+        id: 1_1302_anonaddy
+      - title: LessPass
+        icon: favicon
+        url: https://lesspass.com/
+        description: Deterministic password generator
+        tags:
+          - hosted
+          - personal
+          - password
+          - generate
+          - deterministic
+        hotkey: 4
+        id: 2_1302_lesspass
+      - title: EteSync
+        icon: favicon
+        url: https://pim.etesync.com/
+        description: Calendar + Contacts, CalDAV sync
+        tags:
+          - hosted
+          - personal
+          - caldav
+          - calendar
+          - contacts
+          - tasks
+          - planning
+        hotkey: 5
+        id: 3_1302_etesync
+      - title: Tasks
+        icon: https://i.ibb.co/v4jznK0/todo-list.png
+        url: https://pim.etesync.com/pim/tasks
+        description: Todo list and tasks from CalDAV
+        tags:
+          - hosted
+          - personal
+          - caldav
+          - tasks
+          - planning
+        hotkey: 6
+        id: 4_1302_tasks
+      - title: Bitwarden
+        icon: https://duckduckgo.com/i/ea6441be.png
+        url: https://bitwarden.paynepride.com
+        statusCheck: true
+        id: 5_1302_bitwarden
+      - title: Simplelogin
+        description: Privacy e-mail relay
+        icon: https://avatars.githubusercontent.com/u/51910064?s=280&v=4
+        url: https://app.simplelogin.io/dashboard/
+        id: 6_1302_simplelogin
+  - name: Monitoring
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Ryzen - Netdata
+        description: Netdata
+        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
+        url: http://ryzen-3600x:19999
+        statusCheck: true
+        id: 0_1062_ryzennetdata
+      - title: Hogwarts - Glances
+        description: System Monitoring
+        icon: https://nicolargo.github.io/glances/public/images/glances.png
+        url: https://glances.paynepride.com
+        statusCheck: true
+        id: 1_1062_hogwartsglances
+      - title: Hogwarts - Netdata
+        description: Netdata
+        icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
+        url: >-
+          https://netdata.paynepride.com/#after=-720;before=0;=undefined;theme=slate;utc=America%2FChicago
+        statusCheck: true
+        id: 2_1062_hogwartsnetdata
+      - title: Ryzen - Glances
+        description: System Monitoring
+        icon: https://nicolargo.github.io/glances/public/images/glances.png
+        url: http://ryzen-3600x:61208/
+        statusCheck: true
+        id: 3_1062_ryzenglances
+      - title: Gotify
+        description: Notifications
+        icon: https://external-content.duckduckgo.com/ip3/gotify.net.ico
+        url: http://paynepride.com:2346/#/login
+        statusCheck: true
+        id: 4_1062_gotify
+  - name: Olivet
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: CCLI
+        description: Records of CCLI numbers for our songs
+        url: >-
+          https://docs.google.com/spreadsheets/d/1-nPRo68IiSbJn9hF_EVovrBUePMS0XbzVxF6iL-8s7g/edit#gid=845320228
+        id: 0_627_ccli
+  - name: House Related Links
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Appleton Utilities Bill Pay
+        url: https://client.pointandpay.net/web/CityofAppletonWIUtilityBilling
+        id: 0_1798_appletonutilitiesbillpay
