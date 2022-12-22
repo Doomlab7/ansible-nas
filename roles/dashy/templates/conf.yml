@@ -47,6 +47,36 @@ pageInfo:
   footerText: ''
   logo: https://i.ibb.co/71WyyzM/little-bot-3.png
 sections:
+  - name: Home
+    icon: fa-solid fa-home
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Home Assistant
+        description: Smart home control
+        icon: hl-home-assistant
+        url: http://homeassistant.local:8123/lovelace/0
+        statusCheck: true
+        id: 0_393_homeassistant
+  - name: Today
+    icon: far fa-smile-beam
+    displayData:
+      collapsed: false
+      hideForGuests: false
+    widgets:
+      - type: clock
+        id: 0_513_clock
+      - type: weather
+        options:
+          apiKey: efdbade728b37086877a5e83442004db
+          city: London
+        id: 1_513_weather
+      - type: public-ip
+        id: 2_513_publicip
   - name: Servarr
     icon: >-
       https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
@@ -101,21 +131,6 @@ sections:
         url: https://ombi.paynepride.com/discover
         statusCheck: true
         id: 7_741_ombi
-  - name: Today
-    icon: far fa-smile-beam
-    displayData:
-      collapsed: false
-      hideForGuests: false
-    widgets:
-      - type: clock
-        id: 0_513_clock
-      - type: weather
-        options:
-          apiKey: efdbade728b37086877a5e83442004db
-          city: London
-        id: 1_513_weather
-      - type: public-ip
-        id: 2_513_publicip
   - name: Dev & Cloud
     icon: fa-solid fa-code
     items:
@@ -382,18 +397,3 @@ sections:
         url: https://l.lsloyalty.io/JOPnVNrp
         id: 1_741_deltaawards
     icon: fa-solid fa-person-to-portal
-  - name: Home
-    icon: fa-solid fa-home
-    displayData:
-      sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    items:
-      - title: Home Assistant
-        description: Smart home control
-        icon: hl-home-assistant
-        url: http://homeassistant.local:8123/lovelace/0
-        statusCheck: true
-        id: 0_393_homeassistant
