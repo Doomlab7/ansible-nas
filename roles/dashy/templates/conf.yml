@@ -280,15 +280,16 @@ sections:
     icon: fa-solid fa-briefcase
     items:
       - title: ProtonMail
-        icon: favicon
-        url: https://mail.protonmail.com/
         description: Primary email account
+        icon: >-
+          https://proton.me/static/fc5b1e8b92dd09734ca7c9d91e89db93/proton-mail-badge.svg
+        url: https://mail.protonmail.com/
+        hotkey: 1
         tags:
           - hosted
           - personal
           - email
           - mail
-        hotkey: 1
         id: 0_1302_protonmail
       - title: Bitwarden
         icon: https://duckduckgo.com/i/ea6441be.png
@@ -381,3 +382,18 @@ sections:
         url: https://l.lsloyalty.io/JOPnVNrp
         id: 1_741_deltaawards
     icon: fa-solid fa-person-to-portal
+  - name: Home
+    icon: fa-solid fa-home
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Home Assistant
+        description: Smart home control
+        icon: hl-home-assistant
+        url: http://homeassistant.local:8123/lovelace/0
+        statusCheck: true
+        id: 0_393_homeassistant
