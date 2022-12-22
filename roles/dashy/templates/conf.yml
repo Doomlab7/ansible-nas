@@ -1,10 +1,10 @@
 appConfig:
   statusCheck: false
-  theme: adventure
+  theme: default
   fontAwesomeKey: f44bea53a7
   customCss: '.clock p.time { font-size: 3rem !important; }'
   layout: auto
-  iconSize: medium
+  iconSize: large
   language: en
   startingView: default
   defaultOpeningMethod: newtab
@@ -117,11 +117,11 @@ sections:
       - type: public-ip
         id: 2_513_publicip
   - name: Dev & Cloud
-    icon: far fa-code
+    icon: fa-solid fa-code
     items:
       - title: GitHub
         icon: favicon
-        url: https://github.com/nicpayne713
+        url: https://github.com/pypeaday
         id: 0_892_github
       - title: StackOverflow
         icon: favicon
@@ -134,8 +134,7 @@ sections:
         id: 2_892_cloudflare
       - title: Pype.dev
         description: Blog
-        icon: >-
-          https://github.com/nicpayne713/pype.dev/blob/main/static/bitmoji.png?raw=true
+        icon: fa-solid fa-square-rss
         url: https://pype.dev
         id: 3_892_pypedev
       - title: Nextcloud
@@ -150,8 +149,15 @@ sections:
         id: 5_892_smallgroupnotes
       - title: SadServers
         description: Fix some sad servers :'(
+        icon: fa-solid fa-face-sad-tear
         url: https://sadservers.com/scenarios
         id: 6_892_sadservers
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
   - name: Social & News
     icon: far fa-thumbs-up
     items:
@@ -175,25 +181,14 @@ sections:
         icon: si-bbc
         url: https://bbc.co.uk/news
         id: 4_1118_news
-      - title: Crypto Prices
-        icon: fab fa-bitcoin
-        url: https://www.livecoinwatch.com/
-        description: Real-time crypto prices and read-only portfolio
-        provider: Live Coin Watch
-        id: 5_1118_cryptoprices
-      - title: Delta 8 Awards
-        icon: fab fa-cannabis
-        description: The Dispo
-        url: https://l.lsloyalty.io/JOPnVNrp
-        id: 6_1118_deltaawards
       - title: MonicaDB
         description: Relationship Management
         icon: >-
           https://user-images.githubusercontent.com/61099/37693034-5783b3d6-2c93-11e8-80ea-bd78438dcd51.png
         url: http://192.168.1.8:8089/dashboard
-        id: 7_1118_monicadb
+        id: 5_1118_monicadb
   - name: Admin
-    icon: far fa-monitor-waveform
+    icon: fa-solid fa-crosshairs
     displayData:
       sortBy: default
       rows: 1
@@ -240,12 +235,6 @@ sections:
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.j2JRe7dG5XWy2daeQ3hqKAHaHa%26pid%3DApi&f=1
         url: https://192.168.1.210/login.html
         id: 5_489_r
-      - title: TrueNAS
-        description: On-prem backup
-        icon: '          https://external-content.duckduckgo.com/ip3/www.truenas.com.ico'
-        url: http://192.168.1.25
-        statusCheck: true
-        id: 6_489_truenas
   - name: Media
     displayData:
       sortBy: default
@@ -283,8 +272,12 @@ sections:
         url: http://paynepride.com:2202/ubooquity
         statusCheck: true
         id: 4_480_ubooquity
+      - title: Spotify
+        icon: fa-brands fa-spotify
+        url: https://open.spotify.com/
+        id: 5_480_spotify
   - name: Productivity
-    icon: far fa-briefcase
+    icon: fa-solid fa-briefcase
     items:
       - title: ProtonMail
         icon: favicon
@@ -297,67 +290,22 @@ sections:
           - mail
         hotkey: 1
         id: 0_1302_protonmail
-      - title: AnonAddy
-        icon: favicon
-        url: https://app.anonaddy.com/
-        description: Mail alias forwarder
-        tags:
-          - hosted
-          - personal
-          - forwarder
-          - aliases
-          - email
-        hotkey: 3
-        statusCheckAcceptCodes: '401'
-        id: 1_1302_anonaddy
-      - title: LessPass
-        icon: favicon
-        url: https://lesspass.com/
-        description: Deterministic password generator
-        tags:
-          - hosted
-          - personal
-          - password
-          - generate
-          - deterministic
-        hotkey: 4
-        id: 2_1302_lesspass
-      - title: EteSync
-        icon: favicon
-        url: https://pim.etesync.com/
-        description: Calendar + Contacts, CalDAV sync
-        tags:
-          - hosted
-          - personal
-          - caldav
-          - calendar
-          - contacts
-          - tasks
-          - planning
-        hotkey: 5
-        id: 3_1302_etesync
-      - title: Tasks
-        icon: https://i.ibb.co/v4jznK0/todo-list.png
-        url: https://pim.etesync.com/pim/tasks
-        description: Todo list and tasks from CalDAV
-        tags:
-          - hosted
-          - personal
-          - caldav
-          - tasks
-          - planning
-        hotkey: 6
-        id: 4_1302_tasks
       - title: Bitwarden
         icon: https://duckduckgo.com/i/ea6441be.png
         url: https://bitwarden.paynepride.com
         statusCheck: true
-        id: 5_1302_bitwarden
+        id: 1_1302_bitwarden
       - title: Simplelogin
         description: Privacy e-mail relay
         icon: https://avatars.githubusercontent.com/u/51910064?s=280&v=4
         url: https://app.simplelogin.io/dashboard/
-        id: 6_1302_simplelogin
+        id: 2_1302_simplelogin
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
   - name: Monitoring
     displayData:
       sortBy: default
@@ -366,12 +314,12 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - title: Ryzen - Netdata
+      - title: Babyblue - Netdata
         description: Netdata
         icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
-        url: http://ryzen-3600x:19999
+        url: http://babyblue:19999
         statusCheck: true
-        id: 0_1062_ryzennetdata
+        id: 0_1062_babybluenetdata
       - title: Hogwarts - Glances
         description: System Monitoring
         icon: https://nicolargo.github.io/glances/public/images/glances.png
@@ -385,18 +333,19 @@ sections:
           https://netdata.paynepride.com/#after=-720;before=0;=undefined;theme=slate;utc=America%2FChicago
         statusCheck: true
         id: 2_1062_hogwartsnetdata
-      - title: Ryzen - Glances
+      - title: Babyblue - Glances
         description: System Monitoring
         icon: https://nicolargo.github.io/glances/public/images/glances.png
-        url: http://ryzen-3600x:61208/
+        url: http://babyblue:61208/
         statusCheck: true
-        id: 3_1062_ryzenglances
+        id: 3_1062_babyblueglances
       - title: Gotify
         description: Notifications
         icon: https://external-content.duckduckgo.com/ip3/gotify.net.ico
         url: http://paynepride.com:2346/#/login
         statusCheck: true
         id: 4_1062_gotify
+    icon: fa-solid fa-monitor-heart-rate
   - name: Olivet
     displayData:
       sortBy: default
@@ -407,10 +356,12 @@ sections:
     items:
       - title: CCLI
         description: Records of CCLI numbers for our songs
+        icon: fa-solid fa-hashtag
         url: >-
           https://docs.google.com/spreadsheets/d/1-nPRo68IiSbJn9hF_EVovrBUePMS0XbzVxF6iL-8s7g/edit#gid=845320228
         id: 0_627_ccli
-  - name: House Related Links
+    icon: fa-solid fa-church
+  - name: Portals
     displayData:
       sortBy: default
       rows: 1
@@ -419,5 +370,14 @@ sections:
       hideForGuests: false
     items:
       - title: Appleton Utilities Bill Pay
+        icon: >-
+          https://www.appleton.org/Project/Contents/Main/_gfx/cmn/logo-footer.png
         url: https://client.pointandpay.net/web/CityofAppletonWIUtilityBilling
-        id: 0_1798_appletonutilitiesbillpay
+        id: 0_741_appletonutilitiesbillpay
+      - title: Delta 8 Awards
+        description: The Dispo
+        icon: >-
+          https://static.vecteezy.com/system/resources/previews/005/568/128/original/weed-icon-isolated-on-white-background-free-vector.jpg
+        url: https://l.lsloyalty.io/JOPnVNrp
+        id: 1_741_deltaawards
+    icon: fa-solid fa-person-to-portal
