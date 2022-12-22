@@ -116,15 +116,6 @@ sections:
         id: 1_513_weather
       - type: public-ip
         id: 2_513_publicip
-      - type: crypto-watch-list
-        options:
-          currency: GBP
-          sortBy: marketCap
-          assets:
-            - bitcoin
-            - ethereum
-            - dogecoin
-        id: 3_513_cryptowatchlist
   - name: Dev & Cloud
     icon: far fa-code
     items:
