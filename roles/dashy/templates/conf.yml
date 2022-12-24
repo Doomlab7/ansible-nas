@@ -62,6 +62,11 @@ sections:
         url: http://homeassistant.local:8123/lovelace/0
         statusCheck: true
         id: 0_393_homeassistant
+      - title: Kanboard
+        description: Home Kanban Board
+        icon: fa-solid fa-tasks
+        url: https://kanboard.paynepride.com/
+        id: 1_393_kanboard
   - name: Today
     icon: far fa-smile-beam
     displayData:
