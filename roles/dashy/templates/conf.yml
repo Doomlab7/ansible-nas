@@ -402,3 +402,17 @@ sections:
         url: https://l.lsloyalty.io/JOPnVNrp
         id: 1_741_deltaawards
     icon: fa-solid fa-person-to-portal
+  - name: IF I DIE
+    icon: fa-solid fa-skull
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Github - EOL Repo
+        description: Repo with instructions for what to do after my death
+        icon: fa-solid fa-book-skull
+        url: https://github.com/pypeaday/eol-dr
+        id: 0_490_githubeolrepo
