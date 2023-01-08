@@ -38,6 +38,7 @@
       OPENVPN_CONFIG: "{{ openvpn_config }}"
       WEBPROXY_ENABLED: "true"
       WEBPROXY_PORT: "3128"
+      OVERRIDE_DNS_1: 9.9.9.9
       PUID: "{{ transmission_openvpn_user_id }}"
       PGID: "{{ transmission_openvpn_group_id }}"
       LOCAL_NETWORK: "{{ transmission_openvpn_local_network }}"
