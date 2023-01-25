@@ -2,7 +2,7 @@ appConfig:
   statusCheck: false
   theme: default
   fontAwesomeKey: f44bea53a7
-  customCss: '.clock p.time { font-size: 3rem !important; }'
+  customCss: ".clock p.time { font-size: 3rem !important; }"
   layout: auto
   iconSize: large
   language: en
@@ -44,7 +44,7 @@ pageInfo:
   title: Hello, Nic!
   description: Paynepride Homepage
   navLinks: []
-  footerText: ''
+  footerText: ""
   logo: https://i.ibb.co/71WyyzM/little-bot-3.png
 sections:
   - name: Home
@@ -82,6 +82,11 @@ sections:
         id: 1_513_weather
       - type: public-ip
         id: 2_513_publicip
+    items:
+      - title: MinionMeet
+        description: MinionAI
+        url: https://meet.google.com/zsp-mgrn-aen
+        id: 0_513_minionmeet
   - name: Servarr
     icon: >-
       https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
@@ -150,7 +155,7 @@ sections:
       - title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
-        statusCheckAcceptCodes: '403'
+        statusCheckAcceptCodes: "403"
         id: 2_892_cloudflare
       - title: Pype.dev
         description: Blog
@@ -220,11 +225,11 @@ sections:
         description: Reverse Proxy
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
-        url: ' http://paynepride.com:8083/dashboard/'
+        url: " http://paynepride.com:8083/dashboard/"
         statusCheck: true
         id: 0_489_traefik
       - title: Pi-Hole
-        description: ''
+        description: ""
         icon: https://pihole.paynepride.com/img/logo.svg
         url: https://pihole.paynepride.com/admin
         statusCheck: true
@@ -381,6 +386,18 @@ sections:
         url: >-
           https://docs.google.com/spreadsheets/d/1-nPRo68IiSbJn9hF_EVovrBUePMS0XbzVxF6iL-8s7g/edit#gid=845320228
         id: 0_627_ccli
+      - title: Setlists
+        description: Setlists from Kayla and Greg
+        url: >-
+          https://docs.google.com/spreadsheets/d/1x-0TRXQqs3_n1VgP2c_pK4gUmIZF2w_ZU28u23-iGyY/edit#gid=1172447411
+        id: 1_627_setlists
+      - title: Service SIgn Ups
+        description: >-
+          Sign ups for various things at the church - clelan up, remodels,
+          meals, etc.
+        url: >-
+          https://docs.google.com/spreadsheets/d/1rFuXeDzWZND8ihxUmvo-OgItqltEzbhO0ue3QpG_L-Y/edit#gid=1391041330
+        id: 2_627_servicesignups
     icon: fa-solid fa-church
   - name: Portals
     displayData:
