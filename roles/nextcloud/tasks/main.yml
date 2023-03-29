@@ -30,6 +30,7 @@
     links:
       - nextcloud-mysql:mysql
     volumes:
+      - "{{ nextcloud_shares_root }}:/nas:rw"
       - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
     ports:
       - "{{ nextcloud_port }}:80"
@@ -48,7 +49,6 @@
       traefik.http.routers.nextcloud.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.nextcloud.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.nextcloud.loadbalancer.server.port: "80"
-
 - name: Nextcloud Cron Docker Container
   docker_container:
     name: nextcloud-cron
@@ -68,9 +68,9 @@
       MYSQL_USER: "{{ nextcloud_sql_user }}"
       MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
       NEXTCLOUD_TRUSTED_DOMAINS: "{{ nextcloud_hostname }}.{{ ansible_nas_domain }}"
-      PUID: "{{ nextcloud_user_id }}"
-      PGID: "{{ nextcloud_group_id }}"
-      TZ: "{{ ansible_nas_timezone }}"
+      # PUID: "{{ nextcloud_user_id }}"
+      # PGID: "{{ nextcloud_group_id }}"
+      # TZ: "{{ ansible_nas_timezone }}"
     restart_policy: unless-stopped
     memory: "{{ nextcloud_memory }}"
     labels:
