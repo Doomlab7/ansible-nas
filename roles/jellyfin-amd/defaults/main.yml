@@ -26,8 +26,8 @@ jellyfin_amd_group_id: "0"
 
 # network
 jellyfin_amd_hostname: "jellyfin_amd"
-jellyfin_amd_port_http: "8897"
-jellyfin_amd_port_https: "8929"
+jellyfin_amd_port_http: "8097"
+jellyfin_amd_port_https: "8921"
 
 # specs
 jellyfin_amd_memory: "1g"
