@@ -128,7 +128,7 @@
     - role: jellyfin-amd
       tags:
         - jellyfin-amd
-      when: (jellyfin-amd_enabled | default(False))
+      when: (jellyfin_amd_enabled | default(False))
 
     - role: jellyfin
       tags:
