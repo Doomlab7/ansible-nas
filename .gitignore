@@ -1,6 +1,3 @@
-tests/test.yml
-site
-.vagrant
 *.retry
 *.log
 inventories
@@ -14,8 +11,5 @@ roles/geerlingguy.nfs
 
 # Session
 Session.vim
-
-# IntelliJ
-/.idea/
 
 .envrc
