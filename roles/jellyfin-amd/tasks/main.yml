@@ -1,0 +1,40 @@
+---
+- name: Create Jellyfin-AMD Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ jellyfin_amd_config_directory }}"
+
+- name: Jellyfin-AMD Docker Container With HWA
+  docker_container:
+    name: jellyfin_amd
+    image: linuxserver/jellyfin
+    pull: true
+    volumes:
+      - "{{ jellyfin_amd_config_directory }}:/config:rw"
+      - "{{ jellyfin_amd_movies_directory }}:/movies:{{ jellyfin_amd_movies_permissions }}"
+      - "{{ jellyfin_amd_music_directory }}:/music:{{ jellyfin_amd_music_permissions }}"
+      - "{{ jellyfin_amd_photos_directory }}:/photos:{{ jellyfin_amd_photos_permissions }}"
+      - "{{ jellyfin_amd_tv_directory }}:/tv:{{ jellyfin_amd_tv_permissions }}"
+      - "{{ jellyfin_amd_books_directory }}:/books:{{ jellyfin_amd_books_permissions }}"
+      - "{{ jellyfin_amd_audiobooks_directory }}:/audiobooks:{{ jellyfin_amd_audiobooks_permissions }}"
+    ports:
+      - "{{ jellyfin_amd_port_http }}:8096"
+      - "{{ jellyfin_amd_port_https }}:8920"
+    devices:
+      - /dev/dri:/dev/dri
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      PUID: "{{ jellyfin_amd_user_id }}"
+      PGID: "{{ jellyfin_amd_group_id }}"
+      DOCKER_MODS: linuxserver/mods:jellyfin-amd
+    restart_policy: unless-stopped
+    memory: "{{ jellyfin_amd_memory }}"
+    labels:
+      traefik.enable: "{{ jellyfin_amd_available_externally | string }}"
+      traefik.http.routers.jellyfin_amd.rule: "Host(`{{ jellyfin_amd_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.jellyfin_amd.tls.certresolver: "letsencrypt"
+      traefik.http.routers.jellyfin_amd.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.jellyfin_amd.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.jellyfin_amd.loadbalancer.server.port: "8096"
