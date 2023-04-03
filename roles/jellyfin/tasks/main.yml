@@ -24,10 +24,14 @@
     ports:
       - "{{ jellyfin_port_http }}:8096"
       - "{{ jellyfin_port_https }}:8920"
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
     env:
       TZ: "{{ ansible_nas_timezone }}"
       PUID: "{{ jellyfin_user_id }}"
       PGID: "{{ jellyfin_group_id }}"
+      DOCKER_MODS: "linuxserver/mods:jellyfin-amd"
     restart_policy: unless-stopped
     memory: "{{ jellyfin_memory }}"
     labels:
