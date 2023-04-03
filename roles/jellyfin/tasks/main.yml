@@ -11,7 +11,7 @@
     path: "{{ item }}"
     owner: "{{ jellyfin_user_id }}"
     group: "{{ jellyfin_group_id }}"
-    mode: "u=rwX,g=rwX,o=rwX"
+    mode: "u=rwX,g=rwX,o=rX"
     recurse: true
   loop:
     # Migrating from host install back to Docker
