@@ -6,6 +6,21 @@
   with_items:
     - "{{ jellyfin_config_directory }}"
 
+
+- name: "Permission share data"
+  file:
+    path: "{{ item.path }}"
+    owner: ansible-nas
+    group: ansible-nas
+    mode: "u=rwX,g=rwX,o=rX"
+    recurse: true
+  loop:
+    # Migrating from host install back to Docker
+    - /etc/jellyfin:/etc/jellyfin
+    - /var/cache/jellyfin:/var/cache/jellyfin
+    - /var/lib/jellyfin:/var/lib/jellyfin
+    - /var/log/jellyfin:/var/log/jellyfin
+
 - name: Jellyfin Docker Container
   docker_container:
     name: jellyfin
@@ -21,10 +36,10 @@
       - "{{ jellyfin_audiobooks_directory }}:/audiobooks:{{ jellyfin_audiobooks_permissions }}"
       - "{{ samba_shares_root }}/media/YouTube:/youtube:ro"
       # Migrating from host install back to Docker
-      - /etc/jellyfin:/etc/jellyfin
-      - /var/cache/jellyfin:/var/cache/jellyfin
-      - /var/lib/jellyfin:/var/lib/jellyfin
-      - /var/log/jellyfin:/var/log/jellyfin
+      - /etc/jellyfin:/etc/jellyfin:rw
+      - /var/cache/jellyfin:/var/cache/jellyfin:rw
+      - /var/lib/jellyfin:/var/lib/jellyfin:rw
+      - /var/log/jellyfin:/var/log/jellyfin:rw
 
     ports:
       - "{{ jellyfin_port_http }}:8096"
