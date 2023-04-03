@@ -1,5 +1,5 @@
 http:
- #region routers 
+  #region routers
   routers:
     stable-diffusion:
       entryPoints:
@@ -7,7 +7,7 @@ http:
       rule: "Host(`stable-diffusion.paynepride.com`)"
       middlewares:
         - simple-auth
-      tls: 
+      tls:
         certResolver: letsencrypt
       service: stable_diffusion
     stable-diffusion2:
@@ -16,9 +16,20 @@ http:
       rule: "Host(`stable-diffusion2.paynepride.com`)"
       middlewares:
         - simple-auth
-      tls: 
+      tls:
         certResolver: letsencrypt
       service: stable_diffusion2
+    jellyfin2:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`jellyfin2.paynepride.com`)"
+      middlewares:
+        - https-redirect
+        - default-headers
+        # - extended-whitelist
+      tls:
+        certResolver: letsencrypt
+      service: jellyfin2
     jellyfin:
       entryPoints:
         - "websecure"
@@ -27,7 +38,7 @@ http:
         - https-redirect
         - default-headers
         # - extended-whitelist
-      tls: 
+      tls:
         certResolver: letsencrypt
       service: jellyfin
     pihole:
@@ -38,31 +49,31 @@ http:
         # - default-headers
         - addprefix-pihole
         - default-whitelist
-      tls: 
+      tls:
         certResolver: letsencrypt
       service: pihole
-    littlelink:  # website 
+    littlelink: # website
       entryPoints:
         - "websecure"
       rule: "Host(`littlelink.paynepride.com`)"
       tls:
         certResolver: letsencrypt
       service: littlelink
-    rickroll:  # rick roll 
+    rickroll: # rick roll
       entryPoints:
         - "websecure"
       rule: "Host(`rr.paynepride.com`)"
       tls:
         certResolver: letsencrypt
       service: rickroll
-    smallgroup:  # tidler notes 
+    smallgroup: # tidler notes
       entryPoints:
         - "websecure"
       rule: "Host(`smallgroup.paynepride.com`)"
       tls:
         certResolver: letsencrypt
       service: smallgroup
-    piwigo:  # piwigo
+    piwigo: # piwigo
       entryPoints:
         - "websecure"
       rule: "Host(`www.paynepride.com`)"
@@ -70,8 +81,8 @@ http:
         certResolver: letsencrypt
       service: piwigo
 
-#endregion
-#region services
+  #endregion
+  #region services
   services:
     stable_diffusion:
       loadBalancer:
@@ -82,6 +93,11 @@ http:
       loadBalancer:
         servers:
           - url: "http://babyblue:7860"
+        passHostHeader: true
+    jellyfin2:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.8:8097"
         passHostHeader: true
     jellyfin:
       loadBalancer:
@@ -114,7 +130,7 @@ http:
         servers:
           - url: "http://192.168.1.124"
         passHostHeader: true
-#endregion
+  #endregion
   middlewares:
     simple-auth:
       basicAuth:
@@ -147,23 +163,23 @@ http:
     default-whitelist:
       ipWhiteList:
         sourceRange:
-        - "10.220.108.0/24"  # wg
-        - "192.168.1.0/24"  # lan
-        - "172.17.0.0/16"  # docker
-        - "172.19.0.0/16"  # docker
-        - "172.20.0.0/16"  # docker
-        - "172.22.0.0/16"  # docker
+          - "10.220.108.0/24" # wg
+          - "192.168.1.0/24" # lan
+          - "172.17.0.0/16" # docker
+          - "172.19.0.0/16" # docker
+          - "172.20.0.0/16" # docker
+          - "172.22.0.0/16" # docker
 
     extended-whitelist:
       ipWhiteList:
         sourceRange:
-        - "10.220.108.0/24"  # wg
-        - "192.168.1.0/24"  # lan
-        - "172.17.0.0/16"  # docker
-        - "71.66.253.233/32"  # block WAN
+          - "10.220.108.0/24" # wg
+          - "192.168.1.0/24" # lan
+          - "172.17.0.0/16" # docker
+          - "71.66.253.233/32" # block WAN
 
     secured:
       chain:
         middlewares:
-        - default-whitelist
-        - default-headers
+          - default-whitelist
+          - default-headers
