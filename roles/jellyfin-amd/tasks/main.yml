@@ -29,7 +29,7 @@
       TZ: "{{ ansible_nas_timezone }}"
       PUID: "{{ jellyfin_amd_user_id }}"
       PGID: "{{ jellyfin_amd_group_id }}"
-      DOCKER_MODS: linuxserver/mods:jellyfin-amd
+      DOCKER_MODS: "linuxserver/mods:jellyfin-amd"
     restart_policy: unless-stopped
     memory: "{{ jellyfin_amd_memory }}"
     labels:
