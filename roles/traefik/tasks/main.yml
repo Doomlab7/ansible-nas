@@ -28,7 +28,7 @@
 - name: Traefik Docker Container
   docker_container:
     name: traefik
-    image: "{{ traefik_docker_image }}"
+    image: "traefik:v2.4"
     pull: true
     network_mode: host
     volumes:
