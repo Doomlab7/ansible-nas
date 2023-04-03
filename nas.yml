@@ -77,9 +77,6 @@
       tags:
         - dashy
 
-    - role: deluge
-      tags:
-        - deluge
     - role: drone-ci
       tags:
         - drone_ci
@@ -157,11 +154,6 @@
       tags:
         - minecraft-server
       when: (minecraft_server_enabled | default(False))
-
-    - role: minidlna
-      tags:
-        - minidlna
-      when: (minidlna_enabled | default(False))
 
     - role: navidrome
       tags:
