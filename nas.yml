@@ -237,6 +237,9 @@
       tags:
         - traefik
       when: (traefik_enabled | default(False))
+      environment:
+        # need to set this since mapping the devices for HWA causes time with default setting of 60
+        DOCKER_CLIENT_TIMEOUT: 120
 
     - role: transmission-with-openvpn
       tags:
