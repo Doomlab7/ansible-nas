@@ -19,6 +19,7 @@
     - /var/cache/jellyfin:/var/cache/jellyfin
     - /var/lib/jellyfin:/var/lib/jellyfin
     - /var/log/jellyfin:/var/log/jellyfin
+    - "{{ jellyfin_config_directory }}"
 
 - name: Jellyfin Docker Container
   docker_container:
