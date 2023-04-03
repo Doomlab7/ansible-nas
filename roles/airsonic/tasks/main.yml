@@ -30,8 +30,8 @@
           traefik.http.routers.airsonic.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.airsonic.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.airsonic.loadbalancer.server.port: "4040"
+          traefik.http.routers.airsonic.middlewares: "default-whitelist@file"
   when: airsonic_enabled is true
-      traefik.http.routers.airsonic.middlewares: "default-whitelist@file"
 
 - name: Stop Airsonic
   block:
