@@ -9,8 +9,8 @@
 - name: "Permission share data"
   file:
     path: "{{ item }}"
-    owner: ansible-nas
-    group: ansible-nas
+    owner: "{{ jellyfin_user_id }}"
+    group: "{{ jellyfin_group_id }}"
     mode: "u=rwX,g=rwX,o=rX"
     recurse: true
   loop:
