@@ -1,0 +1,70 @@
+---
+- name: check is zsh installed
+  ansible.builtin.shell: command -v zsh
+  register: zsh_exists
+  ignore_errors: yes
+  tags: 
+    - zsh
+
+- name: Install ZSH
+  when: zsh_exists is failed
+  become: true
+  apt: name=zsh
+  tags: 
+    - zsh
+
+- name: Change shell to zsh
+  # ansible.builtin.shell: chsh -s $(which zsh)
+  ansible.builtin.shell: sudo usermod --shell /usr/bin/zsh {{ ansible_nas_user }}
+  become: yes
+  tags: 
+    - zsh
+
+- name: Check if oh-my-zsh is installed
+  stat:
+    path: ".oh-my-zsh"
+  register: ohmyzsh_path
+  become_user: "{{ ansible_nas_user }}"
+  become: yes
+  tags: 
+    - zsh
+
+- name: Oh-My-Zsh
+  ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+  # when: ohmyzsh_path.stat.islnk is not defined and ohmyzsh_root_path.stat.islnk is not defined
+  when: ohmyzsh_path.stat.islnk is not defined
+  ignore_errors: yes
+  tags: 
+    - zsh
+  # become: yes
+  become_user: "{{ ansible_nas_user }}"
+
+- name: Check if zsh-autosuggestions is installed
+  stat:
+    path: ".oh-my-zsh/plugins/zsh-autosuggestions"
+  register: zshautosuggestions_path
+  tags: 
+    - zsh
+
+- name: Install zsh-autosuggestions
+  when: zshautosuggestions_path.stat.islnk is not defined
+  tags: 
+    - zsh
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: ".oh-my-zsh/plugins/zsh-autosuggestions"
+
+- name: Check if zsh-history-substring-search is installed 
+  tags: 
+    - zsh
+  stat:
+    path: ".oh-my-zsh/plugins/zsh-history-substring-search"
+  register: zsh_history_substring_search_path
+
+- name: Install zsh-history-substring-search
+  tags: 
+    - zsh
+  when: zsh_history_substring_search_path.stat.islnk is not defined
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-history-substring-search.git'
+    dest: ".oh-my-zsh/plugins/zsh-history-substring-search"

@@ -21,10 +21,12 @@
     address = ":{{ traefik_port_ui }}"
 
 [providers]
-  providersThrottleDuration = "2s"
+  providersThrottleDuration = "1s"
   [providers.docker]
     exposedbydefault = false
-
+  [providers.file]
+    filename = "/etc/traefik/config.yml"
+    
 [api]
   insecure = true
   dashboard = true

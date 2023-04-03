@@ -1,0 +1,41 @@
+---
+- name: Create Blog directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ docker_home }}/blog/config"
+
+
+- name: Remove old Blog directories
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ docker_home }}/blog/"
+
+
+- name: Blog Container
+  docker_container:
+    name: blog
+    build: "path to the repo that would be cloned - which I need to figure out"
+    volumes:
+      - "{{ docker_home }}/blog/config/:/config:rw"
+    ports:
+      - "{{ blog_port }}:8000"
+    restart_policy: unless-stopped
+    memory: 1g
+    labels:
+      traefik.enable: "{{ blog_available_externally }}"
+      traefik.http.routers.blog.rule: "Host(`blog.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.blog.tls.certresolver: "letsencrypt"
+      traefik.http.routers.blog.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.blog.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.blog.loadbalancer.server.port: "8000"
+
+- name: Restart Blog Container
+  docker_container:
+    name: blog
+    # image: "oznu/guacamole"
+    build: "path to the repo that would be cloned - which I need to figure out"
+    restart: true

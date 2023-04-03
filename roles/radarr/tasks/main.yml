@@ -30,3 +30,4 @@
       traefik.http.routers.radarr.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.radarr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.radarr.loadbalancer.server.port: "7878"
+      traefik.http.routers.radarr.middlewares: "default-whitelist@file"

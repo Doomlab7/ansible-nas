@@ -12,7 +12,7 @@
 - name: Transmission with VPN
   docker_container:
     name: transmission-openvpn
-    image: haugene/transmission-openvpn
+    image: haugene/transmission-openvpn:3.7.1
     pull: true
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
@@ -31,7 +31,8 @@
       TRANSMISSION_INCOMPLETE_DIR: "/data/downloads/.incomplete"
       TRANSMISSION_WATCH_DIR: "/watch"
       TRANSMISSION_RATIO_LIMIT: "{{ transmission_openvpn_ratio_limit }}"
-      TRANSMISSION_RATIO_LIMIT_ENABLED: "{{ transmission_openvpn_ratio_limit_enabled | string }}"
+      TRANSMISSION_RATIO_LIMIT_ENABLED: "{{ transmission_openvpn_ratio_limit_enabled }}"
+      TRANSMISSION_WEB_UI: "flood-for-transmission"
       OPENVPN_PROVIDER: "{{ openvpn_provider }}"
       OPENVPN_USERNAME: "{{ openvpn_username }}"
       OPENVPN_PASSWORD: "{{ openvpn_password }}"
@@ -43,6 +44,7 @@
       PGID: "{{ transmission_openvpn_group_id }}"
       LOCAL_NETWORK: "{{ transmission_openvpn_local_network }}"
       ENABLE_UFW: "false"
+      UMASK: "2"
     devices:
       - /dev/net/tun
     capabilities:
@@ -56,3 +58,4 @@
       traefik.http.routers.transmission_openvpn.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.transmission_openvpn.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.transmission_openvpn.loadbalancer.server.port: "9091"
+      traefik.http.routers.transmission_openvpn.middlewares: "default-whitelist@file"

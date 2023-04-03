@@ -30,3 +30,4 @@
       traefik.http.routers.sonarr.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.sonarr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.sonarr.loadbalancer.server.port: "8989"
+      traefik.http.routers.sonarr.middlewares: "default-whitelist@file"

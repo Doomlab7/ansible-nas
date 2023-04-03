@@ -28,3 +28,4 @@
       traefik.http.routers.prowlarr.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.prowlarr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.prowlarr.loadbalancer.server.port: "9696"
+      traefik.http.routers.prowlarr.middlewares: "default-whitelist@file"

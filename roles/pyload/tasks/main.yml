@@ -31,3 +31,4 @@
       traefik.http.routers.pyload.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.pyload.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.pyload.loadbalancer.server.port: "8000"
+      traefik.http.routers.pyload.middlewares: "default-whitelist@file"

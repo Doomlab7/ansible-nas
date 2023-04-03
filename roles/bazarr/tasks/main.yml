@@ -33,6 +33,7 @@
           traefik.http.routers.bazarr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.bazarr.loadbalancer.server.port: "6767"
   when: bazarr_enabled is true
+      traefik.http.routers.bazarr.middlewares: "default-whitelist@file"
 
 - name: Stop Bazarr
   block:

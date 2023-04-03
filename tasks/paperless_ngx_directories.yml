@@ -1,0 +1,13 @@
+---
+- name: Create paperless_ngx directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ paperless_ngx_config_directory }}"
+    - "{{ paperless_ngx_files_directory }}"
+    - "{{ paperless_ngx_postgres_directory }}"
+    - "{{ paperless_ngx_data_directory }}"
+    - "{{ paperless_ngx_export_directory }}"
+    - "{{ paperless_ngx_media_directory }}"
+    - "{{ paperless_ngx_consume_directory }}"

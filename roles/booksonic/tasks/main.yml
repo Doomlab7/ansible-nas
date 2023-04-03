@@ -36,6 +36,7 @@
           traefik.http.routers.booksonic.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.booksonic.loadbalancer.server.port: "4040"
   when: booksonic_enabled is true
+      traefik.http.routers.booksonic.middlewares: "default-whitelist@file"
 
 - name: Stop Booksonic
   block:

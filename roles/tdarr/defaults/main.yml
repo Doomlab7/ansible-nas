@@ -1,0 +1,31 @@
+---
+tdarr_enabled: false
+tdarr_available_externally: "false"
+
+# directories
+tdarr_data_directory: "{{ docker_home }}/tdarr"
+tdarr_movies_directory: "{{ movies_root }}"
+tdarr_tv_directory: "{{ tv_root }}"
+tdarr_youtube_directory: "{{ youtubedlmaterial_downloads_directory }}"
+tdarr_transcode_cache_directory: "{{ tdarr_transcode_cache_root }}"
+
+# uid / gid
+tdarr_user_id: "0"
+tdarr_group_id: "0"
+
+# network
+tdarr_server_ip: 0.0.0.0
+
+tdarr_webui_port: "8265"
+tdarr_server_port: "8266"
+tdarr_internal_node_port: "8267"
+
+tdarr_hostname: "tdarr"
+
+# todo: list of extra node ports
+tdarr_extra_node_port: "8268"
+
+# specs
+tdarr_memory: 1g
+
+

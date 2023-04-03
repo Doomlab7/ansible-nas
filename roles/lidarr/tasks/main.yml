@@ -1,8 +1,10 @@
 ---
 - name: Create Lidarr Directory
   file:
-    path: "{{ lidarr_data_directory }}"
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - "{{ lidarr_data_directory }}"
 
 - name: Lidarr Docker Container
   docker_container:
@@ -28,3 +30,4 @@
       traefik.http.routers.lidarr.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.lidarr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.lidarr.loadbalancer.server.port: "8686"
+      traefik.http.routers.lidarr.middlewares: "default-whitelist@file"
