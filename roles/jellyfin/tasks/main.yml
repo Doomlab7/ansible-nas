@@ -20,10 +20,18 @@
       - "{{ jellyfin_books_directory }}:/books:{{ jellyfin_books_permissions }}"
       - "{{ jellyfin_audiobooks_directory }}:/audiobooks:{{ jellyfin_audiobooks_permissions }}"
       - "{{ samba_shares_root }}/media/YouTube:/youtube:ro"
+      # Migrating from host install back to Docker
+      - /etc/jellyfin:/etc/jellyfin
+      - /var/cache/jellyfin:/var/cache/jellyfin
+      - /var/lib/jellyfin:/var/lib/jellyfin
+      - /var/log/jellyfin:/var/log/jellyfin
 
     ports:
       - "{{ jellyfin_port_http }}:8096"
       - "{{ jellyfin_port_https }}:8920"
+      # Make it discoverable
+      - 7359:7359/udp
+      - 1900:1900/udp
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       - /dev/dri/card0:/dev/dri/card0
