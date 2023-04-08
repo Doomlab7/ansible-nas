@@ -32,7 +32,6 @@
     links:
       - nextcloud-mysql:mysql
     volumes:
-      - "{{ nextcloud_shares_root }}:/nas:rw"
       - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
       - "{{ nextcloud_shares_root }}:/nas:rw"
     ports:
