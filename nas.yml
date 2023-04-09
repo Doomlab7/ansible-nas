@@ -76,6 +76,7 @@
     - role: dashy
       tags:
         - dashy
+      when: (dashy_enabled | default(False))
 
     - role: drone-ci
       tags:
