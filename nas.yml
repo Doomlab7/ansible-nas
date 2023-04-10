@@ -209,6 +209,11 @@
         - pyload
       when: (pyload_enabled | default(False))
 
+    - role: readarr
+      tags:
+        - readarr
+      when: (readarr_enabled | default(False))
+
     - role: radarr
       tags:
         - radarr
@@ -233,6 +238,11 @@
       tags:
         - syncthing
       when: (syncthing_enabled | default(False))
+
+    - role: tdarr
+      tags:
+        - tdarr
+      when: (tdarr_enabled | default(False))
 
     - role: traefik
       tags:
