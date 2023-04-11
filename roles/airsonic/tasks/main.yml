@@ -21,6 +21,9 @@
           - "{{ airsonic_podcasts_directory }}:/airsonic/podcasts:rw"
         ports:
           - "{{ airsonic_port }}:4040"
+        env:
+          PUID: "{{ airsonic_user_id }}"
+          PGID: "{{ airsonic_group_id }}"
         restart_policy: unless-stopped
         memory: "{{ airsonic_memory }}"
         labels:
