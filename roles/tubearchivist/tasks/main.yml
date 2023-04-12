@@ -1,0 +1,76 @@
+---
+- name: TubeArchivist Directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ tubearchivist_data_directory }}"
+    - "{{ tubearchivist_media_directory }}"
+    - "{{ tubearchivist_redis_directory }}"
+    - "{{ tubearchivist_cache_directory }}"
+    - "{{ tubearchivist_es_directory }}"
+
+- name: TubeArchivist ElasticSearch Container
+  docker_container:
+    name: tubearchivist-es
+    pull: true
+    image: bbilly1/tubearchivist-es
+    restart_policy: unless-stopped
+    exposed_ports:
+      - 9200
+    env:
+      ELASTIC_PASSWORD: "{{ tubearchivist_es_password }}" # set password for Elasticsearch
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      xpack.security.enabled: "true"
+      discovery.type: "single-node"
+      path.repo: "/usr/share/elasticsearch/data/snapshot"
+    # --ulimit <type>=<soft>:<hard>
+    ulimits: 
+      - "memlock:-1:-1"
+    volumes:
+      - "{{ tubearchivist_es_directory }}:/usr/share/elasticsearch/data:rw"
+
+- name: TubeArchivist Redis Container
+  docker_container:
+    name: tubearchivist-redis
+    pull: true
+    image: redis/redis-stack-server
+    restart_policy: unless-stopped
+    exposed_ports:
+      - 6379
+    volumes:
+      - "{{ tubearchivist_redis_directory }}/data:rw"
+    links:
+      - tubearchivist-es
+- name: TubeArchivist Docker Container
+  docker_container:
+    name: tubearchivist
+    image: bbilly1/tubearchivist
+    pull: true
+    volumes:
+      - "{{ tubearchivist_media_directory }}:/youtube:rw"
+      - "{{ tubearchivist_cache_directory }}:/cache:rw"
+    ports:
+      - "{{ tubearchivist_port_http }}:8000"
+    env:
+      ES_URL: "http://archivist-es:9200"
+      REDIS_HOST: "tubearchivist-redis"
+      HOST_UID: "{{ tubearchivist_uid }}"
+      HOST_GID: "{{ tubearchivist_gid }}"
+      TA_HOST: "{{ tubearchivist_hostname }}"
+      TA_USERNAME: "{{ tubearchivist_username }}"
+      TA_PASSWORD: "{{ tubearchivist_password }}"
+      ELASTIC_PASSWORD: "{{ tubearchivist_es_password }}"
+      TZ: "{{ ansible_nas_timezone }}"
+    restart_policy: unless-stopped
+    memory: 1g
+    labels:
+      traefik.enable: "{{ tubearchivist_available_externally | string }}"
+      traefik.http.routers.tubearchivist.rule: "Host(`tubearchivist.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.tubearchivist.tls.certresolver: "letsencrypt"
+      traefik.http.routers.tubearchivist.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.tubearchivist.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.services.tubearchivist.loadbalancer.server.port: "8000"
+    links:
+        - tubearchivist-redis
+        - tubearchivist-es
