@@ -53,7 +53,7 @@
     ports:
       - "{{ tubearchivist_port_http }}:8000"
     env:
-      ES_URL: "http://archivist-es:9200"
+      ES_URL: "http://tubearchivist-es:9200"
       REDIS_HOST: "tubearchivist-redis"
       HOST_UID: "{{ tubearchivist_uid }}"
       HOST_GID: "{{ tubearchivist_gid }}"
