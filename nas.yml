@@ -257,6 +257,11 @@
         - transmission_with_openvpn
       when: (transmission_openvpn_enabled | default(False))
 
+    - role: tubearchivist
+      tags:
+        - tubearchivist
+      when: (tubearchivist_enabled | default(False))
+
     - role: ubooquity
       tags:
         - ubooquity
