@@ -67,6 +67,11 @@ sections:
         icon: fa-solid fa-tasks
         url: https://kanboard.paynepride.com/
         id: 1_393_kanboard
+      - title: Aquahawk
+        description: Water/Services Monitoring
+        icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
+        url: https://applwi.aquahawk.us/
+        id: 2_393_aquahawk
   - name: Today
     icon: far fa-smile-beam
     displayData:
