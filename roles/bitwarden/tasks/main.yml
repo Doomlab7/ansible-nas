@@ -24,6 +24,8 @@
           ADMIN_TOKEN: "{{ bitwarden_admin_token }}"
           LOG_FILE: "/data/bitwarden.log"
           WEBSOCKET_ENABLED: "true"
+          UID: "{{ bitwarden_user_id }}"
+          GID: "{{ bitwarden_group_id}}"
         labels:
           traefik.enable: "{{ bitwarden_available_externally | string }}"
           traefik.http.routers.bitwarden.rule: "Host(`{{ bitwarden_hostname }}.{{ ansible_nas_domain }}`)"
@@ -52,6 +54,15 @@
         restart_policy: unless-stopped
         volumes_from: bitwarden
         memory: "{{ bitwarden_backup_memory }}"
+        env:
+          # idk if these are needed
+          SIGNUPS_ALLOWED: "{{ bitwarden_allow_signups | string }}"
+          ADMIN_TOKEN: "{{ bitwarden_admin_token }}"
+          LOG_FILE: "/data/bitwarden.log"
+          WEBSOCKET_ENABLED: "true"
+          # I expect this to solve perms issue
+          UID: "{{ bitwarden_user_id }}"
+          GID: "{{ bitwarden_group_id}}"
   when: bitwarden_enabled is true
 
 - name: Stop Bitwarden
