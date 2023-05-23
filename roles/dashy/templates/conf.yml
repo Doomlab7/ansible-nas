@@ -236,7 +236,7 @@ sections:
       - title: Pi-Hole
         description: ""
         icon: https://pihole.paynepride.com/img/logo.svg
-        url: https://pihole.paynepride.com
+        url: https://pihole.paynepride.com/admin
         statusCheck: true
         id: 1_489_pihole
       - title: Cloud Commander
@@ -265,6 +265,12 @@ sections:
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.j2JRe7dG5XWy2daeQ3hqKAHaHa%26pid%3DApi&f=1
         url: https://192.168.1.210/login.html
         id: 5_489_r
+      - title: OPNSense
+        description: Router
+        icon: >-
+          https://192.168.1.1:8443/ui/themes/opnsense/build/images/default-logo.svg?v=62992a662883c6c9
+        url: https://192.168.1.1:8443/
+        id: 6_489_opnsense
   - name: Media
     displayData:
       sortBy: default
