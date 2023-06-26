@@ -312,6 +312,12 @@ sections:
         icon: fa-brands fa-spotify
         url: https://open.spotify.com/
         id: 5_480_spotify
+      - title: TubeArchivist
+        description: YouTube front-end
+        icon: >-
+          http://hogwarts:8003/static/img/banner-tube-archivist-dark.edd9d4b3a1e5.png
+        url: http://hogwarts:8003
+        id: 6_480_tubearchivist
   - name: Productivity
     icon: fa-solid fa-briefcase
     items:
