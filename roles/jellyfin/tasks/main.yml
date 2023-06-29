@@ -35,11 +35,10 @@
       - "{{ jellyfin_books_directory }}:/books:{{ jellyfin_books_permissions }}"
       - "{{ jellyfin_audiobooks_directory }}:/audiobooks:{{ jellyfin_audiobooks_permissions }}"
       - "{{ youtubedlmaterial_downloads_directory }}:/youtube:ro"
-      # Migrating from host install back to Docker
-      - /etc/jellyfin:/etc/jellyfin:rw
-      - /var/cache/jellyfin:/var/cache/jellyfin:rw
-      - /var/lib/jellyfin:/var/lib/jellyfin:rw
-      - /var/log/jellyfin:/var/log/jellyfin:rw
+      - "{{ jellyfin_migrate_from_bare_metal_directory }}/etc:/etc/jellyfin:rw"
+      - "{{ jellyfin_migrate_from_bare_metal_directory }}/var/lib/jellyfin:/var/lib/jellyfin:rw"
+      - "{{ jellyfin_migrate_from_bare_metal_directory }}/var/log/jellyfin:/var/log/jellyfin:rw"
+      - "{{ jellyfin_migrate_from_bare_metal_directory }}/var/cache/jellyfin:/var/cache/jellyfin:rw"
 
     ports:
       - "{{ jellyfin_port_http }}:8096"
