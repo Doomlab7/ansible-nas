@@ -1,7 +1,0 @@
-
----
-- hosts: da
-
-  roles:
-    - role: kvm-bridge-networking
-
