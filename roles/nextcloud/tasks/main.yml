@@ -33,6 +33,7 @@
       - nextcloud-mysql:mysql
     volumes:
       - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
+      # I think adding www-data user to ansible-nas group (1001) will enable writing to any part of the /nas that my docker containers can
       - "{{ nextcloud_shares_root }}:/nas:rw"
     ports:
       - "{{ nextcloud_port }}:80"
