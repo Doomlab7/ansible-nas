@@ -16,3 +16,11 @@
     create_home: no
     group: ansible-nas
     shell: /usr/sbin/nologin
+
+- name: Add www-data user to ansible-nas group for Nextcloud purposes
+  user:
+    name: www-data
+    append: true
+    state: present
+    groups:
+      - ansible-nas
