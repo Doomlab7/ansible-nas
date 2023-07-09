@@ -7,6 +7,9 @@
 - name: Create ansible-nas user
   user:
     name: ansible-nas
+    # uid/gid set to match existing perms before hogwarts -> ghost
+    uid: 997
+    gid: 1001
     state: present
     system: yes
     update_password: on_create
