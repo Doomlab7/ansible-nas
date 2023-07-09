@@ -10,10 +10,10 @@
         - ansible-nas-users
         - ansible-nas
 
-    - role: bertvv.samba
-      tags:
-        - samba
-        - skip_ansible_lint
+    # - role: bertvv.samba
+    #   tags:
+    #     - samba
+    #     - skip_ansible_lint
 
     - role: geerlingguy.nfs
       tags:
