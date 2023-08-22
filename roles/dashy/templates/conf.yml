@@ -215,7 +215,7 @@ sections:
         description: Relationship Management
         icon: >-
           https://user-images.githubusercontent.com/61099/37693034-5783b3d6-2c93-11e8-80ea-bd78438dcd51.png
-        url: http://192.168.1.8:8089/dashboard
+        url: http://192.168.1.9:8089/dashboard
         id: 5_1118_monicadb
   - name: Admin
     icon: fa-solid fa-crosshairs
@@ -226,6 +226,10 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
+      - title: hcio
+        description: Healthchecks
+        url: "https://healthchecks.io/projects/214050b7-9299-4f6b-8b04-3e551dde6c6f/checks/"
+        statusCheck: true
       - title: Traefik
         description: Reverse Proxy
         icon: >-

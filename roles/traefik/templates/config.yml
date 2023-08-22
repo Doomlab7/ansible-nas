@@ -97,12 +97,12 @@ http:
     # jellyfin2:
     #   loadBalancer:
     #     servers:
-    #       - url: "http://192.168.1.8:8097"
+    #       - url: "http://192.168.1.9:8097"
     #     passHostHeader: true
     # jellyfin:
     #   loadBalancer:
     #     servers:
-    #       - url: "http://192.168.1.8:8096"
+    #       - url: "http://192.168.1.9:8096"
     #     passHostHeader: true
     pihole:
       loadBalancer:
@@ -112,7 +112,7 @@ http:
     littlelink:
       loadBalancer:
         servers:
-          # - url: "http://192.168.1.8:8889"
+          # - url: "http://192.168.1.9:8889"
           - url: "https://nicpayne713.github.io/littlelink/"
         passHostHeader: true
     rickroll:
@@ -123,7 +123,7 @@ http:
     smallgroup:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.8:8092"
+          - url: "http://192.168.1.9:8092"
         passHostHeader: true
     piwigo:
       loadBalancer:
