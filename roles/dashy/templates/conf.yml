@@ -161,31 +161,32 @@ sections:
         icon: favicon
         url: https://ap.www.namecheap.com/
         statusCheckAcceptCodes: "403"
+        id: 2_892_namecheap
       - title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
         statusCheckAcceptCodes: "403"
-        id: 2_892_cloudflare
+        id: 3_892_cloudflare
       - title: Pype.dev
         description: Blog
         icon: fa-solid fa-square-rss
         url: https://pype.dev
-        id: 3_892_pypedev
+        id: 4_892_pypedev
       - title: Nextcloud
         icon: https://duckduckgo.com/i/4597dac5.png
         url: https://nextcloud.paynepride.com
         statusCheck: true
-        id: 4_892_nextcloud
+        id: 5_892_nextcloud
       - title: Small Group Notes
         icon: >-
           https://cdn3.iconfinder.com/data/icons/literature-1/512/hole-book-bible-scripture-512.png
         url: https://pypeaday.github.io/small-group-notes/
-        id: 5_892_smallgroupnotes
+        id: 6_892_smallgroupnotes
       - title: SadServers
         description: Fix some sad servers :'(
         icon: fa-solid fa-face-sad-tear
         url: https://sadservers.com/scenarios
-        id: 6_892_sadservers
+        id: 7_892_sadservers
     displayData:
       sortBy: default
       rows: 1
