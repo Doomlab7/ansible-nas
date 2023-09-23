@@ -157,6 +157,10 @@ sections:
         icon: favicon
         url: http://stackoverflow.com/
         id: 1_892_stackoverflow
+      - title: Namecheap
+        icon: favicon
+        url: https://ap.www.namecheap.com/
+        statusCheckAcceptCodes: "403"
       - title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
