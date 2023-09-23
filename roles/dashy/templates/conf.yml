@@ -304,7 +304,8 @@ sections:
         description: Document
         icon: >-
           https://raw.githubusercontent.com/bauerj/paperless_app/570ec4859be33e3ce80f8890884e87bc58a5ffaf/assets/logo.svg
-        url: http://paynepride.com:8010/
+        url: http://paynepride.com:16922/dashboard
+        statusCheck: true
         id: 2_480_paperless
       - title: Airsonic
         icon: https://airsonic.github.io/img/logo.png
