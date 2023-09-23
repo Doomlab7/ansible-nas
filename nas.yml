@@ -189,10 +189,10 @@
         - organizr
       when: (organizr_enabled | default(False))
 
-    - role: paperless_ng
+    - role: paperless_ngx
       tags:
-        - paperless_ng
-      when: (paperless_ng_enabled | default(False))
+        - paperless_ngx
+      when: (paperless_ngx_enabled | default(False))
 
     - role: portainer
       tags:
@@ -296,8 +296,3 @@
       tags:
         - znc
       when: (znc_enabled | default(False))
-
-  tasks:
-    - import_tasks: tasks/paperless_ngx_directories.yml
-      when: (paperless_ngx_enables | default(False))
-      tags: paperless_ngx
