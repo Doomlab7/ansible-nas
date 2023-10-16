@@ -1,0 +1,10 @@
+---
+cameraui_enabled: false
+cameraui_available_externally: false
+
+# network
+cameraui_hostname: "cameraui"
+cameraui_port: "8081"
+
+# specs
+cameraui_memory: 1g
