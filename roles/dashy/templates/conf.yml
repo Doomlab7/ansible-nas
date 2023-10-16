@@ -67,11 +67,6 @@ sections:
         icon: fa-solid fa-tasks
         url: https://kanboard.paynepride.com/
         id: 1_393_kanboard
-      - title: Aquahawk
-        description: Water/Services Monitoring
-        icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
-        url: https://applwi.aquahawk.us/
-        id: 2_393_aquahawk
   - name: Today
     icon: far fa-smile-beam
     displayData:
@@ -87,11 +82,7 @@ sections:
         id: 1_513_weather
       - type: public-ip
         id: 2_513_publicip
-    items:
-      - title: MinionMeet
-        description: MinionAI
-        url: https://meet.google.com/zsp-mgrn-aen
-        id: 0_513_minionmeet
+    items: []
   - name: Servarr
     icon: >-
       https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
@@ -279,7 +270,7 @@ sections:
       - title: OPNSense
         description: Router
         icon: >-
-          https://192.168.1.1:8443/ui/themes/opnsense/build/images/default-logo.svg?v=62992a662883c6c9
+          https://opnsense.org/wp-content/themes/OPNsense/assets/img/opnsense.png
         url: https://192.168.1.1:8443/
         id: 7_489_opnsense
   - name: Media
@@ -305,7 +296,7 @@ sections:
         description: Document
         icon: >-
           https://raw.githubusercontent.com/bauerj/paperless_app/570ec4859be33e3ce80f8890884e87bc58a5ffaf/assets/logo.svg
-        url: http://paynepride.com:16922/dashboard
+        url: http://paynepride.com:16922/
         statusCheck: true
         id: 2_480_paperless
       - title: Airsonic
@@ -347,8 +338,7 @@ sections:
         id: 0_1302_protonmail
       - title: Bitwarden
         icon: https://duckduckgo.com/i/ea6441be.png
-        # url: https://bitwarden.paynepride.com
-        url: https://www.bitwarden.com
+        url: https://bitwarden.paynepride.com
         statusCheck: true
         id: 1_1302_bitwarden
       - title: Simplelogin
@@ -448,6 +438,11 @@ sections:
           https://static.vecteezy.com/system/resources/previews/005/568/128/original/weed-icon-isolated-on-white-background-free-vector.jpg
         url: https://l.lsloyalty.io/JOPnVNrp
         id: 1_741_deltaawards
+      - title: Aquahawk
+        description: Water/Services Monitoring
+        icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
+        url: https://applwi.aquahawk.us/
+        id: 2_741_aquahawk
     icon: fa-solid fa-person-to-portal
   - name: IF I DIE
     icon: fa-solid fa-skull
