@@ -347,7 +347,8 @@ sections:
         id: 0_1302_protonmail
       - title: Bitwarden
         icon: https://duckduckgo.com/i/ea6441be.png
-        url: https://bitwarden.paynepride.com
+        # url: https://bitwarden.paynepride.com
+        url: https://www.bitwarden.com
         statusCheck: true
         id: 1_1302_bitwarden
       - title: Simplelogin
