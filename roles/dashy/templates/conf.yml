@@ -247,7 +247,7 @@ sections:
       - title: Pi-Hole
         description: ""
         icon: https://pihole.paynepride.com/img/logo.svg
-        url: https://pihole.paynepride.com/admin
+        url: https://pihole.paynepride.com
         statusCheck: true
         id: 2_489_pihole
       - title: Cloud Commander
