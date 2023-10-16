@@ -1,0 +1,9 @@
+---
+mediamtx_enabled: false
+mediamtx_available_externally: false
+
+# network
+mediamtx_hostname: "mediamtx"
+
+# specs
+mediamtx_memory: 1g
