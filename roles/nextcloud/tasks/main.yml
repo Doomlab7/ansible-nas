@@ -31,7 +31,6 @@
     pull: true
     links:
       - nextcloud-mysql:mysql
-      - nextcloud-redis:redis
     volumes:
       - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
       # I think adding www-data user to ansible-nas group (1001) will enable writing to any part of the /nas that my docker containers can
@@ -47,9 +46,6 @@
       # PUID: "{{ nextcloud_user_id }}"
       # PGID: "{{ nextcloud_group_id }}"
       TZ: "{{ ansible_nas_timezone }}"
-      REDIS_HOST: "redis"
-      REDIS_PORT: "6379"
-      REDIS_HOST_PASSWORD: "{{ nextcloud_redis_password }}"
     restart_policy: unless-stopped
     memory: "{{ nextcloud_memory }}"
     labels:
@@ -66,7 +62,6 @@
     pull: true
     links:
       - nextcloud-mysql:mysql
-      - nextcloud-redis:redis
     entrypoint: /cron.sh
     volumes:
       - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
@@ -82,19 +77,6 @@
       # PUID: "{{ nextcloud_user_id }}"
       # PGID: "{{ nextcloud_group_id }}"
       TZ: "{{ ansible_nas_timezone }}"
-      REDIS_HOST: "redis"
-      REDIS_PORT: "6379"
-      REDIS_HOST_PASSWORD: "{{ nextcloud_redis_password }}"
-    restart_policy: unless-stopped
-    memory: "1g"
-    labels:
-      com.centurylinklabs.watchtower.monitor-only: "true"
-- name: Nextcloud Redis
-  docker_container:
-    name: nextcloud-redis
-    image: "redis"
-    pull: true
-    entrypoint: redis-server --requirepass "{{ nextcloud_redis_pass }}"
     restart_policy: unless-stopped
     memory: "1g"
     labels:
