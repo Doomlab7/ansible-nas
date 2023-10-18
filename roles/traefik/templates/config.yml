@@ -41,6 +41,16 @@ http:
     #   tls:
     #     certResolver: letsencrypt
     #   service: jellyfin
+    tabbyml:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`tabbyml.paynepride.com`)"
+      tls:
+        certResolver: letsencrypt
+      service: tabbyml
+      # middlewares:
+      #   - default-headers
+      #   - default-whitelist
     pihole:
       entryPoints:
         - "websecure"
@@ -104,6 +114,11 @@ http:
     #     servers:
     #       - url: "http://192.168.1.9:8096"
     #     passHostHeader: true
+    tabbyml:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.124:8080"
+        passHostHeader: true
     pihole:
       loadBalancer:
         servers:
