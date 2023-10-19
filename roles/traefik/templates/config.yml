@@ -48,10 +48,9 @@ http:
       tls:
         certResolver: letsencrypt
       service: tabbyml
-      middlewares:
-        - test-apikey
-        #   - default-headers
-        #   - default-whitelist
+      # middlewares:
+      #   - default-headers
+      #   - default-whitelist
     pihole:
       entryPoints:
         - "websecure"
@@ -152,11 +151,6 @@ http:
       basicAuth:
         usersFile: "/etc/traefik/usersFile"
 
-    test-apikey:
-      plugin:
-        apiKey:
-          #mysecret
-          secretParam: $apr1$Yvgg4UCA$TN9OKxz19sDeVhNQRJr7X/
     addprefix-pihole:
       addPrefix:
         prefix: "/admin"
