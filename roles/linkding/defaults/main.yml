@@ -1,0 +1,15 @@
+linkding_enabled: false
+linkding_available_externally: false
+# network
+linkding_hostname: "linkding"
+linkding_port: "9093"
+# specs
+linkding_memory: 1g
+linkding_user_id: "0"
+linkding_group_id: "0"
+# directories
+linkding_data_directory: "{{ docker_home }}/linkding"
+
+# username / passwords
+linkding_user: "admin"
+linkding_password: "$uper$ecretP@ssw0rd!"
