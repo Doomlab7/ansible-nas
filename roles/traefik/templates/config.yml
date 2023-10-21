@@ -19,28 +19,6 @@ http:
       tls:
         certResolver: letsencrypt
       service: stable_diffusion2
-    # jellyfin2:
-    #   entryPoints:
-    #     - "websecure"
-    #   rule: "Host(`jellyfin2.paynepride.com`)"
-    #   middlewares:
-    #     - https-redirect
-    #     - default-headers
-    #     # - extended-whitelist
-    #   tls:
-    #     certResolver: letsencrypt
-    #   service: jellyfin2
-    # jellyfin:
-    #   entryPoints:
-    #     - "websecure"
-    #   rule: "Host(`jellyfin.paynepride.com`)"
-    #   middlewares:
-    #     - https-redirect
-    #     - default-headers
-    #     # - extended-whitelist
-    #   tls:
-    #     certResolver: letsencrypt
-    #   service: jellyfin
     tabbyml:
       entryPoints:
         - "websecure"
@@ -90,7 +68,6 @@ http:
       tls:
         certResolver: letsencrypt
       service: piwigo
-
   #endregion
   #region services
   services:
@@ -104,16 +81,6 @@ http:
         servers:
           - url: "http://babyblue:7860"
         passHostHeader: true
-    # jellyfin2:
-    #   loadBalancer:
-    #     servers:
-    #       - url: "http://192.168.1.9:8097"
-    #     passHostHeader: true
-    # jellyfin:
-    #   loadBalancer:
-    #     servers:
-    #       - url: "http://192.168.1.9:8096"
-    #     passHostHeader: true
     tabbyml:
       loadBalancer:
         servers:
@@ -174,7 +141,6 @@ http:
         stsPreload: true
         stsSeconds: 15552000
         customFrameOptionsValue: SAMEORIGIN
-
     default-whitelist:
       ipWhiteList:
         sourceRange:
@@ -184,7 +150,6 @@ http:
           - "172.19.0.0/16" # docker
           - "172.20.0.0/16" # docker
           - "172.22.0.0/16" # docker
-
     extended-whitelist:
       ipWhiteList:
         sourceRange:
@@ -192,7 +157,6 @@ http:
           - "192.168.1.0/24" # lan
           - "172.17.0.0/16" # docker
           - "71.66.253.233/32" # block WAN
-
     secured:
       chain:
         middlewares:
