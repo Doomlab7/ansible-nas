@@ -2,7 +2,7 @@ appConfig:
   statusCheck: false
   theme: default
   fontAwesomeKey: f44bea53a7
-  customCss: ".clock p.time { font-size: 3rem !important; }"
+  customCss: '.clock p.time { font-size: 3rem !important; }'
   layout: horizontal
   iconSize: large
   language: en
@@ -44,7 +44,7 @@ pageInfo:
   title: Hello, Nic!
   description: Paynepride Homepage
   navLinks: []
-  footerText: ""
+  footerText: ''
   logo: https://i.ibb.co/71WyyzM/little-bot-3.png
 sections:
   - name: Home
@@ -67,6 +67,21 @@ sections:
         icon: fa-solid fa-tasks
         url: https://kanboard.paynepride.com/
         id: 1_393_kanboard
+      - title: Aquahawk
+        description: Water/Services Monitoring
+        icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
+        url: https://applwi.aquahawk.us/
+        id: 2_393_aquahawk
+      - title: Linkding
+        description: Bookmarks
+        url: https://linkding.paynepride.com/bookmarks
+        statusCheck: true
+        id: 3_393_linkding
+      - title: Nextcloud
+        icon: https://duckduckgo.com/i/4597dac5.png
+        url: https://nextcloud.paynepride.com
+        statusCheck: true
+        id: 4_393_nextcloud
   - name: Today
     icon: far fa-smile-beam
     displayData:
@@ -151,33 +166,28 @@ sections:
       - title: Namecheap
         icon: favicon
         url: https://ap.www.namecheap.com/
-        statusCheckAcceptCodes: "403"
+        statusCheckAcceptCodes: '403'
         id: 2_892_namecheap
       - title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
-        statusCheckAcceptCodes: "403"
+        statusCheckAcceptCodes: '403'
         id: 3_892_cloudflare
       - title: Pype.dev
         description: Blog
         icon: fa-solid fa-square-rss
         url: https://pype.dev
         id: 4_892_pypedev
-      - title: Nextcloud
-        icon: https://duckduckgo.com/i/4597dac5.png
-        url: https://nextcloud.paynepride.com
-        statusCheck: true
-        id: 5_892_nextcloud
       - title: Small Group Notes
         icon: >-
           https://cdn3.iconfinder.com/data/icons/literature-1/512/hole-book-bible-scripture-512.png
         url: https://pypeaday.github.io/small-group-notes/
-        id: 6_892_smallgroupnotes
+        id: 5_892_smallgroupnotes
       - title: SadServers
         description: Fix some sad servers :'(
         icon: fa-solid fa-face-sad-tear
         url: https://sadservers.com/scenarios
-        id: 7_892_sadservers
+        id: 6_892_sadservers
     displayData:
       sortBy: default
       rows: 1
@@ -232,13 +242,13 @@ sections:
         description: Reverse Proxy
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
-        url: " http://paynepride.com:8083/dashboard/"
+        url: ' http://paynepride.com:8083/dashboard/'
         statusCheck: true
         id: 1_489_traefik
       - title: Pi-Hole
-        description: ""
+        description: ''
         icon: https://pihole.paynepride.com/img/logo.svg
-        url: https://pihole.paynepride.com
+        url: https://pihole.paynepride.com/admin
         statusCheck: true
         id: 2_489_pihole
       - title: Cloud Commander
@@ -270,7 +280,7 @@ sections:
       - title: OPNSense
         description: Router
         icon: >-
-          https://opnsense.org/wp-content/themes/OPNsense/assets/img/opnsense.png
+          https://192.168.1.1:8443/ui/themes/opnsense/build/images/default-logo.svg?v=62992a662883c6c9
         url: https://192.168.1.1:8443/
         id: 7_489_opnsense
   - name: Media
@@ -296,8 +306,7 @@ sections:
         description: Document
         icon: >-
           https://raw.githubusercontent.com/bauerj/paperless_app/570ec4859be33e3ce80f8890884e87bc58a5ffaf/assets/logo.svg
-        url: http://paynepride.com:16922/
-        statusCheck: true
+        url: http://paynepride.com:8010/
         id: 2_480_paperless
       - title: Airsonic
         icon: https://airsonic.github.io/img/logo.png
@@ -438,11 +447,6 @@ sections:
           https://static.vecteezy.com/system/resources/previews/005/568/128/original/weed-icon-isolated-on-white-background-free-vector.jpg
         url: https://l.lsloyalty.io/JOPnVNrp
         id: 1_741_deltaawards
-      - title: Aquahawk
-        description: Water/Services Monitoring
-        icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
-        url: https://applwi.aquahawk.us/
-        id: 2_741_aquahawk
     icon: fa-solid fa-person-to-portal
   - name: IF I DIE
     icon: fa-solid fa-skull
@@ -480,6 +484,6 @@ sections:
         url: https://app.wealth.com/login
         id: 2_807_wealth
       - title: Altruist
-        description: "Accounts: UTMA, Roth, etc"
+        description: 'Accounts: UTMA, Roth, etc'
         url: https://app.altruist.com/login
         id: 3_807_altruist
