@@ -1,0 +1,17 @@
+---
+uptime_kuma_enabled: false
+uptime_kuma_available_externally: false
+
+# data directory
+uptime_kuma_data_directory: "{{ docker_home }}/uptime_kuma"
+
+# docker image to use
+uptime_kuma_docker_image: louislam/uptime-kuma:1
+
+# network
+uptime_kuma_port: "3003"
+uptime_kuma_hostname: "uptime_kuma"
+
+# user to run container with
+uptime_kuma_user_id: "0"
+uptime_kuma_group_id: "0"

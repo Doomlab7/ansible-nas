@@ -281,6 +281,10 @@
         - ubooquity
       when: (ubooquity_enabled | default(False))
 
+    - role: uptime_kuma
+      tags:
+        - uptime_kuma
+      when: (uptime_kuma_enabled | default(False))
     - role: virtual_desktop
       tags:
         - virtual_desktop
