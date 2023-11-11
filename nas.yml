@@ -1,6 +1,4 @@
----
 - hosts: ghost
-
   roles:
     ###
     ### Requirements
@@ -9,120 +7,97 @@
       tags:
         - ansible-nas-users
         - ansible-nas
-
     # - role: bertvv.samba
     #   tags:
     #     - samba
     #     - skip_ansible_lint
-
     - role: geerlingguy.nfs
       tags:
         - nfs
         - skip_ansible_lint
-
-    - role: geerlingguy.docker
-      tags:
-        - docker
-        - skip_ansible_lint
+    # - role: geerlingguy.docker
+    #   tags:
+    #     - docker
+    #     - skip_ansible_lint
 
     ###
     ### Ansible-NAS Roles
     ###
     - role: ansible-nas-general
+      become: true
       tags:
         - ansible-nas-general
         - ansible-nas
-
     - role: ansible-nas-docker
       tags:
         - ansible-nas-docker
         - ansible-nas
-
     ###
     ### Applications
     ###
     - role: airsonic
       tags:
         - airsonic
-
     - role: bazarr
       tags:
         - bazarr
-
     - role: bitwarden
       tags:
         - bitwarden
-
     - role: booksonic
       tags:
         - booksonic
-
     - role: calibre
       tags:
         - calibre
-
     - role: cloudcmd
       tags:
         - cloudcmd
-
     - role: cloudflare_ddns
       tags:
         - cloudflare_ddns
-
     - role: code-server
       tags:
         - code-server
-
     - role: dashy
       tags:
         - dashy
       when: (dashy_enabled | default(False))
-
     - role: drone-ci
       tags:
         - drone_ci
-
     - role: duplicati
       tags:
         - duplicati
-
     - role: esphome
       tags:
         - esphome
-
     - role: freshrss
       tags:
         - freshrss
       when: (freshrss_enabled | default(False))
-
     - role: gitea
       tags:
         - gitea
-
     - role: glances
       tags:
         - glances
       when: (glances_enabled | default(False))
-
     - role: gotify
       tags:
         - gotify
       when: (gotify_enabled | default(False))
-
     - role: guacamole
       tags:
         - guacamole
       when: (guacamole_enabled | default(False))
-
     - role: healthchecks.io
       tags:
         - healthchecks.io
       when: (healthchecks_enabled | default(False))
-
     - role: hello_world
       tags:
         - hello_world
-
     - role: jellyfin
       tags:
         - jellyfin
@@ -130,17 +105,14 @@
       environment:
         # need to set this since mapping the devices for HWA causes time with default setting of 60
         COMPOSE_HTTP_TIMEOUT: 120
-
     - role: kanboard
       tags:
         - kanboard
       when: (kanboard_enabled | default(False))
-
     - role: lidarr
       tags:
         - lidarr
       when: (lidarr_enabled | default(False))
-
     - role: linkding
       tags:
         - linkding
@@ -149,27 +121,22 @@
       tags:
         - mealie
       when: (mealie_enabled | default(False))
-
     - role: minecraft-server
       tags:
         - minecraft-server
       when: (minecraft_server_enabled | default(False))
-
     - role: navidrome
       tags:
         - navidrome
       when: (navidrome_enabled | default(False))
-
     - role: netbootxyz
       tags:
         - netbootxyz
       when: (netbootxyz_enabled | default(False))
-
     - role: netdata
       tags:
         - netdata
       when: (netdata_enabled | default(False))
-
     - role: nextcloud
       tags:
         - nextcloud
@@ -177,87 +144,70 @@
     - role: nomad
       tags:
         - nomad
-
     - role: camera-ui
       tags:
         - cameraui
       when: (cameraui_enabled | default(False))
-
     - role: mediamtx
       tags:
         - mediamtx
       when: (mediamtx_enabled | default(False))
-
     - role: ombi
       tags:
         - ombi
       when: (ombi_enabled | default(False))
-
     - role: openhab
       tags:
         - openhab
       when: (openhab_enabled | default(False))
-
     - role: organizr
       tags:
         - organizr
       when: (organizr_enabled | default(False))
-
     - role: paperless_ngx
       tags:
         - paperless_ngx
       when: (paperless_ngx_enabled | default(False))
-
     - role: portainer
       tags:
         - portainer
       when: (portainer_enabled | default(False))
-
     - role: prowlarr
       tags:
         - prowlarr
       when: (prowlarr_enabled | default(False))
-
     - role: pyload
       tags:
         - pyload
       when: (pyload_enabled | default(False))
-
     - role: readarr
       tags:
         - readarr
       when: (readarr_enabled | default(False))
-
     - role: radarr
       tags:
         - radarr
       when: (radarr_enabled | default(False))
-
     - role: sonarr
       tags:
         - sonarr
       when: (sonarr_enabled | default(False))
-
     - role: speedtest-tracker
       tags:
         - speedtest-tracker
       when: (speedtest_tracker_enabled | default(False))
-
     - role: stats
       tags:
         - stats
       when: (stats_enabled | default(False))
-
     - role: syncthing
       tags:
         - syncthing
       when: (syncthing_enabled | default(False))
-
     - role: tdarr
       tags:
         - tdarr
       when: (tdarr_enabled | default(False))
-
     - role: traefik
       tags:
         - traefik
@@ -265,22 +215,18 @@
       environment:
         # need to set this since mapping the devices for HWA causes time with default setting of 60
         DOCKER_CLIENT_TIMEOUT: 120
-
     - role: transmission-with-openvpn
       tags:
         - transmission_with_openvpn
       when: (transmission_openvpn_enabled | default(False))
-
     - role: tubearchivist
       tags:
         - tubearchivist
       when: (tubearchivist_enabled | default(False))
-
     - role: ubooquity
       tags:
         - ubooquity
       when: (ubooquity_enabled | default(False))
-
     - role: uptime_kuma
       tags:
         - uptime_kuma
@@ -289,27 +235,22 @@
       tags:
         - virtual_desktop
       when: (virtual_desktop_enabled | default(False))
-
     - role: wallabag
       tags:
         - wallabag
       when: (wallabag_enabled | default(False))
-
     - role: watchtower
       tags:
         - watchtower
       when: (watchtower_enabled | default(False))
-
     - role: wireshark
       tags:
         - wireshark
       when: (wireshark_enabled | default(False))
-
     - role: youtubedlmaterial
       tags:
         - youtubedlmaterial
       when: (youtubedlmaterial_enabled | default(False))
-
     - role: znc
       tags:
         - znc
