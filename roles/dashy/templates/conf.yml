@@ -2,7 +2,7 @@ appConfig:
   statusCheck: false
   theme: default
   fontAwesomeKey: f44bea53a7
-  customCss: '.clock p.time { font-size: 3rem !important; }'
+  customCss: ".clock p.time { font-size: 3rem !important; }"
   layout: horizontal
   iconSize: large
   language: en
@@ -44,7 +44,7 @@ pageInfo:
   title: Hello, Nic!
   description: Paynepride Homepage
   navLinks: []
-  footerText: ''
+  footerText: ""
   logo: https://i.ibb.co/71WyyzM/little-bot-3.png
 sections:
   - name: Home
@@ -88,12 +88,6 @@ sections:
         url: https://nextcloud.paynepride.com
         statusCheck: true
         id: 4_393_nextcloud
-    filteredItems:
-      - *ref_0
-      - *ref_1
-      - *ref_2
-      - *ref_3
-      - *ref_4
   - name: Today
     icon: far fa-smile-beam
     displayData:
@@ -110,7 +104,6 @@ sections:
       - type: public-ip
         id: 2_513_publicip
     items: []
-    filteredItems: []
   - name: Servarr
     icon: >-
       https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
@@ -173,15 +166,6 @@ sections:
         url: https://tdarr.paynepride.com
         statusCheck: true
         id: 7_741_tdarr
-    filteredItems:
-      - *ref_5
-      - *ref_6
-      - *ref_7
-      - *ref_8
-      - *ref_9
-      - *ref_10
-      - *ref_11
-      - *ref_12
   - name: Dev & Cloud
     icon: fa-solid fa-code
     items:
@@ -199,13 +183,13 @@ sections:
         title: Namecheap
         icon: favicon
         url: https://ap.www.namecheap.com/
-        statusCheckAcceptCodes: '403'
+        statusCheckAcceptCodes: "403"
         id: 2_892_namecheap
       - &ref_16
         title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
-        statusCheckAcceptCodes: '403'
+        statusCheckAcceptCodes: "403"
         id: 3_892_cloudflare
       - &ref_17
         title: Pype.dev
@@ -231,14 +215,6 @@ sections:
       cols: 1
       collapsed: false
       hideForGuests: false
-    filteredItems:
-      - *ref_13
-      - *ref_14
-      - *ref_15
-      - *ref_16
-      - *ref_17
-      - *ref_18
-      - *ref_19
   - name: Social & News
     icon: far fa-thumbs-up
     items:
@@ -274,13 +250,6 @@ sections:
           https://user-images.githubusercontent.com/61099/37693034-5783b3d6-2c93-11e8-80ea-bd78438dcd51.png
         url: http://192.168.1.9:8089/dashboard
         id: 5_1118_monicadb
-    filteredItems:
-      - *ref_20
-      - *ref_21
-      - *ref_22
-      - *ref_23
-      - *ref_24
-      - *ref_25
   - name: Admin
     icon: fa-solid fa-crosshairs
     displayData:
@@ -303,7 +272,7 @@ sections:
         description: Reverse Proxy
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
-        url: ' http://paynepride.com:8083/dashboard/'
+        url: " http://paynepride.com:8083/dashboard/"
         statusCheck: true
         id: 1_489_traefik
       - &ref_28
@@ -350,15 +319,6 @@ sections:
         url: https://uptime_kuma.paynepride.com
         statusCheck: true
         id: 7_489_statuspage
-    filteredItems:
-      - *ref_26
-      - *ref_27
-      - *ref_28
-      - *ref_29
-      - *ref_30
-      - *ref_31
-      - *ref_32
-      - *ref_33
   - name: Media
     displayData:
       sortBy: default
@@ -414,14 +374,6 @@ sections:
         icon: https://www.tubearchivist.com/static/favicon.ico
         url: ghost:8003
         id: 6_480_ta
-    filteredItems:
-      - *ref_34
-      - *ref_35
-      - *ref_36
-      - *ref_37
-      - *ref_38
-      - *ref_39
-      - *ref_40
   - name: Productivity
     icon: fa-solid fa-briefcase
     items:
@@ -456,10 +408,6 @@ sections:
       cols: 1
       collapsed: false
       hideForGuests: false
-    filteredItems:
-      - *ref_41
-      - *ref_42
-      - *ref_43
   - name: Monitoring
     displayData:
       sortBy: default
@@ -505,12 +453,6 @@ sections:
         statusCheck: true
         id: 4_1062_gotify
     icon: fa-solid fa-monitor-heart-rate
-    filteredItems:
-      - *ref_44
-      - *ref_45
-      - *ref_46
-      - *ref_47
-      - *ref_48
   - name: Olivet
     displayData:
       sortBy: default
@@ -541,10 +483,6 @@ sections:
           https://docs.google.com/spreadsheets/d/1rFuXeDzWZND8ihxUmvo-OgItqltEzbhO0ue3QpG_L-Y/edit#gid=1391041330
         id: 2_627_servicesignups
     icon: fa-solid fa-church
-    filteredItems:
-      - *ref_49
-      - *ref_50
-      - *ref_51
   - name: Portals
     displayData:
       sortBy: default
@@ -560,8 +498,6 @@ sections:
         url: https://client.pointandpay.net/web/CityofAppletonWIUtilityBilling
         id: 0_741_appletonutilitiesbillpay
     icon: fa-solid fa-person-to-portal
-    filteredItems:
-      - *ref_52
   - name: IF I DIE
     icon: fa-solid fa-skull
     displayData:
@@ -577,8 +513,6 @@ sections:
         icon: fa-solid fa-book-skull
         url: https://github.com/pypeaday/eol-dr
         id: 0_490_githubeolrepo
-    filteredItems:
-      - *ref_53
   - name: Finances
     icon: fas-money
     displayData:
@@ -605,11 +539,6 @@ sections:
         id: 2_807_wealth
       - &ref_57
         title: Altruist
-        description: 'Accounts: UTMA, Roth, etc'
+        description: "Accounts: UTMA, Roth, etc"
         url: https://app.altruist.com/login
         id: 3_807_altruist
-    filteredItems:
-      - *ref_54
-      - *ref_55
-      - *ref_56
-      - *ref_57
