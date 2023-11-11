@@ -317,6 +317,8 @@ sections:
         title: Status Page
         description: Uptime Kuma
         url: https://uptime_kuma.paynepride.com
+        icon: >-
+          https://raw.githubusercontent.com/louislam/uptime-kuma/5b6522a54edad9737fccf195f9eaa25c6fb9d0f6/public/icon.svg
         statusCheck: true
         id: 7_489_statuspage
   - name: Media
