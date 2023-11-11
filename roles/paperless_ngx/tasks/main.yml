@@ -12,7 +12,6 @@
     - "{{ paperless_ngx_media_directory }}"
     - "{{ paperless_ngx_consume_directory }}"
 
-
 - name: Create paperless_ngx network
   docker_network:
     name: "{{ paperless_ngx_container_network_name }}"
@@ -61,6 +60,7 @@
       USERMAP_UID: "{{ paperless_ngx_user_id }}"
       USERMAP_GID: "{{ paperless_ngx_group_id }}"
       PAPERLESS_OCR_LANGUAGES: "{{ paperless_ngx_languages }}"
+      PAPERLESS_DATE_ORDER: "MDY"
     restart_policy: unless-stopped
     memory: "{{ paperless_ngx_ui_memory }}"
     networks:
@@ -72,4 +72,4 @@
       traefik.http.routers.paperless_ngx.tls.domains[0].main: "{{ ansible_nas_domain }}"
       traefik.http.routers.paperless_ngx.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
       traefik.http.services.paperless_ngx.loadbalancer.server.port: "8000"
-      traefik.http.routers.paperless_ngx.middlewares: "extended-whitelist@file"
+      # traefik.http.routers.paperless_ngx.middlewares: "extended-whitelist@file"
