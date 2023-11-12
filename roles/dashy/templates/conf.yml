@@ -374,7 +374,7 @@ sections:
         title: TA
         description: YouTube Front End
         icon: https://www.tubearchivist.com/static/favicon.ico
-        url: ghost:8003
+        url: http://ghost:8003
         id: 6_480_ta
   - name: Productivity
     icon: fa-solid fa-briefcase
