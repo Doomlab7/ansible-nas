@@ -24,7 +24,7 @@ appConfig:
     hideHeading: false
     hideNav: false
     hideSearch: false
-    hideSettings: false
+    hideSettings: true
     hideFooter: false
   auth:
     enableGuestAccess: false
