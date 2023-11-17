@@ -47,7 +47,7 @@ http:
         certResolver: letsencrypt
       service: uptime_kuma_summary
       middlewares:
-        - addprefix-uptime
+        - redirect-uptime
     littlelink:  # website
       entryPoints:
         - websecure
@@ -116,6 +116,11 @@ http:
     addprefix-uptime:
       addPrefix:
         prefix: /status/summary
+    redirect-uptime:
+      redirectRegex:
+        regex: https://status.paynepride.com
+        replacement: https://uptime_kuma.paynepride.com/status/summary
+        permanent: true
     addprefix-transmission:
       addPrefix:
         prefix: /transmission/web/
