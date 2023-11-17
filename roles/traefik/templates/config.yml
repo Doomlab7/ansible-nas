@@ -1,10 +1,11 @@
+---
 http:
-  #region routers
+  # region routers
   routers:
     stable-diffusion2:
       entryPoints:
-        - "websecure"
-      rule: "Host(`stable-diffusion2.paynepride.com`)"
+        - websecure
+      rule: Host(`stable-diffusion2.paynepride.com`)
       middlewares:
         - simple-auth
       tls:
@@ -12,15 +13,15 @@ http:
       service: stable_diffusion2
     onedev:
       entryPoints:
-        - "websecure"
-      rule: "Host(`onedev.paynepride.com`)"
+        - websecure
+      rule: Host(`onedev.paynepride.com`)
       tls:
         certResolver: letsencrypt
       service: stable_diffusion2
     tabbyml:
       entryPoints:
-        - "websecure"
-      rule: "Host(`tabbyml.paynepride.com`)"
+        - websecure
+      rule: Host(`tabbyml.paynepride.com`)
       tls:
         certResolver: letsencrypt
       service: tabbyml
@@ -29,8 +30,8 @@ http:
       #   - default-whitelist
     pihole:
       entryPoints:
-        - "websecure"
-      rule: "Host(`pihole.paynepride.com`)"
+        - websecure
+      rule: Host(`pihole.paynepride.com`)
       middlewares:
         # - default-headers
         - addprefix-pihole
@@ -40,84 +41,84 @@ http:
       service: pihole
     uptime_kuma_summary:
       entryPoints:
-        - "websecure"
-      rule: "Host(`status.paynepride.com`)"
+        - websecure
+      rule: Host(`status.paynepride.com`)
       tls:
         certResolver: letsencrypt
       service: uptime_kuma_summary
-      # middlewares:
-      #   - addprefix-uptime
-    littlelink: # website
+      middlewares:
+        - addprefix-uptime
+    littlelink:  # website
       entryPoints:
-        - "websecure"
-      rule: "Host(`littlelink.paynepride.com`)"
+        - websecure
+      rule: Host(`littlelink.paynepride.com`)
       tls:
         certResolver: letsencrypt
       service: littlelink
-    rickroll: # rick roll
+    rickroll:  # rick roll
       entryPoints:
-        - "websecure"
-      rule: "Host(`rr.paynepride.com`)"
+        - websecure
+      rule: Host(`rr.paynepride.com`)
       tls:
         certResolver: letsencrypt
       service: rickroll
-  #endregion
-  #region services
+  # endregion
+  # region services
   services:
     onedev:
       loadBalancer:
         servers:
-          - url: "http://babyblue:6610"
+          - url: http://babyblue:7860
         passHostHeader: true
     stable_diffusion2:
       loadBalancer:
         servers:
-          - url: "http://babyblue:7860"
+          - url: http://babyblue:7860
         passHostHeader: true
     tabbyml:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.124:8080"
+          - url: http://192.168.1.124:8080
         passHostHeader: true
     pihole:
       loadBalancer:
         servers:
-          - url: "http://192.168.1.3"
+          - url: http://192.168.1.3
         passHostHeader: true
     uptime_kuma_summary:
       loadBalancer:
         servers:
-          - url: "https://uptime_kuma.paynepride.com/status/summary"
+          - url: https://uptime-kuma.paynepride.com/
         passHostHeader: true
     littlelink:
       loadBalancer:
         servers:
-          - url: "https://pypeaday.github.io/littlelink/"
+          - url: https://pypeaday.github.io/littlelink/
         passHostHeader: true
     rickroll:
       loadBalancer:
         servers:
-          - url: "https://pypeaday.github.io/rick/"
+          - url: https://pypeaday.github.io/rick/
         passHostHeader: true
-  #endregion
+  # endregion
   middlewares:
     simple-auth:
       basicAuth:
-        usersFile: "/etc/traefik/usersFile"
+        usersFile: /etc/traefik/usersFile
     test-apikey:
       plugin:
         apiKey:
-          #mysecret
+          # mysecret
           secretParam: $apr1$Yvgg4UCA$TN9OKxz19sDeVhNQRJr7X/
     addprefix-pihole:
       addPrefix:
-        prefix: "/admin"
+        prefix: /admin
     addprefix-uptime:
       addPrefix:
-        prefix: "/status/summary"
+        prefix: /status/summary
     addprefix-transmission:
       addPrefix:
-        prefix: "/transmission/web/"
+        prefix: /transmission/web/
     https-redirect:
       redirectScheme:
         scheme: https
@@ -135,19 +136,19 @@ http:
     default-whitelist:
       ipWhiteList:
         sourceRange:
-          - "10.220.108.0/24" # wg
-          - "192.168.1.0/24" # lan
-          - "172.17.0.0/16" # docker
-          - "172.19.0.0/16" # docker
-          - "172.20.0.0/16" # docker
-          - "172.22.0.0/16" # docker
+          - 10.220.108.0/24  # wg
+          - 192.168.1.0/24  # lan
+          - 172.17.0.0/16  # docker
+          - 172.19.0.0/16  # docker
+          - 172.20.0.0/16  # docker
+          - 172.22.0.0/16  # docker
     extended-whitelist:
       ipWhiteList:
         sourceRange:
-          - "10.220.108.0/24" # wg
-          - "192.168.1.0/24" # lan
-          - "172.17.0.0/16" # docker
-          - "71.66.253.233/32" # block WAN
+          - 10.220.108.0/24  # wg
+          - 192.168.1.0/24  # lan
+          - 172.17.0.0/16  # docker
+          - 71.66.253.233/32  # block WAN
     secured:
       chain:
         middlewares:
