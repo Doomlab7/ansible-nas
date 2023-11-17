@@ -45,8 +45,8 @@ http:
       tls:
         certResolver: letsencrypt
       service: uptime_kuma_summary
-      middlewares:
-        - addprefix-uptime
+      # middlewares:
+      #   - addprefix-uptime
     littlelink: # website
       entryPoints:
         - "websecure"
@@ -87,7 +87,7 @@ http:
     uptime_kuma_summary:
       loadBalancer:
         servers:
-          - url: "https://uptime-kuma.paynepride.com/"
+          - url: "https://uptime_kuma.paynepride.com/status/summary"
         passHostHeader: true
     littlelink:
       loadBalancer:
