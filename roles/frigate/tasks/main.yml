@@ -1,0 +1,74 @@
+---
+- name: Start Frigate
+  block:
+    - name: Create Frigate Directories
+      file:
+        path: '{{ item }}'
+        state: directory
+      with_items:
+        - '{{ frigate_config_directory }}'
+        - '{{ frigate_media_directory }}'
+    - name: Check if Frigate config.yml exists
+      stat:
+        path: '{{ frigate_config_directory }}/config.yml'
+      register: config_file_stat
+    - name: Template Frigate config.yml (if not exists)
+      template:
+        src: config.yml
+        dest: '{{ frigate_config_directory }}/config.yml'
+      when: not config_file_stat.stat.exists
+      register: template_config
+    - name: frigate Docker Container
+      docker_container:
+        name: frigate
+        image: ghcr.io/blakeblackshear/frigate:stable
+        pull: true
+        # TODO: do i need this?
+        privileged: true  # this may not be necessary for all setups
+        volumes:
+          - /etc/localtime:/etc/localtime:ro
+          - '{{ frigate_config_directory }}/config.yml:/config/config.yml:rw'
+          - '{{ frigate_media_directory }}:/media/frigate:rw'
+          - type: tmpfs  # Optional: 1GB of memory, reduces SSD/SD Card wear
+            target: /tmp/cache
+            tmpfs:
+              size: 1000000000
+        ports:
+          # TODO: fix ports
+          - '{{ frigate_webui_port }}:5000'
+          - '{{ frigate_rtsp_port }}:8554'  # RTSP feeds
+          - '{{ frigate_webrtc_port }}:8555/tcp'  # WebRTC over tcp
+          - '{{ frigate_webrtc_port }}:8555/udp'  # WebRTC over udp
+        devices:
+          # TODO: get coral and pass through
+          # - /dev/apex_0:/dev/apex_0  # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+          - /dev/dri/renderD128:/dev/dri/renderD128  # should pass through the AMD iGPU
+          - /dev/dri/card0:/dev/dri/card0
+        env:
+          TZ: '{{ ansible_nas_timezone }}'
+          LIBVA_DRIVER_NAME: radeonsi
+          # TODO: see if I need to run privileged or if i can use ansible-nas user
+          # running as root/priviliged for now - will need to mess with file permissions when I try to de-privilege it
+          # PUID: '{{ frigate_user_id }}'
+          # PGID: '{{ frigate_group_id }}'
+          FRIGATE_RTSP_PASSWORD: '{{ frigate_password }}'
+        restart_policy: unless-stopped
+        shm_size: 128MB  # update for your cameras based on calculation above
+        memory: '{{ frigate_memory }}'
+        labels:
+          traefik.enable: '{{ frigate_available_externally | string }}'
+          traefik.http.routers.frigate.rule: Host(`{{ frigate_hostname }}.{{ ansible_nas_domain
+            }}`)
+          traefik.http.routers.frigate.tls.certresolver: letsencrypt
+          traefik.http.routers.frigate.tls.domains[0].main: '{{ ansible_nas_domain }}'
+          traefik.http.routers.frigate.tls.domains[0].sans: '*.{{ ansible_nas_domain }}'
+          traefik.http.services.frigate.loadbalancer.server.port: '5000'
+          traefik.http.routers.frigate.middlewares: default-whitelist@file
+  when: frigate_enabled is true
+- name: Stop frigate
+  block:
+    - name: Stop frigate
+      docker_container:
+        name: '{{ frigate_container_name }}'
+        state: absent
+  when: frigate_enabled is false

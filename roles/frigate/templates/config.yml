@@ -1,0 +1,21 @@
+---
+mqtt:
+  enabled: false
+cameras:
+  front_door:  # <------ Name the camera
+    ffmpeg:
+      inputs:
+        - path: rtsp://<user>:<password>@<ip>:554  # <----- The stream you want to use for detection
+          hwaccel_args: preset-vaapi
+          roles: []
+  girls_room:  # <------ Name the camera
+    ffmpeg:
+      inputs:
+        - path: rtsp://<user>:<password>@<ip>:554  # <----- The stream you want to use for detection
+          hwaccel_args: preset-vaapi
+          roles:
+            - detect
+    detect:
+      enabled: false  # <---- disable detection until you have a working camera feed
+      width: 1280  # <---- update for your camera's resolution
+      height: 720  # <---- update for your camera's resolution%

@@ -1,3 +1,4 @@
+---
 - hosts: ghost
   roles:
     ###
@@ -76,6 +77,10 @@
       tags:
         - freshrss
       when: (freshrss_enabled | default(False))
+    - role: frigate
+      tags:
+        - frigate
+      when: (frigate_enabled | default(False))
     - role: gitea
       tags:
         - gitea
