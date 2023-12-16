@@ -1,0 +1,35 @@
+- name: Create Gitea Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{ linkding_data_directory }}"
+- name: Get docker group id
+  group:
+    name: docker
+  register: docker_group
+- name: linkding Docker Container
+  docker_container:
+    name: linkding
+    hostname: "{{ ansible_nas_hostname }}.{{ ansible_nas_domain }}"
+    image: sissbruecker/linkding:latest
+    pull: true
+    ports:
+      - "{{ linkding_port }}:9090"
+    volumes:
+      - "{{ linkding_data_directory }}:/etc/linkding/data"
+    env:
+      PUID: "{{ linkding_user_id }}"
+      PGID: "{{ linkding_group_id }}"
+      LD_SUPERUSER_NAME: "{{ linkding_user }}"
+      LD_SUPERUSER_PASSWORD: "{{ linkding_password }}"
+    restart_policy: unless-stopped
+    memory: "{{ linkding_memory }}"
+    labels:
+      traefik.enable: "{{ linkding_available_externally | string }}"
+      traefik.http.routers.linkding.rule: "Host(`{{ linkding_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.linkding.tls.certresolver: "letsencrypt"
+      traefik.http.routers.linkding.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.linkding.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.linkding.loadbalancer.server.port: "9090"

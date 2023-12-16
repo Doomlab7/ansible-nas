@@ -1,0 +1,30 @@
+---
+- name: Create uptime_kuma Data Directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ uptime_kuma_data_directory }}"
+
+- name: Uptime Kuma Docker Container
+  docker_container:
+    name: uptime_kuma
+    image: "{{ uptime_kuma_docker_image }}"
+    pull: true
+    ports:
+      - "{{ uptime_kuma_port }}:3001"
+    volumes:
+      - "{{ uptime_kuma_data_directory }}:/app/data:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      PGID: "999" # docker group has write access to docker socket
+      PUID: "{{ uptime_kuma_user_id }}"
+    restart_policy: unless-stopped
+    labels:
+      traefik.enable: "{{ uptime_kuma_available_externally | string }}"
+      traefik.http.routers.uptime_kuma.rule: "Host(`{{ uptime_kuma_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.uptime_kuma.tls.certresolver: "letsencrypt"
+      traefik.http.routers.uptime_kuma.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.uptime_kuma.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.uptime_kuma.loadbalancer.server.port: "3001"

@@ -6,6 +6,8 @@ dashy_available_externally: false
 dashy_port: "8082"
 dashy_hostname: "dashy"
 
+dashy_data_directory: "{{ docker_home }}/dashy"
+
 # specs
 dashy_memory: 2g
 

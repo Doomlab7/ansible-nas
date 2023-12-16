@@ -55,3 +55,4 @@
 
       when: nomad_install.stat.exists
   when: nomad_enabled is false
+  ignore_errors: true

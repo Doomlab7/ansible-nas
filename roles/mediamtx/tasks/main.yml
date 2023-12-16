@@ -1,0 +1,33 @@
+---
+- name: Get docker group id
+  group:
+    name: docker
+  register: docker_group
+
+- name: mediamtx Docker Container
+  docker_container:
+    name: mediamtx
+    hostname: "{{ ansible_nas_hostname }}.{{ ansible_nas_domain }}"
+    image: bluenviron/mediamtx:latest-ffmpeg
+    state: started
+    pull: true
+    ports:
+      - 8554:8554
+      - 1935:1935
+      - 8888:8888
+      - 8889:8889
+      - 8890:8890/udp
+    volumes:
+      - "{{ mediamtx_data_directory }}/mediamtx:/data:rw"
+    env:
+      MTX_PROTOCOLS: tcp
+    restart_policy: unless-stopped
+    memory: "{{ mediamtx_memory }}"
+    labels:
+      traefik.enable: "{{ mediamtx_available_externally | string }}"
+      traefik.http.routers.mediamtx.rule: "Host(`{{ mediamtx_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.mediamtx.tls.certresolver: "letsencrypt"
+      traefik.http.routers.mediamtx.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.mediamtx.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.mediamtx.loadbalancer.server.port: "1935"
+      traefik.http.routers.mediamtx.middlewares: "default-whitelist@file"

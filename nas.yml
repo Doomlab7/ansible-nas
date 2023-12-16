@@ -1,7 +1,6 @@
 ---
 - name: Ansible-NAS
-  hosts: all
-
+- hosts: ghost
   roles:
     ###
     ### Requirements
@@ -10,37 +9,38 @@
       tags:
         - ansible-nas-users
         - ansible-nas
-
-    - role: bertvv.samba
-      tags:
-        - samba
-        - skip_ansible_lint
-
-    - role: geerlingguy.nfs
-      tags:
-        - nfs
-        - skip_ansible_lint
-
-    - role: geerlingguy.docker
-      when: ansible_architecture == "x86_64"
-      tags:
-        - docker
-        - skip_ansible_lint
-
-    - role: geerlingguy.docker_arm
-      when: ansible_architecture == "aarch64"
-      tags:
-        - docker_arm
-        - skip_ansible_lint
+    # - role: bertvv.samba
+    #   tags:
+    #     - samba
+    #     - skip_ansible_lint
+    # - role: geerlingguy.nfs
+    #   tags:
+    #     - nfs
+    #     - skip_ansible_lint
+    # - role: geerlingguy.docker
+    #   when: ansible_architecture == "x86_64"
+    #   tags:
+    #     - docker
+    #     - skip_ansible_lint
+    # - role: geerlingguy.docker
+    #   tags:
+    #     - docker
+    #     - skip_ansible_lint
+    #
+    # - role: geerlingguy.docker_arm
+    #   when: ansible_architecture == "aarch64"
+    #   tags:
+    #     - docker_arm
+    #     - skip_ansible_lint
 
     ###
     ### Ansible-NAS Roles
     ###
     - role: ansible-nas-general
+      become: true
       tags:
         - ansible-nas-general
         - ansible-nas
-
     - role: ansible-nas-docker
       tags:
         - ansible-nas-docker
@@ -49,11 +49,9 @@
     ###
     ### Stacks
     ###
-
     - role: logging
       tags:
         - logging
-
 
     ###
     ### Applications
@@ -61,367 +59,313 @@
     - role: airsonic
       tags:
         - airsonic
-
     - role: bazarr
       tags:
         - bazarr
-
     - role: bitwarden
       tags:
         - bitwarden
-
     - role: booksonic
       tags:
         - booksonic
-
     - role: calibre
       tags:
         - calibre
-
     - role: cloudcmd
       tags:
         - cloudcmd
-
     - role: cloudflare_ddns
       tags:
         - cloudflare_ddns
-
     - role: code-server
       tags:
         - code-server
-
     - role: couchpotato
       tags:
         - couchpotato
-
     - role: dashy
       tags:
         - dashy
-
     - role: ddns_updater
       tags:
         - ddns_updater
-
     - role: deluge
       tags:
         - deluge
-
     - role: dokuwiki
       tags:
         - dokuwiki
-
     - role: drone-ci
       tags:
         - drone_ci
-
     - role: duplicacy
       tags:
         - duplicacy
-
     - role: duplicati
       tags:
         - duplicati
-
     - role: emby
       tags:
         - emby
-
     - role: esphome
       tags:
         - esphome
-
     - role: firefly
       tags:
         - firefly
-
     - role: freshrss
       tags:
         - freshrss
-
     - role: get_iplayer
       tags:
         - get_iplayer
-
+    - role: frigate
+      tags:
+        - frigate
     - role: gitea
       tags:
         - gitea
-
     - role: gitlab
       tags:
         - gitlab
-
     - role: glances
       tags:
         - glances
-
     - role: gotify
       tags:
         - gotify
-
     - role: guacamole
       tags:
         - guacamole
-
     - role: healthchecks.io
       tags:
         - healthchecks.io
-
     - role: heimdall
       tags:
         - heimdall
-
     - role: hello_world
       tags:
         - hello_world
-
     - role: homeassistant
       tags:
         - homeassistant
-
     - role: homebridge
       tags:
         - homebridge
-
     - role: jackett
       tags:
         - jackett
-
     - role: jellyfin
       tags:
         - jellyfin
-
     - role: joomla
       tags:
         - joomla
-
     - role: komga
       tags:
         - komga
-
     - role: krusader
       tags:
         - krusader
-
+    - role: kanboard
+      tags:
+        - kanboard
+      environment:
+        # need to set this since mapping the devices for HWA causes time with default setting of 60
+        COMPOSE_HTTP_TIMEOUT: 120
     - role: lidarr
       tags:
         - lidarr
-
     - role: loki
       tags:
         - loki
-
+    - role: linkding
+      tags:
+        - linkding
     - role: mealie
       tags:
         - mealie
-
     - role: minecraft-server
       tags:
         - minecraft-server
-
     - role: minidlna
       tags:
         - minidlna
-
     - role: miniflux
       tags:
         - miniflux
-
     - role: minio
       tags:
         - minio
-
     - role: mosquitto
       tags:
         - mosquitto
-
     - role: mumble
       tags:
         - mumble
-
     - role: mylar
       tags:
         - mylar
-
     - role: mymediaforalexa
       tags:
         - mymediaforalexa
-
     - role: n8n
       tags:
         - n8n
-
     - role: navidrome
       tags:
         - navidrome
-
     - role: netbootxyz
       tags:
         - netbootxyz
-
     - role: netdata
       tags:
         - netdata
-
     - role: nextcloud
       tags:
         - nextcloud
-
     - role: nomad
       tags:
         - nomad
-
     - role: nzbget
       tags:
         - nzbget
-
+    - role: camera-ui
+      tags:
+        - cameraui
     - role: octoprint
       tags:
         - octoprint
-
+    - role: mediamtx
+      tags:
+        - mediamtx
     - role: ombi
       tags:
         - ombi
-
     - role: openhab
       tags:
         - openhab
-
     - role: organizr
       tags:
         - organizr
-
     - role: overseerr
       tags:
         - overseerr
-
     - role: paperless_ng
       tags:
         - paperless_ng
-
     - role: piwigo
       tags:
         - piwigo
-
     - role: plex
       tags:
         - plex
-
+    - role: paperless_ngx
+      tags:
+        - paperless_ngx
     - role: portainer
       tags:
         - portainer
-
     - role: prowlarr
       tags:
         - prowlarr
-
     - role: promtail
       tags:
         - promtail
-
     - role: pyload
       tags:
         - pyload
-
     - role: pytivo
       tags:
         - pytivo
-
+    - role: readarr
+      tags:
+        - readarr
     - role: radarr
       tags:
         - radarr
-
     - role: route53_ddns
       tags:
         - route53_ddns
-
     - role: rssbridge
       tags:
         - rssbridge
-
     - role: sabnzbd
       tags:
         - sabnzbd
-
     - role: sickchill
       tags:
         - sickchill
-
     - role: sonarr
       tags:
         - sonarr
-
     - role: speedtest-tracker
       tags:
         - speedtest-tracker
-
     - role: stats
       tags:
         - stats
-
     - role: syncthing
       tags:
         - syncthing
-
     - role: tautulli
+    - role: tdarr
       tags:
         - tautulli
-
     - role: thelounge
       tags:
         - thelounge
-
     - role: tiddlywiki
       tags:
         - tiddlywiki
-
     - role: timemachine
       tags:
         - timemachine
-
+    - role: tdarr
+      tags:
+        - tdarr
+      environment:
+        # need to set this since mapping the devices for HWA causes time with default setting of 60
+        DOCKER_CLIENT_TIMEOUT: 120
     - role: traefik
       tags:
         - traefik
-
     - role: transmission
       tags:
         - transmission
-
     - role: transmission-with-openvpn
       tags:
         - transmission_with_openvpn
-
+    - role: tubearchivist
+      tags:
+        - tubearchivist
     - role: ubooquity
       tags:
         - ubooquity
-
     - role: utorrent
       tags:
         - utorrent
-
+    - role: uptime_kuma
+      tags:
+        - uptime_kuma
     - role: virtual_desktop
       tags:
         - virtual_desktop
-
     - role: wallabag
       tags:
         - wallabag
-
     - role: watchtower
       tags:
         - watchtower
-
     - role: wireshark
       tags:
         - wireshark
-
     - role: woodpecker-ci
       tags:
         - woodpecker_ci
-
     - role: youtubedlmaterial
       tags:
         - youtubedlmaterial
-
     - role: znc
       tags:
         - znc

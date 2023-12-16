@@ -1,28 +1,41 @@
 ---
 - name: Start Dashy
   block:
+    - name: Create Dashy Config Directory
+      file:
+        path: '{{ item }}'
+        state: directory
+      with_items:
+        - '{{ dashy_data_directory }}'
+    - name: Template Dashy config
+      template:
+        src: conf.yml
+        dest: '{{ dashy_data_directory }}/conf.yml'
+      register: template_config
     - name: Dashy Docker Container
-      community.docker.docker_container:
-        name: "{{ dashy_container_name }}"
+      docker_container:
+        name: dashy
         image: lissy93/dashy:latest
         pull: true
         ports:
-          - "{{ dashy_port }}:80"
+          - '{{ dashy_port }}:80'
         restart_policy: unless-stopped
-        memory: "{{ dashy_memory }}"
+        memory: '{{ dashy_memory }}'
+        volumes:
+          - '{{ dashy_data_directory }}:/app/public:rw'
         labels:
-          traefik.enable: "{{ dashy_available_externally | string }}"
-          traefik.http.routers.dashy.rule: "Host(`{{ dashy_hostname }}.{{ ansible_nas_domain }}`)"
-          traefik.http.routers.dashy.tls.certresolver: "letsencrypt"
-          traefik.http.routers.dashy.tls.domains[0].main: "{{ ansible_nas_domain }}"
-          traefik.http.routers.dashy.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-          traefik.http.services.dashy.loadbalancer.server.port: "80"
+          traefik.enable: '{{ dashy_available_externally }}'
+          traefik.http.routers.dashy.rule: Host(`{{ dashy_hostname }}.{{ ansible_nas_domain
+            }}`)
+          traefik.http.routers.dashy.tls.certresolver: letsencrypt
+          traefik.http.routers.dashy.tls.domains[0].main: '{{ ansible_nas_domain }}'
+          traefik.http.routers.dashy.tls.domains[0].sans: '*.{{ ansible_nas_domain }}'
+          traefik.http.services.dashy.loadbalancer.server.port: '80'
   when: dashy_enabled is true
-
 - name: Stop Dashy
   block:
     - name: Stop Dashy
       community.docker.docker_container:
-        name: "{{ dashy_container_name }}"
+        name: '{{ dashy_container_name }}'
         state: absent
   when: dashy_enabled is false

@@ -14,8 +14,8 @@
         image: linuxserver/bazarr
         pull: true
         volumes:
-          - "{{ bazarr_tv_directory }}:/tv:rw"
-          - "{{ bazarr_movies_directory }}:/movies:rw"
+          - "{{ bazarr_tv_directory }}:/data/tv:rw"
+          - "{{ bazarr_movies_directory }}:/data/movies:rw"
           - "{{ bazarr_data_directory }}:/config:rw"
         ports:
           - "{{ bazarr_port }}:6767"
@@ -32,6 +32,7 @@
           traefik.http.routers.bazarr.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.bazarr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.bazarr.loadbalancer.server.port: "6767"
+          traefik.http.routers.bazarr.middlewares: "default-whitelist@file"
   when: bazarr_enabled is true
 
 - name: Stop Bazarr

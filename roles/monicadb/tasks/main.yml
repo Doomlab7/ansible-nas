@@ -1,0 +1,50 @@
+---
+- name: Create MonibaDB directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ monicadb_data_directory }}/monicadb"
+    - "{{ monicadb_data_directory }}/mysql"
+
+- name: MonicaDB Mysql Docker Container
+  docker_container:
+    name: monicadb-mysql
+    image: mysql:5.7
+    pull: true
+    volumes:
+      - "{{ monicadb_data_directory }}/mysql:/var/lib/mysql:rw"
+    env:
+      MYSQL_DATABASE: "monica"
+      MYSQL_USER: "{{ monicadb_sql_user }}"
+      MYSQL_PASSWORD: "{{ monicadb_sql_password }}"
+      MYSQL_RANDOM_ROOT_PASSWORD: "true"
+    restart_policy: unless-stopped
+    memory: "{{ monicadb_mysql_memory }}"
+
+- name: MonicaDB Docker Container
+  docker_container:
+    name: monicadb
+    image: monica:apache
+    pull: true
+    links:
+      - monicadb-mysql:mysql
+    volumes:
+      - "{{ monicadb_data_directory }}/monicadb:/var/www/html/storage:rw"
+    ports:
+      - "{{ monicadb_port }}:80"
+    env:
+      APP_KEY: "{{ monicadb_app_key }}"
+      DB_HOST: "mysql"
+      DB_USERNAME: "{{ monicadb_sql_user }}"
+      DB_PASSWORD: "{{ monicadb_sql_password }}"
+      TZ: "{{ ansible_nas_timezone }}"
+    restart_policy: unless-stopped
+    memory: "{{ monicadb_memory }}"
+    labels:
+      traefik.enable: "{{ monicadb_available_externally }}"
+      traefik.http.routers.monicadb.rule: "Host(`{{ monicadb_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.monicadb.tls.certresolver: "letsencrypt"
+      traefik.http.routers.monicadb.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.monicadb.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.monicadb.loadbalancer.server.port: "80"

@@ -1,13 +1,15 @@
+**/*usersFile
+.venv/*
 tests/test.yml
 site
 .vagrant
 *.retry
 *.log
-inventories
 .cache
 roles/bertvv.samba
 roles/geerlingguy.docker
 roles/geerlingguy.nfs
+key
 
 # Vim
 [._]sw[a-p]
@@ -15,5 +17,4 @@ roles/geerlingguy.nfs
 # Session
 Session.vim
 
-# IntelliJ
-/.idea/
+.envrc

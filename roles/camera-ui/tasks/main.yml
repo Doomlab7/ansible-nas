@@ -1,0 +1,29 @@
+---
+- name: Get docker group id
+  group:
+    name: docker
+  register: docker_group
+
+- name: cameraui Docker Container
+  docker_container:
+    name: cameraui
+    hostname: "{{ ansible_nas_hostname }}.{{ ansible_nas_domain }}"
+    image: nexryai/camera.ui:latest
+    state: started
+    pull: true
+    ports:
+      - "{{ cameraui_port }}:8081"
+      - "1883:1883"
+      - "7272:7272"
+    volumes:
+      - "{{ cameraui_data_directory }}/cameraui:/.camera.ui:rw"
+    restart_policy: unless-stopped
+    memory: "{{ cameraui_memory }}"
+    labels:
+      traefik.enable: "{{ cameraui_available_externally | string }}"
+      traefik.http.routers.cameraui.rule: "Host(`{{ cameraui_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.cameraui.tls.certresolver: "letsencrypt"
+      traefik.http.routers.cameraui.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.cameraui.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.cameraui.loadbalancer.server.port: "8081"
+      traefik.http.routers.cameraui.middlewares: "default-whitelist@file"

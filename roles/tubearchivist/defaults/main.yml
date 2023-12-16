@@ -1,0 +1,27 @@
+---
+# enable or disable the application
+tubearchivist_enabled: false
+tubearchivist_available_externally: false
+
+# directories
+tubearchivist_data_directory: "{{ docker_home }}/tubearchivist"
+tubearchivist_media_directory: "{{ downloads_root }}/youtube"
+tubearchivist_redis_directory: "{{ tubearchivist_data_directory }}/redis"
+tubearchivist_cache_directory: "{{ tubearchivist_data_directory }}/cache"
+tubearchivist_es_directory: "{{ tubearchivist_data_directory }}/es"
+
+# network
+tubearchivist_hostname: "{{  ansible_nas_hostname }}"
+tubearchivist_port_http: "8003"
+
+# uid/gid
+tubearchivist_uid: "1000"
+tubearchivist_gid: "1000"
+
+# login
+tubearchivist_username: tubearchivist
+tubearchivist_password: versecret
+tubearchivist_es_password: verysecret
+
+# specs
+tubearchivist_memory: "1g"

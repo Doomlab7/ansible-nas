@@ -11,6 +11,10 @@ airsonic_podcasts_directory: "{{ podcasts_root }}"
 airsonic_port: "4040"
 airsonic_hostname: "airsonic"
 
+# uid/gid
+airsonic_user_id: "0"
+airsonic_group_id: "0"
+
 # specs
 airsonic_memory: 1g
 

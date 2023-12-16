@@ -21,6 +21,9 @@
           - "{{ airsonic_podcasts_directory }}:/airsonic/podcasts:rw"
         ports:
           - "{{ airsonic_port }}:4040"
+        env:
+          PUID: "{{ airsonic_user_id }}"
+          PGID: "{{ airsonic_group_id }}"
         restart_policy: unless-stopped
         memory: "{{ airsonic_memory }}"
         labels:
@@ -30,6 +33,8 @@
           traefik.http.routers.airsonic.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.airsonic.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.airsonic.loadbalancer.server.port: "4040"
+          traefik.http.routers.airsonic.middlewares: ""
+          # traefik.http.routers.airsonic.middlewares: "default-whitelist@file"
   when: airsonic_enabled is true
 
 - name: Stop Airsonic
