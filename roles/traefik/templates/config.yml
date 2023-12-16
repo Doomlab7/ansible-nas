@@ -2,6 +2,15 @@
 http:
   # region routers
   routers:
+    ytdl:
+      entryPoints:
+        - websecure
+      rule: Host(`ytdl.paynepride.com`)
+      middlewares:
+        - simple-auth
+      tls:
+        certResolver: letsencrypt
+      service: ytdl
     stable-diffusion2:
       entryPoints:
         - websecure
@@ -65,6 +74,11 @@ http:
   # endregion
   # region services
   services:
+    ytdl:
+      loadBalancer:
+        servers:
+          - url: http://ghost:8001
+        passHostHeader: true
     onedev:
       loadBalancer:
         servers:
