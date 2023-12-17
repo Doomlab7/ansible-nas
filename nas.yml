@@ -1,14 +1,14 @@
 ---
 - name: Ansible-NAS
-- hosts: ghost
+  hosts: ghost
   roles:
     ###
     ### Requirements
     ###
-    - role: ansible-nas-users
-      tags:
-        - ansible-nas-users
-        - ansible-nas
+    # - role: ansible-nas-users
+    #   tags:
+    #     - ansible-nas-users
+    #     - ansible-nas
     # - role: bertvv.samba
     #   tags:
     #     - samba
@@ -36,15 +36,15 @@
     ###
     ### Ansible-NAS Roles
     ###
-    - role: ansible-nas-general
-      become: true
-      tags:
-        - ansible-nas-general
-        - ansible-nas
-    - role: ansible-nas-docker
-      tags:
-        - ansible-nas-docker
-        - ansible-nas
+    # - role: ansible-nas-general
+    #   become: true
+    #   tags:
+    #     - ansible-nas-general
+    #     - ansible-nas
+    # - role: ansible-nas-docker
+    #   tags:
+    #     - ansible-nas-docker
+    #     - ansible-nas
 
     ###
     ### Stacks
