@@ -1,4 +1,6 @@
 ---
+auth_enabled: false
+
 server:
   http_listen_port: {{ loki_http_port }}
   log_level: {{ loki_log_level }}

@@ -57,6 +57,7 @@
           traefik.http.routers.loki.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.loki.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.loki.loadbalancer.server.port: "3100"
+          traefik.http.routers.loki.middlewares: default-whitelist@file
           prometheus.io/scrape: "true"
           prometheus.io/port: "3100"
           prometheus.io/path: "/metrics"
