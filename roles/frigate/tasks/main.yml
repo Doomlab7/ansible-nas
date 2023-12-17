@@ -69,6 +69,6 @@
   block:
     - name: Stop frigate
       docker_container:
-        name: '{{ frigate_container_name }}'
+        name: frigate
         state: absent
   when: frigate_enabled is false
