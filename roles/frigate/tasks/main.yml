@@ -29,10 +29,10 @@
           - /etc/localtime:/etc/localtime:ro
           - '{{ frigate_config_directory }}/config.yml:/config/config.yml:rw'
           - '{{ frigate_media_directory }}:/media/frigate:rw'
-          - type: tmpfs  # Optional: 1GB of memory, reduces SSD/SD Card wear
+        mounts:
+          - type: tmpfs
             target: /tmp/cache
-            tmpfs:
-              size: 1000000000
+            tmpfs_size: 1000000000
         ports:
           # TODO: fix ports
           - '{{ frigate_webui_port }}:5000'
