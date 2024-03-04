@@ -10,6 +10,15 @@
         - '{{ transmission_config_directory }}'
         - '{{ transmission_download_directory }}'
         - '{{ transmission_watch_directory }}'
+        - '{{ transmission_vpn_directory }}'
+    - name: Add VPN config
+      template:
+        src: us-il-53.protonvpn.udp.ovpn
+        dest: '{{ transmission_vpn_directory }}/us-il-53.protonvpn.udp.ovpn'
+    - name: Add port script
+      template:
+        src: update-port.sh
+        dest: '{{ transmission_vpn_directory }}/update-port.sh'
     - name: Transmission with VPN
       docker_container:
         name: transmission-openvpn
@@ -21,6 +30,7 @@
           - '{{ transmission_config_directory }}:/config:rw'
           - '{{ transmission_watch_directory }}:/watch:rw'
           - /etc/timezone:/etc/timezone:ro
+          - '{{ transmission_vpn_directory }}:/etc/openvpn/custom/'
         ports:
           - '{{ transmission_openvpn_webui_port }}:9091'
           - '{{ transmission_openvpn_external_port }}:51413'
