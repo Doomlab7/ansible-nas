@@ -2,6 +2,14 @@
 http:
   # region routers
   routers:
+    k8s:
+      entryPoints:
+        - websecure
+      # try using this to grab anything *.k8s.paynepride.com -> my microk8s cluster
+      rule: HostRegexp(`^.+\.k8s\.paynepride\.com$`)
+      tls:
+        certResolver: letsencrypt
+      service: k8s
     ytdl:
       entryPoints:
         - websecure
@@ -74,6 +82,12 @@ http:
   # endregion
   # region services
   services:
+    k8s:
+      loadBalancer:
+        servers:
+          # cockpit alpha vm - set in /etc/hosts and on pihole
+          - url: http://cockpit.local
+        passHostHeader: true
     ytdl:
       loadBalancer:
         servers:
