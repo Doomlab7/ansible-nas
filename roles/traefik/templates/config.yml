@@ -2,6 +2,15 @@
 http:
   # region routers
   routers:
+    homeassistant:
+      entryPoints:
+        - websecure
+      rule: Host(`homeassistant.paynepride.com`)
+      middlewares:
+        - secured
+      tls:
+        certResolver: letsencrypt
+      service: homeassistant
     k8s:
       entryPoints:
         - websecure
@@ -82,6 +91,11 @@ http:
   # endregion
   # region services
   services:
+    homeassistant:
+      loadBalancer:
+        servers:
+          - url: http://homeassistant.local:8123
+        passHostHeader: true
     k8s:
       loadBalancer:
         servers:
