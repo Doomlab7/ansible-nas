@@ -3,7 +3,7 @@ appConfig:
   statusCheck: false
   theme: default
   fontAwesomeKey: f44bea53a7
-  customCss: '.clock p.time { font-size: 3rem !important; }'
+  customCss: ".clock p.time { font-size: 3rem !important; }"
   layout: horizontal
   iconSize: large
   language: en
@@ -45,7 +45,7 @@ pageInfo:
   title: Hello, Nic!
   description: Paynepride Homepage
   navLinks: []
-  footerText: ''
+  footerText: ""
   logo: https://i.ibb.co/71WyyzM/little-bot-3.png
 sections:
   - name: Home
@@ -57,6 +57,10 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
+      - title: Cockpit
+        description: Server Web Interface
+        icon: fa-solid fa-tasks
+        url: https://ghost:7777
       - &ref_0
         title: Home Assistant
         description: Smart home control
@@ -200,13 +204,13 @@ sections:
         title: Namecheap
         icon: favicon
         url: https://ap.www.namecheap.com/
-        statusCheckAcceptCodes: '403'
+        statusCheckAcceptCodes: "403"
         id: 2_892_namecheap
       - &ref_16
         title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
-        statusCheckAcceptCodes: '403'
+        statusCheckAcceptCodes: "403"
         id: 3_892_cloudflare
       - &ref_17
         title: Pype.dev
@@ -304,7 +308,7 @@ sections:
         description: Reverse Proxy
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
-        url: ' http://paynepride.com:8083/dashboard/'
+        url: " http://paynepride.com:8083/dashboard/"
         statusCheck: true
         id: 1_489_traefik
       - &ref_28
@@ -642,7 +646,7 @@ sections:
         id: 2_807_wealth
       - &ref_62
         title: Altruist
-        description: 'Accounts: UTMA, Roth, etc'
+        description: "Accounts: UTMA, Roth, etc"
         url: https://app.altruist.com/login
         id: 3_807_altruist
     filteredItems:
