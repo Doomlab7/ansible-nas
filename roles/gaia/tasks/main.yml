@@ -1,0 +1,71 @@
+---
+- name: Start Gaia
+  block:
+    - name: Create gaia directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ gaia_data_directory }}/gaia"
+    - name: Gaia Mongodb Container
+      docker_container:
+        name: gaia-db
+        image: "{{ gaia_db_image_name }}"
+        pull: true
+        restart_policy: unless-stopped
+        labels:
+          com.centurylinklabs.watchtower.monitor-only: "true"
+    - name: Gaia Runner Container
+      docker_container:
+        name: "{{ gaia_runner_container_name }}"
+        image: "{{ gaia_runner_image_name }}"
+        pull: true
+        restart_policy: unless-stopped
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+        env:
+          GAIA_URL: "http://localhost:{{ gaia_port }}"
+          GAIA_RUNNER_API_PASSWORD: "{{ gaia_runner_password }}"
+        labels:
+          com.centurylinklabs.watchtower.monitor-only: "true"
+    - name: Gaia Docker Container
+      docker_container:
+        name: "{{ gaia_container_name }}"
+        image: "{{ gaia_image_name }}"
+        pull: true
+        links:
+          - gaia-db:mongo
+        ports:
+          - "{{ gaia_port }}:8080"
+        env:
+          GAIA_MONGODB_URI: "mongodb://mongo/gaia"
+          GAIA_RUNNER_API_PASSWORD: "{{ gaia_runner_password }}"
+          GAIA_EXTERNAL_URL: "http://localhost:{{ gaia_port }}"
+          # PUID: "{{ gaia_user_id }}"
+          # PGID: "{{ gaia_group_id }}"
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: unless-stopped
+        memory: "{{ gaia_memory }}"
+        labels:
+          traefik.enable: "{{ gaia_available_externally | string }}"
+          traefik.http.routers.gaia.rule: Host(`{{ gaia_hostname }}.{{ ansible_nas_domain }}`)
+          traefik.http.routers.gaia.tls.certresolver: letsencrypt
+          traefik.http.routers.gaia.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.gaia.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.gaia.loadbalancer.server.port: "8080"
+  when: gaia_enabled is true
+- name: Stop gaia
+  block:
+    - name: Stop gaia runner
+      community.docker.docker_container:
+        name: "{{ gaia_runner_container_name }}"
+        state: absent
+    - name: Stop gaia
+      community.docker.docker_container:
+        name: "{{ gaia_container_name }}"
+        state: absent
+    - name: Stop gaia DB
+      community.docker.docker_container:
+        name: "{{ gaia_db_container_name }}"
+        state: absent
+  when: gaia_enabled is false

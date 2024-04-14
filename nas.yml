@@ -116,6 +116,9 @@
     - role: freshrss
       tags:
         - freshrss
+    - role: gaia
+      tags:
+        - gaia
     - role: get_iplayer
       tags:
         - get_iplayer

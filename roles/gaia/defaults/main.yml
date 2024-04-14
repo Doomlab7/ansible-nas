@@ -1,0 +1,33 @@
+---
+gaia_enabled: false
+gaia_available_externally: false
+
+# directories
+gaia_data_directory: "{{ docker_home }}/gaia"
+
+# network
+gaia_port: "8093"
+gaia_hostname: gaia
+gaia_network_name: gaia
+
+# docker
+gaia_container_name: gaia
+gaia_runner_container_name: gaia-runner
+gaia_image_name: gaiaapp/gaia
+gaia_runner_image_name: gaiaapp/runner
+gaia_image_version: latest
+gaia_db_container_name: gaia-db
+gaia_db_image_name: mongo:4.4
+
+# default values
+gaia_user: admin
+gaia_password: admin123
+gaia_runner_password: supersecret
+
+# specs
+gaia_memory: 1g
+gaia_db_memory: 1g
+
+# id
+gaia_user_id: "1000"
+gaia_group_id: "1000"
