@@ -16,6 +16,9 @@ minio_network_name: "minio"
 minio_api_port: "9000"
 minio_console_port: "9009"
 
+minio_server_url: "http://localhost:{{ minio_api_port }}"
+minio_browser_url: "http://localhost:{{ ansible_console_port }}"
+
 # docker
 minio_container_name: "minio"
 minio_image_name: "minio/minio"
