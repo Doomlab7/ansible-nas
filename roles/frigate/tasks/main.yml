@@ -27,7 +27,7 @@
         privileged: true  # this may not be necessary for all setups
         volumes:
           - /etc/localtime:/etc/localtime:ro
-          - '{{ frigate_config_directory }}/config.yml:/config/config.yml:rw'
+          - '{{ frigate_config_directory }}:/config:rw'
           - '{{ frigate_media_directory }}:/media/frigate:rw'
         mounts:
           - type: tmpfs
