@@ -4,7 +4,8 @@
     - name: Code Server Docker Container
       community.docker.docker_container:
         name: "{{ code_server_container_name }}"
-        image: linuxserver/code-server
+        # image: linuxserver/code-server
+        image: docker.io/pypeaday/code-server
         pull: true
         volumes:
           - "{{ code_server_config_directory }}:/config"
