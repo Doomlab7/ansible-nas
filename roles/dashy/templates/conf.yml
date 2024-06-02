@@ -57,11 +57,11 @@ sections:
       hideForGuests: false
     items:
       - &ref_0
-        title: Nextcloud
-        icon: https://duckduckgo.com/i/4597dac5.png
-        url: https://nextcloud.paynepride.com
-        statusCheck: true
-        id: 0_393_nextcloud
+        title: Cockpit
+        description: Server Web Interface
+        icon: 🔭
+        url: https://ghost:7777
+        id: 0_393_cockpit
       - &ref_1
         title: Home Assistant
         description: Smart home control
@@ -76,24 +76,31 @@ sections:
         url: https://kanboard.paynepride.com/
         id: 2_393_kanboard
       - &ref_3
+        title: Aquahawk
+        description: Water/Services Monitoring
+        icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
+        url: https://applwi.aquahawk.us/
+        id: 3_393_aquahawk
+      - &ref_4
         title: Linkding
         description: Bookmarks
         icon: https://linkding.paynepride.com/static/logo.png
         url: https://linkding.paynepride.com/bookmarks
         statusCheck: true
-        id: 3_393_linkding
-      - &ref_4
+        id: 4_393_linkding
+      - &ref_5
         title: Nextcloud
         icon: https://duckduckgo.com/i/4597dac5.png
         url: https://nextcloud.paynepride.com
         statusCheck: true
-        id: 4_393_nextcloud
+        id: 5_393_nextcloud
     filteredItems:
       - *ref_0
       - *ref_1
       - *ref_2
       - *ref_3
       - *ref_4
+      - *ref_5
   - name: Today
     icon: far fa-smile-beam
     displayData:
@@ -117,56 +124,56 @@ sections:
     displayData:
       sortBy: default
     items:
-      - &ref_5
+      - &ref_6
         title: Sonarr
         description: TV
         icon: https://wiki.servarr.com/assets/sonarr/logos/128.png
         url: https://sonarr.paynepride.com
         statusCheck: true
         id: 0_741_sonarr
-      - &ref_6
+      - &ref_7
         title: Radarr
         description: Movies
         icon: https://wiki.servarr.com/assets/radarr/logos/128.png
         url: https://radarr.paynepride.com
         statusCheck: true
         id: 1_741_radarr
-      - &ref_7
+      - &ref_8
         title: Prowlarr
         description: Index
         icon: https://wiki.servarr.com/assets/prowlarr/logos/128.png
         url: https://prowlarr.paynepride.com
         statusCheck: true
         id: 2_741_prowlarr
-      - &ref_8
+      - &ref_9
         title: Lidarr
         description: Music
         icon: https://wiki.servarr.com/assets/lidarr/logos/128.png
         url: https://lidarr.paynepride.com
         statusCheck: true
         id: 3_741_lidarr
-      - &ref_9
+      - &ref_10
         title: Transmission
         description: Torrent Downloader
         icon: https://external-content.duckduckgo.com/ip3/transmissionbt.com.ico
         url: https://transmission_openvpn.paynepride.com/transmission/web/
         statusCheck: true
         id: 4_741_transmission
-      - &ref_10
+      - &ref_11
         title: Readarr
         description: Books
         icon: https://wiki.servarr.com/assets/readarr/logos/128.png
         url: https://readarr.paynepride.com/
         statusCheck: true
         id: 5_741_readarr
-      - &ref_11
+      - &ref_12
         title: Ombi
         description: Catalog
         icon: https://external-content.duckduckgo.com/ip3/docs.ombi.app.ico
         url: https://ombi.paynepride.com/discover
         statusCheck: true
         id: 6_741_ombi
-      - &ref_12
+      - &ref_13
         title: Tdarr
         description: Transcoding
         icon: https://tdarr.paynepride.com/favicon.ico
@@ -174,7 +181,6 @@ sections:
         statusCheck: true
         id: 7_741_tdarr
     filteredItems:
-      - *ref_5
       - *ref_6
       - *ref_7
       - *ref_8
@@ -182,55 +188,51 @@ sections:
       - *ref_10
       - *ref_11
       - *ref_12
+      - *ref_13
   - name: Dev & Cloud
     icon: fa-solid fa-code
     items:
-      - &ref_13
+      - &ref_14
         title: GitHub
         icon: favicon
         url: https://github.com/pypeaday
         id: 0_892_github
-      - &ref_14
+      - &ref_15
         title: StackOverflow
         icon: favicon
         url: http://stackoverflow.com/
         id: 1_892_stackoverflow
-      - &ref_15
+      - &ref_16
         title: Namecheap
         icon: favicon
         url: https://ap.www.namecheap.com/
         statusCheckAcceptCodes: "403"
         id: 2_892_namecheap
-      - &ref_16
+      - &ref_17
         title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
         statusCheckAcceptCodes: "403"
         id: 3_892_cloudflare
-      - &ref_17
+      - &ref_18
         title: Pype.dev
         description: Blog
-        icon: fa-solid fa-square-rss
+        icon: >-
+          https://raw.githubusercontent.com/pypeaday/pype.dev/main/static/iconified/favicon.ico
         url: https://pype.dev
         id: 4_892_pypedev
-      - &ref_18
+      - &ref_19
         title: Small Group Notes
         icon: >-
           https://cdn3.iconfinder.com/data/icons/literature-1/512/hole-book-bible-scripture-512.png
         url: https://pypeaday.github.io/small-group-notes/
         id: 5_892_smallgroupnotes
-      - &ref_19
+      - &ref_20
         title: SadServers
         description: Fix some sad servers :'(
         icon: fa-solid fa-face-sad-tear
         url: https://sadservers.com/scenarios
         id: 6_892_sadservers
-      - &ref_20
-        title: Spacelift
-        description: Managed Terraform
-        icon: favicon
-        url: https://spacelift.io
-        id: 7_892_spacelift
     displayData:
       sortBy: default
       rows: 1
@@ -238,7 +240,6 @@ sections:
       collapsed: false
       hideForGuests: false
     filteredItems:
-      - *ref_13
       - *ref_14
       - *ref_15
       - *ref_16
@@ -277,8 +278,7 @@ sections:
       - &ref_26
         title: MonicaDB
         description: Relationship Management
-        icon: >-
-          https://user-images.githubusercontent.com/61099/37693034-5783b3d6-2c93-11e8-80ea-bd78438dcd51.png
+        icon: 🐼
         url: http://192.168.1.9:8089/dashboard
         id: 5_1118_monicadb
     filteredItems:
@@ -359,12 +359,6 @@ sections:
           https://raw.githubusercontent.com/louislam/uptime-kuma/5b6522a54edad9737fccf195f9eaa25c6fb9d0f6/public/icon.svg
         statusCheck: true
         id: 7_489_statuspage
-      - &ref_35
-        title: Cockpit
-        description: Server Web Interface
-        icon: fa-solid fa-tasks
-        url: https://ghost:7777
-        id: 8_489_cockpit
     filteredItems:
       - *ref_27
       - *ref_28
@@ -374,7 +368,6 @@ sections:
       - *ref_32
       - *ref_33
       - *ref_34
-      - *ref_35
   - name: Media
     displayData:
       sortBy: default
@@ -383,20 +376,20 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_36
+      - &ref_35
         title: Jellyfin
         icon: https://external-content.duckduckgo.com/ip3/jellyfin.org.ico
         url: https://jellyfin.paynepride.com
         statusCheck: true
         id: 0_480_jellyfin
-      - &ref_37
+      - &ref_36
         title: YouTubeDL-Material
         icon: >-
           https://github.com/Tzahi12345/YoutubeDL-Material/blob/master/src/assets/images/logo_128px.png?raw=true
         url: https://youtubedlmaterial.paynepride.com
         statusCheck: true
         id: 1_480_youtubedlmaterial
-      - &ref_38
+      - &ref_37
         title: Paperless
         description: Document
         icon: >-
@@ -404,33 +397,32 @@ sections:
         url: http://paynepride.com:16922/
         statusCheck: true
         id: 2_480_paperless
-      - &ref_39
+      - &ref_38
         title: Airsonic
         icon: https://airsonic.github.io/img/logo.png
         url: https://airsonic.paynepride.com
         statusCheck: true
         statusCheckUrl: https://airsonic.paynepride.com
         id: 3_480_airsonic
-      - &ref_40
+      - &ref_39
         title: Ubooquity
         description: Books
-        icon: >-
-          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.alternativeten.com%2Fwp-content%2Fuploads%2F2021%2F03%2F1595980692_Ubooquity-767x753.png&f=1&nofb=1
+        icon: 📚
         url: http://paynepride.com:2202/ubooquity
         statusCheck: true
         id: 4_480_ubooquity
-      - &ref_41
+      - &ref_40
         title: Spotify
         icon: fa-brands fa-spotify
         url: https://open.spotify.com/
         id: 5_480_spotify
-      - &ref_42
+      - &ref_41
         title: TA
         description: YouTube Front End
         icon: https://www.tubearchivist.com/static/favicon.ico
         url: http://ghost:8003
         id: 6_480_ta
-      - &ref_43
+      - &ref_42
         title: Booksonic
         icon: https://booksonic.org/assets/img/booksonic.png
         url: https://booksonic.paynepride.com
@@ -438,6 +430,7 @@ sections:
         statusCheckUrl: https://booksonic.paynepride.com
         id: 7_480_booksonic
     filteredItems:
+      - *ref_35
       - *ref_36
       - *ref_37
       - *ref_38
@@ -445,11 +438,10 @@ sections:
       - *ref_40
       - *ref_41
       - *ref_42
-      - *ref_43
   - name: Productivity
     icon: fa-solid fa-briefcase
     items:
-      - &ref_44
+      - &ref_43
         title: ProtonMail
         description: Primary email account
         icon: https://www.vectorlogo.zone/logos/protonmail/protonmail-icon.svg
@@ -461,13 +453,13 @@ sections:
           - email
           - mail
         id: 0_1302_protonmail
-      - &ref_45
+      - &ref_44
         title: Bitwarden
         icon: https://duckduckgo.com/i/ea6441be.png
         url: https://www.bitwarden.com
         statusCheck: true
         id: 1_1302_bitwarden
-      - &ref_46
+      - &ref_45
         title: Simplelogin
         description: Privacy e-mail relay
         icon: https://avatars.githubusercontent.com/u/51910064?s=280&v=4
@@ -480,9 +472,9 @@ sections:
       collapsed: false
       hideForGuests: false
     filteredItems:
+      - *ref_43
       - *ref_44
       - *ref_45
-      - *ref_46
   - name: Monitoring
     displayData:
       sortBy: default
@@ -491,21 +483,21 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_47
+      - &ref_46
         title: Babyblue - Netdata
         description: Netdata
         icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
         url: http://babyblue:19999
         statusCheck: true
         id: 0_1062_babybluenetdata
-      - &ref_48
+      - &ref_47
         title: Ghost - Glances
         description: System Monitoring
         icon: https://nicolargo.github.io/glances/public/images/glances.png
         url: https://glances.paynepride.com
         statusCheck: true
         id: 1_1062_ghostglances
-      - &ref_49
+      - &ref_48
         title: Ghost - Netdata
         description: Netdata
         icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
@@ -513,44 +505,46 @@ sections:
           https://netdata.paynepride.com/#after=-720;before=0;=undefined;theme=slate;utc=America%2FChicago
         statusCheck: true
         id: 2_1062_ghostnetdata
-      - &ref_50
+      - &ref_49
         title: Babyblue - Glances
         description: System Monitoring
         icon: https://nicolargo.github.io/glances/public/images/glances.png
         url: http://babyblue:61208/
         statusCheck: true
         id: 3_1062_babyblueglances
-      - &ref_51
+      - &ref_50
         title: Gotify
         description: Notifications
         icon: https://external-content.duckduckgo.com/ip3/gotify.net.ico
         url: http://paynepride.com:2346/#/login
         statusCheck: true
         id: 4_1062_gotify
-      - &ref_52
+      - &ref_51
         title: Grafana
-        icon: favicon
+        icon: https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg
         url: https://grafana.paynepride.com
         statusCheck: true
         id: 5_1062_grafana
-      - &ref_53
+      - &ref_52
         title: Minio
+        icon: https://www.vectorlogo.zone/logos/minioio/minioio-icon.svg
         url: http://ghost:9009/
         statusCheck: true
         id: 6_1062_minio
-      - &ref_54
+      - &ref_53
         title: Promtail
         url: http://ghost:9080/targets
         statusCheck: true
         id: 7_1062_promtail
-      - &ref_55
+      - &ref_54
         title: Grafana
         description: Dashboards
-        icon: favicon
+        icon: https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg
         url: http://ghost:3000
         id: 8_1062_grafana
     icon: fa-solid fa-monitor-heart-rate
     filteredItems:
+      - *ref_46
       - *ref_47
       - *ref_48
       - *ref_49
@@ -559,7 +553,6 @@ sections:
       - *ref_52
       - *ref_53
       - *ref_54
-      - *ref_55
   - name: Olivet
     displayData:
       sortBy: default
@@ -568,21 +561,20 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_56
+      - &ref_55
         title: CCLI
         description: Records of CCLI numbers for our songs
         icon: fa-solid fa-hashtag
         url: >-
           https://docs.google.com/spreadsheets/d/1-nPRo68IiSbJn9hF_EVovrBUePMS0XbzVxF6iL-8s7g/edit#gid=845320228
         id: 0_627_ccli
-      - &ref_57
+      - &ref_56
         title: Setlists
-        description: Setlists from Kayla and worship team
-        icon: 🎼
+        description: Setlists for Olivet music
         url: >-
           https://docs.google.com/spreadsheets/d/1x-0TRXQqs3_n1VgP2c_pK4gUmIZF2w_ZU28u23-iGyY/edit#gid=1172447411
         id: 1_627_setlists
-      - &ref_58
+      - &ref_57
         title: Service SIgn Ups
         description: >-
           Sign ups for various things at the church - clelan up, remodels,
@@ -592,8 +584,25 @@ sections:
         id: 2_627_servicesignups
     icon: fa-solid fa-church
     filteredItems:
+      - *ref_55
       - *ref_56
       - *ref_57
+  - name: Portals
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - &ref_58
+        title: Appleton Utilities Bill Pay
+        icon: >-
+          https://www.appleton.org/Project/Contents/Main/_gfx/cmn/logo-footer.png
+        url: https://client.pointandpay.net/web/CityofAppletonWIUtilityBilling
+        id: 0_741_appletonutilitiesbillpay
+    icon: fa-solid fa-person-to-portal
+    filteredItems:
       - *ref_58
   - name: IF I DIE
     icon: fa-solid fa-skull
@@ -607,7 +616,7 @@ sections:
       - &ref_59
         title: Github - EOL Repo
         description: Repo with instructions for what to do after my death
-        icon: fa-solid fa-book-skull
+        icon: 💀
         url: https://github.com/pypeaday/eol-dr
         id: 0_490_githubeolrepo
     filteredItems:
@@ -641,41 +650,8 @@ sections:
         description: "Accounts: UTMA, Roth, etc"
         url: https://app.altruist.com/login
         id: 3_807_altruist
-      - &ref_64
-        title: CEFCU
-        description: Bank
-        url: https://www.cefcu.com
-        id: 4_807_cefcu
-      - &ref_65
-        title: FoxCom
-        description: Bank
-        url: https://secure.foxcu.org/
-        id: 5_807_foxcom
-      - &ref_66
-        title: Provident Financial
-        description: Mortgage
-        icon: 🏠
-        url: https://www.provident.com/
-        id: 6_807_providentfinancial
-      - &ref_67
-        title: Aquahawk
-        description: Water/Services Monitoring
-        icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
-        url: https://applwi.aquahawk.us/
-        id: 7_807_aquahawk
-      - &ref_68
-        title: Appleton Utilities Bill Pay
-        icon: >-
-          https://www.appleton.org/Project/Contents/Main/_gfx/cmn/logo-footer.png
-        url: https://client.pointandpay.net/web/CityofAppletonWIUtilityBilling
-        id: 8_807_appletonutilitiesbillpay
     filteredItems:
       - *ref_60
       - *ref_61
       - *ref_62
       - *ref_63
-      - *ref_64
-      - *ref_65
-      - *ref_66
-      - *ref_67
-      - *ref_68
