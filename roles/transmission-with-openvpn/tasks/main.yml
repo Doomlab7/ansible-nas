@@ -10,15 +10,15 @@
         - '{{ transmission_config_directory }}'
         - '{{ transmission_download_directory }}'
         - '{{ transmission_watch_directory }}'
-        - '{{ transmission_vpn_directory }}'
+        - '{{ transmission_openvpn_directory }}'
     - name: Add VPN config
       template:
-        src: us-il-53.protonvpn.udp.ovpn
-        dest: '{{ transmission_vpn_directory }}/us-il-53.protonvpn.udp.ovpn'
+        src: protonvpn/{{ openvpn_config }}.ovpn
+        dest: '{{ transmission_openvpn_directory }}/{{ openvpn_config }}.ovpn'
     - name: Add port script
       template:
-        src: update-port.sh
-        dest: '{{ transmission_vpn_directory }}/update-port.sh'
+        src: protonvpn/update-port.sh
+        dest: '{{ transmission_openvpn_directory }}/update-port.sh'
     - name: Transmission with VPN
       docker_container:
         name: transmission-openvpn
@@ -30,7 +30,7 @@
           - '{{ transmission_config_directory }}:/config:rw'
           - '{{ transmission_watch_directory }}:/watch:rw'
           - /etc/timezone:/etc/timezone:ro
-          - '{{ transmission_vpn_directory }}:/etc/openvpn/custom/'
+          - '{{ transmission_openvpn_directory }}:/etc/openvpn/custom/'
         ports:
           - '{{ transmission_openvpn_webui_port }}:9091'
           - '{{ transmission_openvpn_external_port }}:51413'
@@ -61,6 +61,9 @@
         capabilities:
           - NET_ADMIN
         restart_policy: unless-stopped
+        log_driver: json-file
+        log_options:
+              max-size: 10m
         memory: '{{ transmission_openvpn_memory }}'
         labels:
           traefik.enable: '{{ transmission_with_openvpn_available_externally | string }}'
