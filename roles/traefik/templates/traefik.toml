@@ -1,5 +1,6 @@
 [entryPoints]
   [entryPoints.web]
+
     address = ":{{ traefik_port_http }}"
 
   [entryPoints.web.http.redirections.entryPoint]

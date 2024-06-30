@@ -2,6 +2,13 @@
 http:
   # region routers
   routers:
+    proxy:
+      entryPoints:
+        - websecure
+      rule: Host(`proxy.paynepride.com`)
+      tls:
+        certResolver: letsencrypt
+      service: proxy
     homeassistant:
       entryPoints:
         - websecure
@@ -11,14 +18,21 @@ http:
       tls:
         certResolver: letsencrypt
       service: homeassistant
-    k8s:
+    # k8s:
+    #   entryPoints:
+    #     - websecure
+    #   # try using this to grab anything *.k8s.paynepride.com -> my microk8s cluster
+    #   rule: HostRegexp(`^.+\.k8s\.paynepride\.com$`)
+    #   tls:
+    #     certResolver: letsencrypt
+    #   service: k8s
+    cockpit:
       entryPoints:
         - websecure
-      # try using this to grab anything *.k8s.paynepride.com -> my microk8s cluster
-      rule: HostRegexp(`^.+\.k8s\.paynepride\.com$`)
+      rule: Host(`cockpit.paynepride.com`)
       tls:
         certResolver: letsencrypt
-      service: k8s
+      service: cockpit
     ytdl:
       entryPoints:
         - websecure
@@ -74,14 +88,14 @@ http:
       service: uptime_kuma_summary
       middlewares:
         - redirect-uptime
-    littlelink:  # website
+    littlelink: # website
       entryPoints:
         - websecure
       rule: Host(`littlelink.paynepride.com`)
       tls:
         certResolver: letsencrypt
       service: littlelink
-    rickroll:  # rick roll
+    rickroll: # rick roll
       entryPoints:
         - websecure
       rule: Host(`rr.paynepride.com`)
@@ -91,16 +105,26 @@ http:
   # endregion
   # region services
   services:
+    proxy:
+      loadBalancer:
+        servers:
+          - url: http://babyblue:54321
+        passHostHeader: true
     homeassistant:
       loadBalancer:
         servers:
           - url: http://homeassistant.local:8123
         passHostHeader: true
-    k8s:
+    # k8s:
+    #   loadBalancer:
+    #     servers:
+    #       # cockpit alpha vm - set in /etc/hosts and on pihole
+    #       - url: http://cockpit.local
+    #     passHostHeader: true
+    cockpit:
       loadBalancer:
         servers:
-          # cockpit alpha vm - set in /etc/hosts and on pihole
-          - url: http://cockpit.local
+          - url: http://ghost:7777
         passHostHeader: true
     ytdl:
       loadBalancer:
@@ -183,19 +207,19 @@ http:
     default-whitelist:
       ipWhiteList:
         sourceRange:
-          - 10.220.108.0/24  # wg
-          - 192.168.1.0/24  # lan
-          - 172.17.0.0/16  # docker
-          - 172.19.0.0/16  # docker
-          - 172.20.0.0/16  # docker
-          - 172.22.0.0/16  # docker
+          - 10.220.108.0/24 # wg
+          - 192.168.1.0/24 # lan
+          - 172.17.0.0/16 # docker
+          - 172.19.0.0/16 # docker
+          - 172.20.0.0/16 # docker
+          - 172.22.0.0/16 # docker
     extended-whitelist:
       ipWhiteList:
         sourceRange:
-          - 10.220.108.0/24  # wg
-          - 192.168.1.0/24  # lan
-          - 172.17.0.0/16  # docker
-          - 71.66.253.233/32  # block WAN
+          - 10.220.108.0/24 # wg
+          - 192.168.1.0/24 # lan
+          - 172.17.0.0/16 # docker
+          - 71.66.253.233/32 # block WAN
     secured:
       chain:
         middlewares:
