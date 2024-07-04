@@ -3,95 +3,100 @@
   block:
     - name: Create Nextcloud directories
       ansible.builtin.file:
-        path: '{{ item }}'
+        path: "{{ item }}"
         state: directory
       with_items:
-        - '{{ nextcloud_data_directory }}/nextcloud'
-        - '{{ nextcloud_data_directory }}/mysql'
+        - "{{ nextcloud_data_directory }}/nextcloud"
+        - "{{ nextcloud_data_directory }}/mysql"
     - name: Nextcloud Mysql Docker Container
       docker_container:
         name: nextcloud-mysql
-        image: '{{ nextcloud_mysql_image }}'
+        image: "{{ nextcloud_mysql_image }}"
         pull: true
         volumes:
-          - '{{ nextcloud_data_directory }}/mysql:/var/lib/mysql:rw'
+          - "{{ nextcloud_data_directory }}/mysql:/var/lib/mysql:rw"
         env:
           MYSQL_DATABASE: nextcloud
-          MYSQL_USER: '{{ nextcloud_sql_user }}'
-          MYSQL_PASSWORD: '{{ nextcloud_sql_password }}'
-          MYSQL_ROOT_PASSWORD: '{{ nextcloud_sql_root_password }}'
+          MYSQL_USER: "{{ nextcloud_sql_user }}"
+          MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
+          MYSQL_ROOT_PASSWORD: "{{ nextcloud_sql_root_password }}"
         restart_policy: unless-stopped
-        memory: '{{ nextcloud_mysql_memory }}'
+        memory: "{{ nextcloud_mysql_memory }}"
         labels:
-          com.centurylinklabs.watchtower.monitor-only: 'true'
+          com.centurylinklabs.watchtower.monitor-only: "true"
     - name: Nextcloud Docker Container
       docker_container:
         name: nextcloud
-        image: '{{ nextcloud_image }}'
+        image: "{{ nextcloud_image }}"
         pull: true
         links:
           - nextcloud-mysql:mysql
         volumes:
-          - '{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw'
+          - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
           # I think adding www-data user to ansible-nas group (1001) will enable writing to any part of the /nas that my docker containers can
-          - '{{ nextcloud_shares_root }}:/nas:rw'
+          - "{{ nextcloud_shares_root }}:/nas:rw"
         ports:
-          - '{{ nextcloud_port }}:80'
+          - "{{ nextcloud_port }}:80"
         env:
           MYSQL_HOST: mysql
           MYSQL_DATABASE: nextcloud
-          MYSQL_USER: '{{ nextcloud_sql_user }}'
-          MYSQL_PASSWORD: '{{ nextcloud_sql_password }}'
-          NEXTCLOUD_TRUSTED_DOMAINS: '{{ nextcloud_hostname }}.{{ ansible_nas_domain
-            }}'
+          MYSQL_USER: "{{ nextcloud_sql_user }}"
+          MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
+          NEXTCLOUD_TRUSTED_DOMAINS:
+            "{{ nextcloud_hostname }}.{{ ansible_nas_domain
+            }}"
           # PUID: "{{ nextcloud_user_id }}"
           # PGID: "{{ nextcloud_group_id }}"
-          TZ: '{{ ansible_nas_timezone }}'
+          TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
-        memory: '{{ nextcloud_memory }}'
+        memory: "{{ nextcloud_memory }}"
         labels:
-          traefik.enable: '{{ nextcloud_available_externally | string }}'
+          traefik.enable: "{{ nextcloud_available_externally | string }}"
           traefik.http.routers.nextcloud.rule: Host(`{{ nextcloud_hostname }}.{{
             ansible_nas_domain }}`)
           traefik.http.routers.nextcloud.tls.certresolver: letsencrypt
-          traefik.http.routers.nextcloud.tls.domains[0].main: '{{ ansible_nas_domain }}'
-          traefik.http.routers.nextcloud.tls.domains[0].sans: '*.{{ ansible_nas_domain }}'
-          traefik.http.services.nextcloud.loadbalancer.server.port: '80'
+          traefik.http.routers.nextcloud.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.nextcloud.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.nextcloud.loadbalancer.server.port: "80"
     - name: Nextcloud Cron Docker Container
       docker_container:
         name: nextcloud-cron
-        image: '{{ nextcloud_image }}'
+        image: "{{ nextcloud_image }}"
         pull: true
         links:
           - nextcloud-mysql:mysql
         entrypoint: /cron.sh
         volumes:
-          - '{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw'
-          - '{{ nextcloud_shares_root }}:/nas:rw'
+          - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
+          - "{{ nextcloud_shares_root }}:/nas:rw"
         # ports:
         #   - "{{ nextcloud_port }}:80"
         env:
           MYSQL_HOST: mysql
           MYSQL_DATABASE: nextcloud
-          MYSQL_USER: '{{ nextcloud_sql_user }}'
-          MYSQL_PASSWORD: '{{ nextcloud_sql_password }}'
+          MYSQL_USER: "{{ nextcloud_sql_user }}"
+          MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
           # NEXTCLOUD_TRUSTED_DOMAINS: "{{ nextcloud_hostname }}.{{ ansible_nas_domain }}"
           # PUID: "{{ nextcloud_user_id }}"
           # PGID: "{{ nextcloud_group_id }}"
-          TZ: '{{ ansible_nas_timezone }}'
+          TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
         memory: 1g
         labels:
-          com.centurylinklabs.watchtower.monitor-only: 'true'
+          com.centurylinklabs.watchtower.monitor-only: "true"
   when: nextcloud_enabled is true
 - name: Stop Nextcloud
   block:
     - name: Stop Nextcloud
       community.docker.docker_container:
-        name: '{{ nextcloud_container_name }}'
+        name: "{{ nextcloud_container_name }}"
+        state: absent
+    - name: Stop Nextcloud Cron
+      community.docker.docker_container:
+        name: "nextcloud-cron"
         state: absent
     - name: Stop Nextcloud DB
       community.docker.docker_container:
-        name: '{{ nextcloud_db_container_name }}'
+        name: "{{ nextcloud_db_container_name }}"
         state: absent
   when: nextcloud_enabled is false
