@@ -161,6 +161,9 @@
     - role: jellyfin
       tags:
         - jellyfin
+    - role: jellystat
+      tags:
+        - jellystat
     - role: joomla
       tags:
         - joomla
