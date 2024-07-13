@@ -10,6 +10,8 @@
         volumes:
           - "{{ code_server_config_directory }}:/config"
           - "{{ code_server_projects_directory }}:/code:rw"
+          - "{{ docker_home }}:/docker-on-nas:rw"
+          - /var/run/docker.sock:/var/run/docker.sock:rw
         ports:
           - "{{ code_server_port }}:8443"
         env:
