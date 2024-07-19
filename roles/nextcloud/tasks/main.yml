@@ -61,6 +61,9 @@
           REDIS_HOST: redis
           REDIS_PORT: "6379"
           REDIS_HOST_PASSWORD: "{{ nextcloud_redis_password}}"
+          PHP_UPLOAD_LIMIT: "5G"
+          PHP_MEMORY_LIMIT: "5G"
+          POST_MAX_SIZE: "5G"
         restart_policy: unless-stopped
         memory: "{{ nextcloud_memory }}"
         labels:
