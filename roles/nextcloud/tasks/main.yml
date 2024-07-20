@@ -79,8 +79,8 @@
         name: nextcloud-cron
         image: "{{ nextcloud_image }}"
         pull: true
-        # links:
-        #   - nextcloud-mysql:mysql
+        links:
+          - nextcloud-mysql:mysql
         entrypoint: /cron.sh
         volumes:
           - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
@@ -88,10 +88,10 @@
         # ports:
         #   - "{{ nextcloud_port }}:80"
         env:
-          # MYSQL_HOST: mysql
-          # MYSQL_DATABASE: nextcloud
-          # MYSQL_USER: "{{ nextcloud_sql_user }}"
-          # MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
+          MYSQL_HOST: mysql
+          MYSQL_DATABASE: nextcloud
+          MYSQL_USER: "{{ nextcloud_sql_user }}"
+          MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
           # NEXTCLOUD_TRUSTED_DOMAINS: "{{ nextcloud_hostname }}.{{ ansible_nas_domain }}"
           # PUID: "{{ nextcloud_user_id }}"
           # PGID: "{{ nextcloud_group_id }}"
