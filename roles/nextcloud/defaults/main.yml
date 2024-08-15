@@ -9,6 +9,8 @@ nextcloud_data_directory: '{{ docker_home }}/nextcloud'
 nextcloud_port: '8080'
 nextcloud_hostname: nextcloud
 nextcloud_network_name: nextcloud
+nextcloud_trusted_proxies: 192.168.1.1/24
+nextcloud_trusted_domains: "{{ nextcloud_hostname }}.{{ ansible_nas_domain }}"
 
 # docker
 nextcloud_container_name: nextcloud

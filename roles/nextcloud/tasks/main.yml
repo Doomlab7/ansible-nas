@@ -52,9 +52,6 @@
           MYSQL_DATABASE: nextcloud
           MYSQL_USER: "{{ nextcloud_sql_user }}"
           MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
-          NEXTCLOUD_TRUSTED_DOMAINS:
-            "{{ nextcloud_hostname }}.{{ ansible_nas_domain
-            }}"
           # PUID: "{{ nextcloud_user_id }}"
           # PGID: "{{ nextcloud_group_id }}"
           TZ: "{{ ansible_nas_timezone }}"
@@ -64,6 +61,10 @@
           PHP_UPLOAD_LIMIT: "5G"
           PHP_MEMORY_LIMIT: "5G"
           POST_MAX_SIZE: "5G"
+          NEXTCLOUD_TRUSTED_DOMAINS: "{{ nextcloud_hostname }}.{{ ansible_nas_domain }} ghost 192.168.1.9"
+          TRUSTED_PROXIES: "{{ nextcloud_trusted_proxies }}"
+          OVERWRITEPROTOCOL: "https"
+          OVERWRITECLIURL: "https://{{ nextcloud_hostname }}.{{ ansible_nas_domain }}"
         restart_policy: unless-stopped
         memory: "{{ nextcloud_memory }}"
         labels:
