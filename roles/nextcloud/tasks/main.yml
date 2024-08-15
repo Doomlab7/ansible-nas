@@ -75,7 +75,7 @@
           traefik.http.routers.nextcloud.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.nextcloud.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.nextcloud.loadbalancer.server.port: "80"
-          traefik.http.routers.nextcloud.middlewares: redirect-dav@file
+          traefik.http.routers.nextcloud.middlewares: redirect-dav@file,default-headers@file
     - name: Nextcloud Cron Docker Container
       docker_container:
         name: nextcloud-cron
