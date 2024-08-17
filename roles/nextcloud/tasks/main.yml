@@ -61,7 +61,7 @@
           PHP_UPLOAD_LIMIT: "5G"
           PHP_MEMORY_LIMIT: "5G"
           POST_MAX_SIZE: "5G"
-          NEXTCLOUD_TRUSTED_DOMAINS: "{{ nextcloud_hostname }}.{{ ansible_nas_domain }} ghost 192.168.1.9"
+          NEXTCLOUD_TRUSTED_DOMAINS: "{{ nextcloud_trusted_domains }}"
           TRUSTED_PROXIES: "{{ nextcloud_trusted_proxies }}"
           OVERWRITEPROTOCOL: "https"
           OVERWRITECLIURL: "https://{{ nextcloud_hostname }}.{{ ansible_nas_domain }}"
