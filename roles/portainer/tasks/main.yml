@@ -10,7 +10,7 @@
     - name: Portainer Docker Container
       docker_container:
         name: portainer
-        image: portainer/portainer-ce
+        image: portainer/portainer-ce:sts
         pull: true
         volumes:
           - '{{ portainer_data_directory }}:/data:rw'
