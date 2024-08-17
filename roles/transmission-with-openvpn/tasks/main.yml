@@ -48,7 +48,7 @@
           OPENVPN_USERNAME: '{{ openvpn_username }}'
           OPENVPN_PASSWORD: '{{ openvpn_password }}'
           OPENVPN_CONFIG: '{{ openvpn_config }}'
-          OPENVPN_OPTS: '--mute-replay-warnings'
+          OPENVPN_OPTS: '--mute-replay-warnings --inactive 3600 --ping 10 --ping-exit 60'
           WEBPROXY_ENABLED: 'true'
           WEBPROXY_PORT: '3128'
           OVERRIDE_DNS_1: 9.9.9.9
@@ -57,6 +57,7 @@
           LOCAL_NETWORK: '{{ transmission_openvpn_local_network }}'
           ENABLE_UFW: 'false'
           UMASK: '2'
+          HEALTH_CHECK_HOST: '1.1.1.1'
         devices:
           - /dev/net/tun
         capabilities:
