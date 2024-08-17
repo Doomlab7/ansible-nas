@@ -30,6 +30,7 @@
           traefik.http.routers.gotify.tls.certresolver: letsencrypt
           traefik.http.routers.gotify.tls.domains[0].main: '{{ ansible_nas_domain }}'
           traefik.http.routers.gotify.tls.domains[0].sans: '*.{{ ansible_nas_domain }}'
+          traefik.http.routers.gotify.middlewares: default-whitelist@file
           traefik.http.services.gotify.loadbalancer.server.port: '80'
   when: gotify_enabled is true
 - name: Stop Gotify
