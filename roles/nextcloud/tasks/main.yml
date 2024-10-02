@@ -119,6 +119,6 @@
         state: absent
     - name: Stop Nextcloud DB
       community.docker.docker_container:
-        name: "{{ nextcloud_db_container_name }}"
+        name: "nextcloud-mysql"
         state: absent
   when: nextcloud_enabled is false
