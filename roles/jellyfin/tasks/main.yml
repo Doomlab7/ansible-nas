@@ -50,7 +50,8 @@
       - 1900:1900/udp
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
-      - /dev/dri/card0:/dev/dri/card0
+      # NOTE: had to change to card1 after a weird reboot
+      - /dev/dri/card1:/dev/dri/card0
     env:
       TZ: '{{ ansible_nas_timezone }}'
       PUID: '{{ jellyfin_user_id }}'
