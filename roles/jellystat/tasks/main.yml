@@ -9,7 +9,7 @@
       with_items:
         - "{{ jellystat_data_directory }}"
     - name: jellystat Postgres Docker Container
-      docker_container:
+      community.docker.docker_container:
         name: jellystat-db
         image: postgres:15.2
         pull: true
@@ -25,7 +25,7 @@
         restart_policy: unless-stopped
         memory: "1g"
     - name: jellystat Docker Container
-      docker_container:
+      community.docker.docker_container:
         name: jellystat
         image: "{{ jellystat_image_name }}:{{ jellystat_image_version }}"
         pull: true
