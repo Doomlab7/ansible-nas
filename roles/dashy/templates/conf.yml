@@ -2,7 +2,7 @@ appConfig:
   statusCheck: false
   theme: default
   fontAwesomeKey: f44bea53a7
-  customCss: ".clock p.time { font-size: 3rem !important; }"
+  customCss: '.clock p.time { font-size: 3rem !important; }'
   layout: horizontal
   iconSize: large
   language: en
@@ -33,7 +33,7 @@ appConfig:
   showSplashScreen: false
   preventWriteToDisk: false
   preventLocalSave: false
-  disableConfiguration: true # set to false to enable editing in webui
+  disableConfiguration: false
   allowConfigEdit: true
   enableServiceWorker: false
   disableContextMenu: false
@@ -44,7 +44,7 @@ pageInfo:
   title: Hello, Nic!
   description: Paynepride Homepage
   navLinks: []
-  footerText: ""
+  footerText: ''
   logo: https://i.ibb.co/71WyyzM/little-bot-3.png
 sections:
   - name: Home
@@ -221,13 +221,13 @@ sections:
         title: Namecheap
         icon: favicon
         url: https://ap.www.namecheap.com/
-        statusCheckAcceptCodes: "403"
+        statusCheckAcceptCodes: '403'
         id: 2_892_namecheap
       - &ref_19
         title: CloudFlare
         icon: favicon
         url: https://dash.cloudflare.com/
-        statusCheckAcceptCodes: "403"
+        statusCheckAcceptCodes: '403'
         id: 3_892_cloudflare
       - &ref_20
         title: Pype.dev
@@ -248,6 +248,18 @@ sections:
         icon: fa-solid fa-face-sad-tear
         url: https://sadservers.com/scenarios
         id: 6_892_sadservers
+      - &ref_23
+        title: PDF Utilities
+        icon: >-
+          https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling.png
+        url: https://stirlingtools.paynepride.com/
+        id: 7_892_pdfutilities
+      - &ref_24
+        title: Manyfold
+        description: 3d Library
+        icon: https://avatars.githubusercontent.com/u/152926958?s=48&v=4
+        url: https://manyfold.paynepride.com
+        id: 8_892_manyfold
     displayData:
       sortBy: default
       rows: 1
@@ -262,6 +274,8 @@ sections:
       - *ref_20
       - *ref_21
       - *ref_22
+      - *ref_23
+      - *ref_24
   - name: Admin
     icon: fa-solid fa-crosshairs
     displayData:
@@ -271,13 +285,13 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_23
+      - &ref_25
         title: Cockpit
         description: Server Web Interface
         icon: 🔭
         url: https://ghost:7777
         id: 0_489_cockpit
-      - &ref_24
+      - &ref_26
         title: hcio
         description: Healthchecks
         icon: https://healthchecks.io/favicon.ico
@@ -285,22 +299,22 @@ sections:
           https://healthchecks.io/projects/214050b7-9299-4f6b-8b04-3e551dde6c6f/checks/
         statusCheck: true
         id: 1_489_hcio
-      - &ref_25
+      - &ref_27
         title: Traefik
         description: Reverse Proxy
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F600%2F1*Hl3OGno7atEBb5-wLUhefw.png&f=1&nofb=1
-        url: " http://ghost:8083/dashboard/"
+        url: ' http://ghost:8083/dashboard/'
         statusCheck: true
         id: 2_489_traefik
-      - &ref_26
+      - &ref_28
         title: Pi-Hole
         description: DNS / Ad-Blocker
         icon: https://pihole.paynepride.com/img/logo.svg
         url: https://pihole.paynepride.com
         statusCheck: true
         id: 3_489_pihole
-      - &ref_27
+      - &ref_29
         title: Cloud Commander
         icon: >-
           https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi2.wp.com%2Fcolaboratorio.net%2Fwp-content%2Fuploads%2F2018%2F12%2FCloudCommander-logo-filtroOK.png%3Ffit%3D1200%252C800%26ssl%3D1&f=1&nofb=1
@@ -308,7 +322,7 @@ sections:
         statusCheck: true
         statusCheckAllowInsecure: true
         id: 4_489_cloudcommander
-      - &ref_28
+      - &ref_30
         title: Guacamole
         description: KVM
         icon: >-
@@ -316,7 +330,7 @@ sections:
         url: https://guacamole.paynepride.com/
         statusCheck: true
         id: 5_489_guacamole
-      - &ref_29
+      - &ref_31
         title: Portainer
         description: Docker Management
         icon: >-
@@ -324,14 +338,14 @@ sections:
         url: https://portainer.paynepride.com
         statusCheck: true
         id: 6_489_portainer
-      - &ref_30
+      - &ref_32
         title: OPNSense
         description: Router
         icon: >-
           https://192.168.1.1:8443/ui/themes/opnsense/build/images/default-logo.svg?v=62992a662883c6c9
         url: https://192.168.1.1:8443/
         id: 7_489_opnsense
-      - &ref_31
+      - &ref_33
         title: Status Page
         description: Uptime Kuma
         url: https://uptime_kuma.paynepride.com
@@ -339,15 +353,13 @@ sections:
           https://raw.githubusercontent.com/louislam/uptime-kuma/5b6522a54edad9737fccf195f9eaa25c6fb9d0f6/public/icon.svg
         statusCheck: true
         id: 8_489_statuspage
-      - &ref_32
+      - &ref_34
         title: Simplelogin
         description: Privacy e-mail relay
         icon: https://avatars.githubusercontent.com/u/51910064?s=280&v=4
         url: https://app.simplelogin.io/dashboard/
         id: 9_489_simplelogin
     filteredItems:
-      - *ref_23
-      - *ref_24
       - *ref_25
       - *ref_26
       - *ref_27
@@ -356,6 +368,8 @@ sections:
       - *ref_30
       - *ref_31
       - *ref_32
+      - *ref_33
+      - *ref_34
   - name: Media
     displayData:
       sortBy: default
@@ -364,14 +378,14 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_33
+      - &ref_35
         title: YouTubeDL-Material
         icon: >-
           https://github.com/Tzahi12345/YoutubeDL-Material/blob/master/src/assets/images/logo_128px.png?raw=true
         url: https://youtubedlmaterial.paynepride.com
         statusCheck: true
         id: 0_480_youtubedlmaterial
-      - &ref_34
+      - &ref_36
         title: Paperless
         description: Document
         icon: >-
@@ -379,53 +393,53 @@ sections:
         url: http://paynepride.com:16922/
         statusCheck: true
         id: 1_480_paperless
-      - &ref_35
+      - &ref_37
         title: Airsonic
         icon: https://airsonic.github.io/img/logo.png
         url: https://airsonic.paynepride.com
         statusCheck: true
         statusCheckUrl: https://airsonic.paynepride.com
         id: 2_480_airsonic
-      - &ref_36
+      - &ref_38
         title: Ubooquity
         description: Books
         icon: 📚
         url: http://paynepride.com:2202/ubooquity
         statusCheck: true
         id: 3_480_ubooquity
-      - &ref_37
+      - &ref_39
         title: Spotify
         icon: fa-brands fa-spotify
         url: https://open.spotify.com/
         id: 4_480_spotify
-      - &ref_38
+      - &ref_40
         title: TA
         description: YouTube Front End
         icon: https://www.tubearchivist.com/static/favicon.ico
         url: http://ghost:8003
         id: 5_480_ta
-      - &ref_39
+      - &ref_41
         title: Booksonic
         icon: https://booksonic.org/assets/img/booksonic.png
         url: https://booksonic.paynepride.com
         statusCheck: true
         statusCheckUrl: https://booksonic.paynepride.com
         id: 6_480_booksonic
-      - &ref_40
+      - &ref_42
         title: Jellystat
         description: Stats for nerds!
         icon: https://jellystat.paynepride.com/assets/icon-b-512-2e5110d2.png
         url: https://jellystat.paynepride.com
         id: 7_480_jellystat
     filteredItems:
-      - *ref_33
-      - *ref_34
       - *ref_35
       - *ref_36
       - *ref_37
       - *ref_38
       - *ref_39
       - *ref_40
+      - *ref_41
+      - *ref_42
   - name: Monitoring
     displayData:
       sortBy: default
@@ -434,14 +448,14 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_41
+      - &ref_43
         title: Ghost - Glances
         description: System Monitoring
         icon: https://nicolargo.github.io/glances/public/images/glances.png
         url: https://glances.paynepride.com
         statusCheck: true
         id: 0_1062_ghostglances
-      - &ref_42
+      - &ref_44
         title: Ghost - Netdata
         description: Netdata
         icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
@@ -449,40 +463,40 @@ sections:
           https://netdata.paynepride.com/#after=-720;before=0;=undefined;theme=slate;utc=America%2FChicago
         statusCheck: true
         id: 1_1062_ghostnetdata
-      - &ref_43
+      - &ref_45
         title: Gotify
         description: Notifications
         icon: https://external-content.duckduckgo.com/ip3/gotify.net.ico
         url: http://paynepride.com:2346/#/login
         statusCheck: true
         id: 2_1062_gotify
-      - &ref_44
+      - &ref_46
         title: Grafana
         description: Dashboards
-        icon: ""
+        icon: ''
         url: https://grafana.paynepride.com
         statusCheck: true
         id: 3_1062_grafana
-      - &ref_45
+      - &ref_47
         title: Minio
         description: Blob storage
         icon: https://min.io/resources/img/logo/MINIO_Bird.png
         url: http://ghost:9009
         statusCheck: true
         id: 4_1062_minio
-      - &ref_46
+      - &ref_48
         title: Promtail
         url: http://ghost:9080/targets
         statusCheck: true
         id: 5_1062_promtail
-      - &ref_47
+      - &ref_49
         title: Babyblue - Netdata
         description: Netdata
         icon: https://external-content.duckduckgo.com/ip3/www.netdata.cloud.ico
         url: http://babyblue:19999
         statusCheck: true
         id: 6_1062_babybluenetdata
-      - &ref_48
+      - &ref_50
         title: Babyblue - Glances
         description: System Monitoring
         icon: https://nicolargo.github.io/glances/public/images/glances.png
@@ -491,14 +505,14 @@ sections:
         id: 7_1062_babyblueglances
     icon: fa-solid fa-monitor-heart-rate
     filteredItems:
-      - *ref_41
-      - *ref_42
       - *ref_43
       - *ref_44
       - *ref_45
       - *ref_46
       - *ref_47
       - *ref_48
+      - *ref_49
+      - *ref_50
   - name: Olivet
     displayData:
       sortBy: default
@@ -507,32 +521,42 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_49
+      - &ref_51
         title: CCLI
         description: Records of CCLI numbers for our songs
         icon: fa-solid fa-hashtag
         url: >-
-          https://docs.google.com/spreadsheets/d/1-nPRo68IiSbJn9hF_EVovrBUePMS0XbzVxF6iL-8s7g/edit#gid=845320228
+          https://docs.google.com/spreadsheets/d/1-nPRo68IiSbJn9hF_EVovrBUePMS0XbzVxF6iL-8s7g/edit?gid=1472261657#gid=1472261657
         id: 0_627_ccli
-      - &ref_50
+      - &ref_52
         title: Setlists
-        description: ""
+        description: ''
+        icon: fas fa-music
         url: >-
-          https://docs.google.com/spreadsheets/d/1x-0TRXQqs3_n1VgP2c_pK4gUmIZF2w_ZU28u23-iGyY/edit#gid=1172447411
+          https://docs.google.com/spreadsheets/d/1x-0TRXQqs3_n1VgP2c_pK4gUmIZF2w_ZU28u23-iGyY/edit?gid=118166864#gid=118166864
         id: 1_627_setlists
-      - &ref_51
+      - &ref_53
         title: Service SIgn Ups
         description: >-
           Sign ups for various things at the church - clelan up, remodels,
           meals, etc.
+        icon: fas fa-broom
         url: >-
           https://docs.google.com/spreadsheets/d/1rFuXeDzWZND8ihxUmvo-OgItqltEzbhO0ue3QpG_L-Y/edit#gid=1391041330
         id: 2_627_servicesignups
+      - &ref_54
+        title: Lyrics
+        description: Approved Song Lyrics
+        icon: fas fa-microphone
+        url: >-
+          https://docs.google.com/document/d/1xM6EsmcZrWKycEC4K7fuHpywpncj4qQXvlHlZoa0LeU/edit#heading=h.qxiffor0i5b1
+        id: 3_627_lyrics
     icon: fa-solid fa-church
     filteredItems:
-      - *ref_49
-      - *ref_50
       - *ref_51
+      - *ref_52
+      - *ref_53
+      - *ref_54
   - name: Portals
     displayData:
       sortBy: default
@@ -541,13 +565,13 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_52
+      - &ref_55
         title: Appleton Utilities Bill Pay
         icon: >-
           https://www.appleton.org/Project/Contents/Main/_gfx/cmn/logo-footer.png
         url: https://client.pointandpay.net/web/CityofAppletonWIUtilityBilling
         id: 0_741_appletonutilitiesbillpay
-      - &ref_53
+      - &ref_56
         title: Aquahawk
         description: Water/Services Monitoring
         icon: https://applwi.aquahawk.us/resources/aquahawk/AquaHawk_power.png
@@ -555,8 +579,8 @@ sections:
         id: 1_741_aquahawk
     icon: fa-solid fa-person-to-portal
     filteredItems:
-      - *ref_52
-      - *ref_53
+      - *ref_55
+      - *ref_56
   - name: IF I DIE
     icon: fa-solid fa-skull
     displayData:
@@ -566,14 +590,14 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_54
+      - &ref_57
         title: Github - EOL Repo
         description: Repo with instructions for what to do after my death
         icon: fa-solid fa-book-skull
         url: https://github.com/pypeaday/eol-dr
         id: 0_490_githubeolrepo
     filteredItems:
-      - *ref_54
+      - *ref_57
   - name: Finances
     icon: fas-money
     displayData:
@@ -583,28 +607,28 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_55
+      - &ref_58
         title: Edvest 529 Plans
         description: 529 plans for the girls
         url: https://www.edvest-529.com/widtpl/auth/ll.cs
         id: 0_807_edvestplans
-      - &ref_56
+      - &ref_59
         title: RightCapital
         description: Abri finance portal
         url: https://app.rightcapital.com/account/login
         id: 1_807_rightcapital
-      - &ref_57
+      - &ref_60
         title: Wealth
         description: Estate planning
         url: https://app.wealth.com/login
         id: 2_807_wealth
-      - &ref_58
+      - &ref_61
         title: Altruist
-        description: "Accounts: UTMA, Roth, etc"
+        description: 'Accounts: UTMA, Roth, etc'
         url: https://app.altruist.com/login
         id: 3_807_altruist
     filteredItems:
-      - *ref_55
-      - *ref_56
-      - *ref_57
       - *ref_58
+      - *ref_59
+      - *ref_60
+      - *ref_61

@@ -2,6 +2,30 @@
 http:
   # region routers
   routers:
+    # TODO: move these to server once I feel good aboaut it
+    countdown:
+      entryPoints:
+        - websecure
+      rule: Host(`countdown.paynepride.com`)
+      tls:
+        certResolver: letsencrypt
+      service: countdown
+    # TODO: move these to server once I feel good aboaut it
+    soonish:
+      entryPoints:
+        - websecure
+      rule: Host(`soonish.paynepride.com`)
+      tls:
+        certResolver: letsencrypt
+      service: soonish
+    # TODO: move these to server once I feel good aboaut it
+    wishlist:
+      entryPoints:
+        - websecure
+      rule: Host(`wishlist.paynepride.com`)
+      tls:
+        certResolver: letsencrypt
+      service: wishlist
     proxy:
       entryPoints:
         - websecure
@@ -18,14 +42,16 @@ http:
       tls:
         certResolver: letsencrypt
       service: homeassistant
-    # k8s:
-    #   entryPoints:
-    #     - websecure
-    #   # try using this to grab anything *.k8s.paynepride.com -> my microk8s cluster
-    #   rule: HostRegexp(`^.+\.k8s\.paynepride\.com$`)
-    #   tls:
-    #     certResolver: letsencrypt
-    #   service: k8s
+    k8s:
+      entryPoints:
+        - websecure
+        # - web
+      # try using this to grab anything *.k8s.paynepride.com -> my microk8s cluster
+      # rule: HostRegexp(`^.+\.k8s\.paynepride\.com$`)
+      rule: "HostRegexp(`{subdomain:[a-z0-9-]+}.k8s.paynepride.com`)"
+      tls:
+        certResolver: letsencrypt
+      service: k8s
     cockpit:
       entryPoints:
         - websecure
@@ -105,6 +131,21 @@ http:
   # endregion
   # region services
   services:
+    soonish:
+      loadBalancer:
+        servers:
+          - url: http://babyblue:8012
+        passHostHeader: true
+    soonish:
+      loadBalancer:
+        servers:
+          - url: http://babyblue:8011
+        passHostHeader: true
+    wishlist:
+      loadBalancer:
+        servers:
+          - url: http://babyblue:8010
+        passHostHeader: true
     proxy:
       loadBalancer:
         servers:
@@ -115,12 +156,12 @@ http:
         servers:
           - url: http://homeassistant:8123
         passHostHeader: true
-    # k8s:
-    #   loadBalancer:
-    #     servers:
-    #       # cockpit alpha vm - set in /etc/hosts and on pihole
-    #       - url: http://cockpit.local
-    #     passHostHeader: true
+    k8s:
+      loadBalancer:
+        servers:
+          - url: http://192.168.1.143:30000
+          # - url: https://192.168.1.143:30001
+        passHostHeader: true
     cockpit:
       loadBalancer:
         servers:
@@ -230,3 +271,32 @@ http:
         regex: "^https://(.*)/.well-known/(card|cal)dav"
         replacement: "https://${1}/remote.php/dav/"
         permanent: true
+    jellyfin-style:
+      plugin:
+        themepark:
+          # The name of the supported application listed on https://docs.theme-park.dev/themes.
+          app: jellyfin
+
+          # The name of the supported theme listed on https://docs.theme-park.dev/theme-options/ or https://docs.theme-park.dev/community-themes/
+          theme: hotline
+
+          # This currently only supports '4k-logo' and 'darker' addons. Future addons that follow a similar syntax will work as well.
+          # For refernce: https://docs.theme-park.dev/themes/addons/
+          addons:
+            - 4k-logo
+    sonarr-dark:
+      plugin:
+        themepark:
+          # The name of the supported application listed on https://docs.theme-park.dev/themes.
+          app: sonarr
+
+          # The name of the supported theme listed on https://docs.theme-park.dev/theme-options/ or https://docs.theme-park.dev/community-themes/
+          theme: dark
+
+          # baseUrl is optional if you want to use a self-hosted version of theme.park
+          baseUrl: https://theme-park.domain.tld
+
+          # This currently only supports '4k-logo' and 'darker' addons. Future addons that follow a similar syntax will work as well.
+          # For refernce: https://docs.theme-park.dev/themes/addons/
+          addons:
+            - sonarr-4k-logo
