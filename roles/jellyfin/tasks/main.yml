@@ -50,9 +50,10 @@
       - 7359:7359/udp
       - 1900:1900/udp
     devices:
-      - /dev/dri/renderD128:/dev/dri/renderD128
-      # NOTE: had to change to card1 after a weird reboot
-      - /dev/dri/card1:/dev/dri/card0
+      - /dev/dri/:/dev/dri/
+    groups:
+      - "109" # getent group render | cut -d: -f3
+      - "44" # getent group video | cut -d: -f3
     env:
       TZ: '{{ ansible_nas_timezone }}'
       PUID: '{{ jellyfin_user_id }}'
