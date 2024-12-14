@@ -3,13 +3,13 @@ http:
   # region routers
   routers:
     # TODO: move these to server once I feel good aboaut it
-    countdown:
+    cronicle:
       entryPoints:
         - websecure
-      rule: Host(`countdown.paynepride.com`)
+      rule: Host(`cronicle.paynepride.com`)
       tls:
         certResolver: letsencrypt
-      service: countdown
+      service: cronicle
     # TODO: move these to server once I feel good aboaut it
     soonish:
       entryPoints:
@@ -131,20 +131,20 @@ http:
   # endregion
   # region services
   services:
-    soonish:
+    cronicle:
       loadBalancer:
         servers:
-          - url: http://babyblue:8012
+          - url: http://babyblue-aurora:8012
         passHostHeader: true
     soonish:
       loadBalancer:
         servers:
-          - url: http://babyblue:8011
+          - url: http://babyblue-aurora:8011
         passHostHeader: true
     wishlist:
       loadBalancer:
         servers:
-          - url: http://babyblue:8010
+          - url: http://babyblue-aurora:8010
         passHostHeader: true
     proxy:
       loadBalancer:
