@@ -2,6 +2,13 @@
 http:
   # region routers
   routers:
+    quadtask:
+      entryPoints:
+        - websecure
+      rule: Host(`quadtask.paynepride.com`)
+      tls:
+        certResolver: letsencrypt
+      service: quadtask
     # TODO: move these to server once I feel good aboaut it
     cronicle:
       entryPoints:
@@ -131,6 +138,11 @@ http:
   # endregion
   # region services
   services:
+    quadtask:
+      loadBalancer:
+        servers:
+          - url: http://babyblue-aurora:8014
+        passHostHeader: true
     cronicle:
       loadBalancer:
         servers:
@@ -139,7 +151,9 @@ http:
     soonish:
       loadBalancer:
         servers:
-          - url: http://babyblue-aurora:8011
+          - url: http://babyblue-aurora:8000
+          # soonish 1 below
+          # - url: http://babyblue-aurora:8012
         passHostHeader: true
     wishlist:
       loadBalancer:
@@ -190,7 +204,7 @@ http:
     pihole:
       loadBalancer:
         servers:
-          - url: http://192.168.1.3
+          - url: http://192.168.1.4
         passHostHeader: true
     uptime_kuma_summary:
       loadBalancer:
